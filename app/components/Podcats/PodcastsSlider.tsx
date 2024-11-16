@@ -22,7 +22,7 @@ const displayedCoaches = [
     image: "/assets/coaches-1.png",
     specialties: ["Cross Fit", "Boxing"],
     profileLink: "/profile/john-doe",
-    coachvideo1: "",
+    coachvideo1: "/assets/podcasts-1.mp4",
     coachvideo2: "",
     videoThumbnail1: "/assets/podcats-thumbnail-1.jpg",
     videoThumbnail2: "/assets/podcats-thumbnail-2.jpg",
