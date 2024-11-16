@@ -13,8 +13,8 @@ const Podcasts = () => {
       <main className="workoutbg bg-no-repeat bg-center bg-cover relative pb-10 md:pb-20">
         <NavTabs />
         <Hero />
-        <MenuModal />
         <PodcastsSlider />
+        <MenuModal />
       </main>
       <Footer />
     </>
