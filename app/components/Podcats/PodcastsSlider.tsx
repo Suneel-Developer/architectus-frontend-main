@@ -38,7 +38,7 @@ const displayedCoaches = [
     image: "/assets/coaches-2.png",
     specialties: ["Circuit", "Cross Fit", "Boxing"],
     profileLink: "/profile/esthera-jackson",
-    coachvideo1: "",
+    coachvideo1: "/assets/podcasts-3.mp4",
     coachvideo2: "",
     videoThumbnail1: "/assets/podcats-thumbnail-3.jpg",
     videoThumbnail2: "/assets/podcats-thumbnail-4.jpg",
