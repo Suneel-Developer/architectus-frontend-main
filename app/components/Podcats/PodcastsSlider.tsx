@@ -23,7 +23,7 @@ const displayedCoaches = [
     specialties: ["Cross Fit", "Boxing"],
     profileLink: "/profile/john-doe",
     coachvideo1: "/assets/podcasts-1.mp4",
-    coachvideo2: "",
+    coachvideo2: "/assets/podcasts-2.mp4",
     videoThumbnail1: "/assets/podcats-thumbnail-1.jpg",
     videoThumbnail2: "/assets/podcats-thumbnail-2.jpg",
     videotitle1: "Are You Eating for Performance, Health, or Appearance?",
