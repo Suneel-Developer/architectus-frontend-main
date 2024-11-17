@@ -73,18 +73,36 @@ const PodcatsVideos: React.FC = () => {
     useState<Boolean>(false);
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
-  const [playingIndex, setPlayingIndex] = useState(null);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
-  const videoRefs = useRef([]);
+  const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   // Handle showing reviews for a specific slide
   const handleToggleReviews = (index: number) => {
     if (showReviewsIndex === index) {
-      setShowReviewsIndex(null); 
+      setShowReviewsIndex(null);
     } else {
       setShowReviewsIndex(index);
     }
   };
+
+  // Handle slide change (prev/next slides only)
+  const handleSlideChange = (swiper: any) => {
+    const currentIndex = swiper.activeIndex;
+
+    if (
+      lastSlideIndex !== null &&
+      (currentIndex === lastSlideIndex - 1 ||
+        currentIndex === lastSlideIndex + 1)
+    ) {
+      setShowReviewsIndex(null);
+    }
+
+    setLastSlideIndex(currentIndex);
+  };
+
+
   const handleOpenShareModal = () => {
     setIsShareModalVisible(true);
   };
@@ -135,7 +153,7 @@ const PodcatsVideos: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto relative z-10 px-5 md:px-0">
+    <div className="mx-auto z-10 px-5 md:px-0">
       <Swiper
         spaceBetween={20}
         centeredSlides={true}
@@ -158,6 +176,7 @@ const PodcatsVideos: React.FC = () => {
         }}
         modules={[Pagination]}
         className="mySwiper"
+        onSlideChange={handleSlideChange}
       >
         {podcastsdata.map((podcast, index) => (
           <SwiperSlide key={index}>
@@ -334,27 +353,27 @@ const PodcatsVideos: React.FC = () => {
                 </div>
 
                 <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
-                <button
-                  onClick={() => handleToggleReviews(index)}
-                  className="flex items-center justify-between w-full"
-                >
-                  <span className="text-xl font-medium">Reviews (40)</span>
-                  <Image
-                    src="/assets/icon/angle-down-small.svg"
-                    alt="angle-down-small"
-                    width={14}
-                    height={9}
-                  />
-                </button>
+                  <button
+                    onClick={() => handleToggleReviews(index)}
+                    className="flex items-center justify-between w-full"
+                  >
+                    <span className="text-xl font-medium">Reviews (40)</span>
+                    <Image
+                      src="/assets/icon/angle-down-small.svg"
+                      alt="angle-down-small"
+                      width={14}
+                      height={9}
+                    />
+                  </button>
 
-                {/* Reviews  */}
-                {showReviewsIndex === index && (
-                  <div>
-                    <ReviewsForm />
-                    <ReviewsList />
-                  </div>
-                )}
-              </div>
+                  {/* Reviews  */}
+                  {showReviewsIndex === index && (
+                    <div>
+                      <ReviewsForm />
+                      <ReviewsList />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </SwiperSlide>

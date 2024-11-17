@@ -49,6 +49,7 @@ const NutritionProducts: React.FC = () => {
   const [isOpenDownloadModalOpen, setIsOpenDownloadModalOpen] =
     useState<boolean>(false);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
+  const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
 
   // Handle showing reviews for a specific slide
   const handleToggleReviews = (index: number) => {
@@ -57,6 +58,21 @@ const NutritionProducts: React.FC = () => {
     } else {
       setShowReviewsIndex(index);
     }
+  };
+
+  // Handle slide change (prev/next slides only)
+  const handleSlideChange = (swiper: any) => {
+    const currentIndex = swiper.activeIndex;
+
+    if (
+      lastSlideIndex !== null &&
+      (currentIndex === lastSlideIndex - 1 ||
+        currentIndex === lastSlideIndex + 1)
+    ) {
+      setShowReviewsIndex(null);
+    }
+
+    setLastSlideIndex(currentIndex);
   };
 
   // Open Favorites Modal
@@ -124,6 +140,7 @@ const NutritionProducts: React.FC = () => {
         }}
         modules={[Pagination]}
         className="mySwiper z-0"
+        onSlideChange={handleSlideChange}
       >
         {nutritionproducts.map((nutrition, index) => (
           <SwiperSlide key={index}>

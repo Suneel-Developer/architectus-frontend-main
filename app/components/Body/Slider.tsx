@@ -17,14 +17,30 @@ const Slider = () => {
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
+  const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
 
   // Handle showing reviews for a specific slide
   const handleToggleReviews = (index: number) => {
     if (showReviewsIndex === index) {
-      setShowReviewsIndex(null); 
+      setShowReviewsIndex(null);
     } else {
       setShowReviewsIndex(index);
     }
+  };
+
+  // Handle slide change (prev/next slides only)
+  const handleSlideChange = (swiper: any) => {
+    const currentIndex = swiper.activeIndex;
+
+    if (
+      lastSlideIndex !== null &&
+      (currentIndex === lastSlideIndex - 1 ||
+        currentIndex === lastSlideIndex + 1)
+    ) {
+      setShowReviewsIndex(null);
+    }
+
+    setLastSlideIndex(currentIndex);
   };
 
   // Open Share Window
@@ -72,6 +88,7 @@ const Slider = () => {
         }}
         modules={[Pagination]}
         className="mySwiper"
+        onSlideChange={handleSlideChange}
       >
         {[
           "/assets/body-banner.jfif",

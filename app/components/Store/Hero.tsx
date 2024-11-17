@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
               width={20}
               height={20}
             />
-            Create
+            Search
           </button>
         </div>
       </div>

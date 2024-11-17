@@ -12,6 +12,7 @@ import VerificationLoadingModal from "../Body/VerificationLoadingModal";
 import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import FavoriteModal from "../FavoritesModal";
+import AddRatingModal from "../Reviews/AddRatingModal";
 
 const sportsdata = [
   {
@@ -75,7 +76,8 @@ const SportsProducts: React.FC = () => {
     useState<Boolean>(false);
   const [playingIndex, setPlayingIndex] = useState(null);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
-  const videoRefs = useRef([]);
+  const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   // Handle showing reviews for a specific slide
   const handleToggleReviews = (index: number) => {
@@ -85,6 +87,22 @@ const SportsProducts: React.FC = () => {
       setShowReviewsIndex(index);
     }
   };
+
+  // Handle slide change (prev/next slides only)
+  const handleSlideChange = (swiper: any) => {
+    const currentIndex = swiper.activeIndex;
+
+    if (
+      lastSlideIndex !== null &&
+      (currentIndex === lastSlideIndex - 1 ||
+        currentIndex === lastSlideIndex + 1)
+    ) {
+      setShowReviewsIndex(null);
+    }
+
+    setLastSlideIndex(currentIndex);
+  };
+
   const handleOpenShareModal = () => {
     setIsShareModalVisible(true);
   };
@@ -135,7 +153,7 @@ const SportsProducts: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto relative z-10 px-5 md:px-0">
+    <div className="mx-auto z-10 px-5 md:px-0">
       <Swiper
         spaceBetween={20}
         centeredSlides={true}
@@ -158,6 +176,7 @@ const SportsProducts: React.FC = () => {
         }}
         modules={[Pagination]}
         className="mySwiper"
+        onSlideChange={handleSlideChange}
       >
         {sportsdata.map((sports, index) => (
           <SwiperSlide key={index}>
