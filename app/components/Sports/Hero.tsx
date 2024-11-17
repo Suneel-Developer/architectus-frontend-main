@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
       <div className="mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-            It's time to create your workout plan. Be as specific as possible —
+            It&apos;s time to create your workout plan. Be as specific as possible —
             consider your sport discipline, training method, exercise type,
             skill level, full-body workouts, or focus on specific muscle groups.
           </p>
