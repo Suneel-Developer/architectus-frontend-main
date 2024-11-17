@@ -3,28 +3,28 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative py-[30px] px-5 md:px-20">
-      <img
-        src="/assets/footer-background.webp"
-        alt="footer-background"
-        className="object-cover -z-10 absolute w-full h-full left-0 right-0 top-0 bottom-0"
-      />
-      <div className="flex justify-between flex-col md:flex-row items-center gap-7 relative max-w-[1400px] w-full mx-auto">
-        <Link href="/">
+    <div className="w-full footer-blur bg-[#030406] rounded-t-[30px] flex items-center justify-between flex-col md:flex-row py-5 gap-3 px-4 md:px-[30px]">
+      {/* Logo  */}
+      <Link href="/" className="flex items-center gap-[10px] flex-1">
+        <div className="logomenubg bg-white w-[30px] h-[30px] rounded-[7px] flex items-center justify-center">
           <Image
-            src="/assets/footer-logo.svg"
-            alt="footer-logo"
-            width={100}
-            height={100}
-            className="h-10 w-auto"
+            src="/assets/icon/menu-logo.svg"
+            alt="menu-logo"
+            width={14}
+            height={18}
           />
-        </Link>
+        </div>
 
-        <p className="text-white/80 font-normal text-sm text-center">
-          © Innovative AI Solutions for Urban Development. 2024
-        </p>
-      </div>
-    </footer>
+        <h2 className="text-xl md:text-2xl uppercase">
+          <span className="font-bold text-gradient">Workout </span>
+          <span className="text-white font-medium">Creator</span>
+        </h2>
+      </Link>
+
+      <p className="text-white text-sm text-center">
+        © Innovative AI Solutions for Urban Development. 2024
+      </p>
+    </div>
   );
 };
 

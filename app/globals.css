@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,16 +8,73 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Outfit", sans-serif;
+  background-color: #d9e5ff;
 }
 
-.navbar {
-  backdrop-filter: blur(13px);
-  box-shadow: 0 0 12px 0 rgba(15, 10, 25, 0.1);
+.header-bg {
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.64) 100%
+  );
+}
+
+.logomenubg {
+  box-shadow: 0px 15px 40px 0px #dedede1a;
+}
+
+.text-gradient {
+  background: linear-gradient(101.84deg, #5c24fc 2.78%, #9d7aff 98.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.bg-gradient {
+  background: linear-gradient(101.84deg, #5c24fc 2.78%, #9d7aff 98.95%);
+}
+
+.windows-bg {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.38),
+      rgba(255, 255, 255, 0.38)
+    ),
+    linear-gradient(0deg, rgba(123, 59, 172, 0.23), rgba(123, 59, 172, 0.23));
+  backdrop-filter: blur(6px);
+  z-index: 99;
+}
+
+.closebtn-bg {
+  background: linear-gradient(101.84deg, #fc2424 2.78%, #ff7a7a 98.95%);
+  box-shadow: 0px 4px 24px 0px #0000000a;
+}
+
+.tabs-scrollbar::-webkit-scrollbar {
+  width: 0;
+}
+
+.footer-blur {
+  backdrop-filter: blur(150px);
+}
+
+.mySwiper .swiper-pagination-bullet {
+  background: #baccfd;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  opacity: 1;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: linear-gradient(101.84deg, #5c24fc 2.78%, #9d7aff 98.95%);
+  width: 50px;
+  height: 15px;
+  border-radius: 30px;
 }
 
 .langmenu {
@@ -32,13 +88,6 @@ body {
   box-shadow: 0 0 12px 0 rgba(15, 10, 25, 0.1);
 }
 
-.workoutbg {
-  background-image: url("/assets/workoutbg.webp");
-}
-
-.tabs-scrollbar::-webkit-scrollbar {
-  width: 0;
-}
 
 .tab-btn {
   background: linear-gradient(
@@ -113,22 +162,6 @@ body {
   box-shadow: -3px 11px 41px 0px #9f9f9f26;
 }
 
-.mySwiper .swiper-pagination-bullet {
-  background: #3d227833;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  opacity: 1;
-}
-
-.mySwiper .swiper-pagination-bullet-active {
-  opacity: 1;
-  background: #3d2278;
-  width: 45px;
-  height: 15px;
-  border-radius: 30px;
-}
-
 @media screen and (max-width: 768px) {
   .mySwiper .swiper-pagination-bullet {
     width: 12px;
@@ -173,4 +206,31 @@ body {
   );
 
   box-shadow: 0px 0px 12px 0px #0f0a191a;
+}
+
+/* General style for all slides */
+.swiper-slide {
+  transition: all 0.3s ease; 
+  filter: grayscale(
+    100%
+  ); 
+  transform: scale(0.95); 
+  z-index: 0 !important;
+}
+
+/* Style for the active slide */
+.swiper-slide-active {
+  opacity: 1 !important;
+  filter: grayscale(0) !important;
+  transform: scale(1) !important;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* Style for the previous and next slides */
+.swiper-slide-prev,
+.swiper-slide-next {
+  opacity: 0.5 !important;
+  filter: grayscale(100%) !important;
+  transform: scale(0.95) !important;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease !important;
 }

@@ -35,7 +35,7 @@ const AboutUs: React.FC = () => {
               <div className="flex gap-[15px]">
                 <div className="contactbox w-[50px] h-[50px] rounded-full flex items-center justify-center">
                   <Image
-                    src="/assets/icons/phone-icon.svg"
+                    src="/assets/icon/phone-icon.svg"
                     alt="phone-icon"
                     width={22}
                     height={24}
@@ -57,7 +57,7 @@ const AboutUs: React.FC = () => {
               <div className="flex gap-[15px]">
                 <div className="contactbox w-[50px] h-[50px] rounded-full flex items-center justify-center">
                   <Image
-                    src="/assets/icons/location-icon.svg"
+                    src="/assets/icon/location-icon.svg"
                     alt="location-icon"
                     width={18}
                     height={24}
@@ -78,7 +78,7 @@ const AboutUs: React.FC = () => {
               <div className="flex gap-[15px]">
                 <div className="contactbox w-[50px] h-[50px] rounded-full flex items-center justify-center">
                   <Image
-                    src="/assets/icons/email-icon.svg"
+                    src="/assets/icon/email-icon.svg"
                     alt="email-icon"
                     width={22}
                     height={16}

@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const FavoriteModal = ({ onClose, onCreate }) => {
+const FavoriteModal = ({ onClose }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [text, setText] = useState("");
   const recognitionRef = useRef(null);
@@ -60,10 +60,10 @@ const FavoriteModal = ({ onClose, onCreate }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 px-5">
+    <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 windows-bg">
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-[#0F1017B2] bg-opacity-70"
+        className="absolute inset-0 h-screen"
       ></div>
 
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
@@ -77,7 +77,7 @@ const FavoriteModal = ({ onClose, onCreate }) => {
         </p>
 
         <Image
-          src="/assets/icons/close-icon.svg"
+          src="/assets/icon/close-icon.svg"
           alt="close-icon"
           width={18}
           height={18}
@@ -100,7 +100,7 @@ const FavoriteModal = ({ onClose, onCreate }) => {
           >
             {isRecording ? (
               <Image
-                src="/assets/icons/pause-icon.svg"
+                src="/assets/icon/pause-icon.svg"
                 alt="pause icon"
                 width={32}
                 height={32}
@@ -108,7 +108,7 @@ const FavoriteModal = ({ onClose, onCreate }) => {
               />
             ) : (
               <Image
-                src="/assets/icons/mic-icon.svg"
+                src="/assets/icon/mic-icon.svg"
                 alt="mic icon"
                 width={32}
                 height={32}
@@ -121,7 +121,7 @@ const FavoriteModal = ({ onClose, onCreate }) => {
         <div className="flex flex-col gap-5 items-center gap-y-5">
           <button
             onClick={(() => router.push("/podcasts"))}
-            className="bg-[#3D2278] text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
+            className="bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
           >
             Continue
           </button>

@@ -4,55 +4,81 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
-import Reviews from "../Reviews";
+import ShareModal from "../Body/ShareModal";
+import ChartModal from "../Nutrition/ChartModal";
+import DownloadModal from "../Body/DownloadModal";
+import Image from "next/image";
+import ReviewsForm from "../Reviews/ReviewsForm";
+import ReviewsList from "../Reviews/ReviewsList";
 import Link from "next/link";
-import ShareModal from "../Visualization/ShareModal";
+import FavoriteModal from "../FavoritesModal";
 
-const products = [
+const nutritionproducts = [
   {
     id: 1,
-    image: "/assets/product-1.jpg",
+    image: "/assets/product-1.png",
     name: "Loaded",
     brand: "4Endurance Pro",
-    originalPrice: "€29,90",
-    discountedPrice: "€19,43",
+    price: "$29,30",
+    discountprice: " $19,43",
     link: "https://www.trufit.eu/lv/4endurance-pro-loaded#168=422",
   },
   {
     id: 2,
-    image: "/assets/product-2.jpg",
+    image: "/assets/product-2.png",
     name: "Pro Flex",
     brand: "Smartys",
-    originalPrice: "€39,90",
-    discountedPrice: "€25,93",
+    price: "$39,90",
+    discountprice: " $19,43",
     link: "https://www.trufit.eu/lv/4endurance-pro-pro-flex#168=1256",
   },
   {
     id: 3,
-    image: "/assets/product-3.jpg",
+    image: "/assets/product-3.png",
     name: "L-Carnitine Energy Gel",
     brand: "Bowflex",
-    originalPrice: "€2,49",
-    discountedPrice: "€1,62",
+    price: "$29,30",
+    discountprice: " $19,43",
     link: "https://www.trufit.eu/lv/4endurance-pro-l-carnitine-energy-gel#168=1288",
   },
   {
     id: 4,
-    image: "/assets/product-4.jpg",
+    image: "/assets/product-4.png",
     name: "Acetyl-L-Carnitine",
     brand: "4Endurance Pro",
-    originalPrice: "€24,90",
-    discountedPrice: "€16,18",
+    price: "$29,30",
+    discountprice: " $19,43",
     link: "https://www.trufit.eu/lv/4endurance-pro-acetyl-l-carnitine#168=422",
   },
 ];
 
-const ProductSlider: React.FC = () => {
-  const [isVisibleReviews, setIsVisibleReviews] = useState<Boolean>(false);
+const ProductsSlider: React.FC = () => {
+  const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
+    useState<Boolean>(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [isOpenChartModalOpen, setIsOpenChartModalOpen] =
+    useState<boolean>(false);
+  const [isOpenDownloadModalOpen, setIsOpenDownloadModalOpen] =
+    useState<boolean>(false);
+  const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
 
-  const handleShowReviews = () => {
-    setIsVisibleReviews(!isVisibleReviews);
+  // Handle showing reviews for a specific slide
+  const handleToggleReviews = (index: number) => {
+    if (showReviewsIndex === index) {
+      setShowReviewsIndex(null);
+    } else {
+      setShowReviewsIndex(index);
+    }
+  };
+
+  // Open Favorites Modal
+  const handleOpenFavoritesModal = () => {
+    setIsOpenFavoritesModal(true);
+  };
+
+  // Clsoe Favorites Modal
+  const handleCloseFavoritesModal = () => {
+    setIsOpenFavoritesModal(false);
   };
 
   //  Open Share Modal
@@ -65,10 +91,32 @@ const ProductSlider: React.FC = () => {
     setIsShareModalOpen(false);
   };
 
+  //  Open chart Modal
+  const handleChartModal = () => {
+    setIsOpenChartModalOpen(true);
+  };
+
+  //  Close chart Modal
+  const handleCloseChartModal = () => {
+    setIsOpenChartModalOpen(false);
+  };
+
+  //  Open Download Modal
+  const handleDownloadModal = () => {
+    setIsOpenDownloadModalOpen(true);
+    setIsOpenChartModalOpen(false);
+  };
+
+  //  Close Download Modal
+  const handleCloseDownloadModal = () => {
+    setIsOpenDownloadModalOpen(false);
+  };
+
   return (
-    <div className="mb-12">
+    <div className="mx-auto relative z-10 px-5 md:px-0">
       <Swiper
         spaceBetween={20}
+        centeredSlides={true}
         pagination={{ clickable: true }}
         autoplay={{
           delay: 3500,
@@ -89,85 +137,135 @@ const ProductSlider: React.FC = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {/* Loop through the products array and render each product as a SwiperSlide */}
-        {products.map((product) => (
-          <SwiperSlide key={product.id}>
-            <div className="bg-white productbox rounded-[14px] overflow-hidden mb-14 md:mb-20">
-              <div className="h-[260px] w-full bg-white">
+        {nutritionproducts.map((nutrition, index) => (
+          <SwiperSlide key={index}>
+            <div className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5 mb-12 md:mb-16">
+              {/* Product Image  */}
+              <div className="rounded-2xl overflow-hidden h-[320px] md:h-[384px] mb-4 bg-[#0000000F] p-3 relative">
                 <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-contain"
+                  src={nutrition.image}
+                  alt={nutrition.name}
+                  className="h-full bg-contain mx-auto relative"
                 />
-              </div>
 
-              <div className="py-4 px-5 bg-white">
-                <h2 className="text-[#0F0A19] font-semibold text-xl mb-4">
-                  {product.name}
-                </h2>
-
-                <div className="flex flex-col gap-4 mb-5">
-                  <div className="flex justify-between gap-2">
-                    <p className="text-[#0F0A19] text-sm">Brand:</p>
-                    <p className="text-sm font-semibold text-[#0F0A19]">
-                      {product.brand}
-                    </p>
-                  </div>
-                  <div className="flex justify-between gap-2">
-                    <p className="text-[#0F0A19] text-sm">Price:</p>
-                    <p className="text-sm text-[#FF3A5E] line-through font-medium">
-                      {product.originalPrice}
-                    </p>
-                  </div>
-                  <div className="flex justify-between gap-2">
-                    <p className="text-[#0F0A19] text-sm">Discounted Price:</p>
-                    <p className="text-sm font-bold text-[#3D2278]">
-                      {product.discountedPrice}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
-                  <Link
-                    href={product.link}
-                    target="_blank"
-                    className="bg-[#3D2278] text-white rounded-[10px] w-full h-11 flex items-center justify-center text-center px-3 text-sm tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-                  >
-                    Buy Now
-                  </Link>
+                <div className="absolute left-0 right-0 mx-auto bottom-5 flex gap-2 md:gap-3 justify-center w-full z-40">
+                  {/* Share btn  */}
                   <button
                     onClick={handleShareModal}
-                    className="bg-[#3D2278] text-white rounded-[10px] w-full h-11 text-center px-3 text-sm tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
+                    className="logomenubg bg-white relative rounded-lg md:rounded-[14px] w-10 md:w-14 h-10 md:h-14 flex items-center justify-center"
                   >
-                    Share
-                  </button>
-                  <button className="bg-[#3D2278] text-white rounded-[10px] w-full h-11 text-center px-3 text-sm tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
-                    Save
+                    <Image
+                      src="/assets/icon/arrow-share.svg"
+                      alt="arrow-share"
+                      loading="lazy"
+                      width={18}
+                      height={16}
+                    />
                   </button>
 
+                  {/* Favourtes btn  */}
                   <button
-                    onClick={handleShowReviews}
-                    className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white"
+                    onClick={handleOpenFavoritesModal}
+                    className="logomenubg bg-white rounded-lg md:rounded-[14px] w-10 md:w-14 h-10 md:h-14 flex items-center justify-center"
                   >
-                    Reviews (4)
+                    <Image
+                      src="/assets/icon/favioures-iocn.svg"
+                      alt="heart"
+                      loading="lazy"
+                      width={18}
+                      height={16}
+                    />
+                  </button>
+
+                  {/* Reviews btn  */}
+                  <button
+                    onClick={() => handleToggleReviews(index)}
+                    className="logomenubg bg-white rounded-lg md:rounded-[14px] px-3 md:px-7 h-10 md:h-14 flex items-center justify-center gap-[10px] font-medium text-base md:text-xl"
+                  >
+                    <Image
+                      src="/assets/icon/star-tag-2.svg"
+                      alt="star-tag"
+                      loading="lazy"
+                      width={18}
+                      height={16}
+                    />
+                    Reviews (40)
                   </button>
                 </div>
+              </div>
+
+              {/* Product Details  */}
+
+              <div>
+                <h2 className="text-lg font-semibold">{nutrition.name}</h2>
+
+                <ul className="flex flex-col gap-2 my-3">
+                  <li className="flex items-center justify-between text-sm">
+                    <p>Brand</p>
+                    <p className="font-semibold">{nutrition.brand}</p>
+                  </li>
+
+                  <li className="flex items-center justify-between text-sm">
+                    <p className="text-sm">Price</p>
+                    <p className="font-semibold text-[#FC2424] line-through">
+                      {nutrition.price}
+                    </p>
+                  </li>
+
+                  <li className="flex items-center justify-between text-sm">
+                    <p className="text-sm">Discounted Price</p>
+                    <p className="font-semibold text-[#16AE8A] underline">
+                      {nutrition.discountprice}
+                    </p>
+                  </li>
+                </ul>
+
+                <Link
+                  href={nutrition.link}
+                  target="_blank"
+                  className="w-full rounded-[14px] h-14 bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+                >
+                  Buy Now
+                </Link>
+              </div>
+
+              {/* Reviews  */}
+              <div className="bg-[#CEBAFD52] rounded-[14px]">
+                {/* Reviews  */}
+                {showReviewsIndex === index && (
+                  <div className="p-3 md:p-5 mt-5">
+                    <ReviewsForm />
+                    <ReviewsList />
+                  </div>
+                )}
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {isVisibleReviews && (
-        <div className="px-4 my-16">
-          <Reviews />
-        </div>
-      )}
-
       {/* Share Modal */}
       {isShareModalOpen && <ShareModal onClose={handleCloseShareModal} />}
+
+      {/* Chart Modal */}
+      {isOpenChartModalOpen && (
+        <ChartModal
+          onClose={handleCloseChartModal}
+          onCreate={handleDownloadModal}
+        />
+      )}
+
+      {/* Chart Modal */}
+      {isOpenDownloadModalOpen && (
+        <DownloadModal onClose={handleCloseDownloadModal} />
+      )}
+
+      {/* Favorute Window  */}
+      {isOpenFavoritesModal && (
+        <FavoriteModal onClose={handleCloseFavoritesModal} />
+      )}
     </div>
   );
 };
 
-export default ProductSlider;
+export default ProductsSlider;

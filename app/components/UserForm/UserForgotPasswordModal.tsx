@@ -14,21 +14,21 @@ const UserForgotPasswordModal: React.FC<DownloadModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 px-5">
+    <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 windows-bg">
       {/* If Click outside the white box then Window Close  */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-[#0F1017B2] bg-opacity-70"
+        className="absolute inset-0 h-screen"
       ></div>
 
-      <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative">
+      <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] z-auto relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left">
           Forgot Password
         </h1>
 
         {/* Close Window btn */}
         <Image
-          src="/assets/icons/close-icon.svg"
+          src="/assets/icon/close-icon.svg"
           alt="close-icon"
           width={18}
           height={18}
@@ -52,7 +52,7 @@ const UserForgotPasswordModal: React.FC<DownloadModalProps> = ({ onClose }) => {
 
           <button
             type="submit"
-            className={`bg-[#3D2278] text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 ${
+            className={`bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 ${
               email ? "opacity-100" : "opacity-30 cursor-not-allowed"
             }`}
             disabled={!email}

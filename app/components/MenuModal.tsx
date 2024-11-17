@@ -1,19 +1,19 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, useRef } from "react";
 import UserLoginModal from "./UserForm/UserLoginModal";
 import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
 import SupportModal from "./SupportModal";
-import CoachLoginModal from "./Coaches/CoachLoginModal";
-import CoachRegisterModal from "./Coaches/CoachRegisterModal";
-import CoachForgotPasswordModal from "./Coaches/CoachForgotPasswordModal";
+import CoachLoginModal from "./CoachesWindows/CoachLoginModal";
+import CoachRegisterModal from "./CoachesWindows/CoachRegisterModal";
+import CoachForgotPasswordModal from "./CoachesWindows/CoachForgotPasswordModal";
 import FavoriteModal from "./FavoritesModal";
-import VerificationLoadingModal from "./Visualization/VerificationLoadingModal";
+import VerificationLoadingModal from "./Body/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
 
 const MenuModal = () => {
+  const dropdownRef = useRef(null);
   const [isOpenMenuModal, setIsOpenMenuModal] = useState<boolean>(false);
   useState<boolean>(false);
   const [isUserLoginModalOpen, setIsUserLoginModalOpen] =
@@ -34,7 +34,6 @@ const MenuModal = () => {
   const [isVerificationModalOpen, setIsVerificationModalOpen] =
     useState<boolean>(false);
   const [isOpenCaptchaModal, setIsOpenCaptchaModal] = useState<boolean>(false);
-  const router = useRouter();
 
   // Open Menu Modal
   const handleOpenMenuModal = () => {
@@ -45,6 +44,7 @@ const MenuModal = () => {
   const handleUserLoginModal = () => {
     setIsUserRegisterModalOpen(false);
     setIsUserLoginModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close UserLogin Modal
@@ -56,6 +56,7 @@ const MenuModal = () => {
   const handleUserRegisterModal = () => {
     setIsUserLoginModalOpen(false);
     setIsUserRegisterModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close UserRegister Modal
@@ -78,6 +79,7 @@ const MenuModal = () => {
   //  Open Support Modal
   const handleSupportModal = () => {
     setIsSupportModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close Support Modal
@@ -89,6 +91,7 @@ const MenuModal = () => {
   const handleCoachLoginModalClick = () => {
     setIsCoachRegisterModalOpen(false);
     setIsCoachLoginModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close Coach Login Modal
@@ -100,6 +103,7 @@ const MenuModal = () => {
   const handleCoachRegisterModal = () => {
     setIsCoachLoginModalOpen(false);
     setIsCoachRegisterModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close Coach Register Modal
@@ -122,6 +126,7 @@ const MenuModal = () => {
   //  Open Favorites Modal
   const handleFavoritesModal = () => {
     setIsFavoritesModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close Favorites Modal
@@ -133,6 +138,7 @@ const MenuModal = () => {
   const handleVerificationModal = () => {
     setIsFavoritesModalOpen(false);
     setIsVerificationModalOpen(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close Verification Modal
@@ -145,6 +151,7 @@ const MenuModal = () => {
     setIsCoachRegisterModalOpen(false);
     setIsUserRegisterModalOpen(false);
     setIsOpenCaptchaModal(true);
+    setIsOpenMenuModal(false);
   };
 
   //  Close  Captcha Modal
@@ -166,120 +173,166 @@ const MenuModal = () => {
 
   return (
     <div>
-      <div className="flex justify-center">
-        <button
-          onClick={handleOpenMenuModal}
-          className="bg-[#3D2278] text-white rounded-full w-[50px] h-[50px] flex items-center justify-center transition-opacity duration-300 hover:opacity-90"
-        >
-          <svg
-            width="21"
-            height="26"
-            viewBox="0 0 21 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.07422 11.5173L5.88001 6.6596L11.2239 6.05469C11.9753 6.37355 12.3511 6.53298 12.3511 6.53298C13.903 10.0388 14.6789 11.7917 14.6789 11.7917L18.9995 9.60906"
-              stroke="#ffffff"
-              stroke-width="2.27753"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M2 24.001L6.37023 19.4304L8.37757 13.2207L10.3544 13.616L15.2417 17.6227L9.5641 21.2614"
-              stroke="#ffffff"
-              stroke-width="2.58811"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.4653 6.46484L9.28516 13.7392"
-              stroke="#ffffff"
-              stroke-width="4.65859"
-            />
-            <path
-              d="M14.6631 2.1797C14.6631 3.07475 13.895 3.84177 12.8951 3.84177C11.8952 3.84177 11.127 3.07475 11.127 2.1797C11.127 1.28464 11.8952 0.517622 12.8951 0.517622C13.895 0.517622 14.6631 1.28464 14.6631 2.1797Z"
-              fill="#ffffff"
-              stroke="#ffffff"
-              stroke-width="1.03524"
-            />
-          </svg>
-        </button>
-      </div>
+      <button
+        onClick={handleOpenMenuModal}
+        className="bg-gradient logomenubg w-12 md:w-[60px] h-12 md:h-[60px] rounded-[14px] flex items-center justify-center relative"
+      >
+        <Image
+          src="/assets/icon/menu-right-alt.svg"
+          alt="menu-right-alt-icon"
+          width={20}
+          height={14}
+        />
+      </button>
 
-      {/* Menu Windows  */}
       {isOpenMenuModal && (
-        <div className="fixed inset-0 z-50 flex justify-end pl-5">
+        <div
+          ref={dropdownRef}
+          className="fixed inset-0 w-full h-screen z-50 py-5 px-[30px] flex justify-end"
+        >
+          {/* Close Window  */}
           <div
             onClick={handleOpenMenuModal}
-            className="absolute inset-0 bg-[#0F1017B2] bg-opacity-70"
+            className={`absolute inset-0 h-screen windows-bg ${
+              isOpenMenuModal ? "" : "no-blur"
+            }`}
           ></div>
 
-          <div className="bg-white rounded-l-xl px-3 md:px-5 py-5 w-full h-screen max-w-[300px] relative">
-            <Image
-              src="/assets/icons/close-icon.svg"
-              alt="close-icon"
-              width={18}
-              height={18}
-              loading="lazy"
+          <div className="relative flex flex-col items-end z-[999]">
+            {/* Close Window btn  */}
+            <button
               onClick={handleOpenMenuModal}
-              className="absolute top-5 md:top-5 right-5 cursor-pointer"
-            />
+              className="closebtn-bg logomenubg min-w-[60px] min-h-[60px] rounded-[14px] flex items-center justify-center float-end mb-5"
+            >
+              <Image
+                src="/assets/icon/times.svg"
+                alt="times-logo"
+                width={14}
+                height={14}
+              />
+            </button>
 
-            <div className="flex flex-col items-center gap-2 mt-14">
+            <div className="min-w-[200px] w-full logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
               <button
                 onClick={handleCoachRegisterModal}
-                className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white"
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
-                Create
+                <Image
+                  src="/assets/icon/plus-circle.svg"
+                  alt="plus-circle"
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
+                <span>Create</span>
               </button>
 
-              <button className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white">
-                Posts
+              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+                <Image
+                  src="/assets/icon/document.svg"
+                  alt="document"
+                  width={18}
+                  height={18}
+                  loading="lazy"
+                />
+                <span>Post</span>
               </button>
 
-              <button
-                onClick={() => router.push("/reviews")}
-                className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white"
-              >
-                Reviews
+              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+                <Image
+                  src="/assets/icon/star-tag.svg"
+                  alt="star-tag"
+                  width={18}
+                  height={20}
+                  loading="lazy"
+                />
+                <span>Review</span>
               </button>
 
               <button
                 onClick={handleFavoritesModal}
-                className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white"
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
-                Favorites
+                <Image
+                  src="/assets/icon/heart.svg"
+                  alt="heart"
+                  width={18}
+                  height={17}
+                  loading="lazy"
+                />
+                <span>Favorites</span>
               </button>
 
-              <button className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white">
-                Calls
+              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+                <Image
+                  src="/assets/icon/phone-call.svg"
+                  alt="phone-call"
+                  width={18}
+                  height={18}
+                  loading="lazy"
+                />
+                <span>Calls</span>
               </button>
 
-              <button className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white">
-                Messages
+              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+                <Image
+                  src="/assets/icon/chats-text.svg"
+                  alt="chats-text"
+                  width={18}
+                  height={18}
+                  loading="lazy"
+                />
+                <span>Messages</span>
               </button>
 
-              <button className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white">
-                Settings
+              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+                <Image
+                  src="/assets/icon/settings.svg"
+                  alt="settings"
+                  width={18}
+                  height={18}
+                  loading="lazy"
+                />
+                <span>Settings</span>
               </button>
 
               <button
                 onClick={handleSupportModal}
-                className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white"
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
-                Support
+                <Image
+                  src="/assets/icon/headphones.svg"
+                  alt="headphones"
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
+                <span>Support</span>
               </button>
 
               <button
                 onClick={handleUserRegisterModal}
-                className="border-2 border-[#3D2278] rounded-[10px] h-11 w-full text-center px-3 text-[#3D2278] text-sm md:text-base font-medium transition-colors duration-300 hover:bg-[#3D2278] hover:text-white"
+                className="py-4 flex items-center gap-2 text-base font-medium"
               >
-                Register
+                <Image
+                  src="/assets/icon/user-plus-bottom.svg"
+                  alt="user-plus-bottom"
+                  width={19}
+                  height={20}
+                  loading="lazy"
+                />
+                <span>Register</span>
               </button>
 
-              <button className="bg-red-700 rounded-[10px] h-11 w-full text-center px-3 text-white text-sm md:text-base font-medium transition-colors duration-300 hover:bg-opacity-80">
-                Log Out
+              <button className="closebtn-bg p-4 flex items-center justify-center gap-2 text-base font-medium text-white rounded-[14px] mt-5">
+                <Image
+                  src="/assets/icon/log-out.svg"
+                  alt="log-out"
+                  width={19}
+                  height={18}
+                  loading="lazy"
+                />
+                <span>Logout</span>
               </button>
             </div>
           </div>
@@ -339,13 +392,10 @@ const MenuModal = () => {
 
       {/* Favorutes Windows Modal  */}
       {isFavoritesModalOpen && (
-        <FavoriteModal
-          onClose={handleCloseFavoritesModal}
-          onCreate={handleVerificationModal}
-        />
+        <FavoriteModal onClose={handleCloseFavoritesModal} />
       )}
 
-      {/* Favorutes Windows Modal  */}
+      {/* Verification Windows Modal  */}
       {isVerificationModalOpen && (
         <VerificationLoadingModal onClose={handleCloseVerificationModal} />
       )}

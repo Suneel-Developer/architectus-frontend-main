@@ -1,88 +1,70 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateVisualisationModal from "../Visualization/CreateVisualisationModal";
-import VerificationLoadingModal from "../Visualization/VerificationLoadingModal";
-import ShareModal from "../Visualization/ShareModal";
-import NutritionProducts from "./NutritionProducts";
+import CreateModal from "../Body/CreateModal";
+import VerificationLoadingModal from "../Body/VerificationLoadingModal";
 
 const Hero: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isVerificationModalOpen, setIsVerificationModalOpen] =
+  const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
+  const [isOpenVerificationModal, setIsOpenVerificationModal] =
     useState<boolean>(false);
 
-
   // Open Create modal
-  const handleCreateClick = () => {
-    setIsModalOpen(true);
+  const handleOpenCreateModal = () => {
+    setIsOpenCreateModal(true);
   };
 
   //   Close Create modal
-  const handleCloseCreateVisualisationModal = () => {
-    setIsModalOpen(false);
+  const handleCloseCreateModal = () => {
+    setIsOpenCreateModal(false);
   };
 
   //   Open VisualisationVerification Modal
-  const handleVerificationCreateClick = () => {
-    setIsModalOpen(false);
-    setIsVerificationModalOpen(true);
+  const handleOpenVerificationCreateModal = () => {
+    setIsOpenCreateModal(false);
+    setIsOpenVerificationModal(true);
   };
 
   //  Close VisualisationVerification Modal
   const handleCloseVerificationModal = () => {
-    setIsVerificationModalOpen(false);
-    setIsModalOpen(false);
+    setIsOpenVerificationModal(false);
+    setIsOpenCreateModal(false);
   };
 
-
-
   return (
-    <section className="px-5">
-      <div className="max-w-[1180px] w-full mx-auto">
-        <div className="flex flex-col gap-6 md:gap-8 mb-12 md:mb-20">
-          <div className="flex items-center gap-3">
+    <section>
+      <div className="px-4 md:px-[30px] mb-5 md:mb-8">
+        <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
+          <p className="flex-1 text-base md:text-xl text-center md:text-start">
+            Envision your new body with precision! Specify which parts you want
+            to improve, shape, and size.
+          </p>
+
+          <button
+            onClick={handleOpenCreateModal}
+            className="max-w-[204px] w-full rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+          >
             <Image
-              src="/assets/icons/suggestion.svg"
-              alt="suggestion"
+              src="/assets/icon/w-plus-circle.svg"
+              alt="plus circle icon"
               width={20}
               height={20}
-              loading="lazy"
             />
-
-            <p className="text-xs md:text-sm text-[#0F0A19]/60 max-w-[34rem] flex-1">
-              Search for workout&nbsp;
-              <span className="font-semibold">
-                supplements, vitamins, training equipment, sportswear, events
-                and country location.
-              </span>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 max-w-[300px] w-full gap-3">
-            <button
-              onClick={handleCreateClick}
-              className="bg-[#3D2278] text-white rounded-[10px]  h-12 text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-            >
-              Create
-            </button>
-
-            
-          </div>
+            Create
+          </button>
         </div>
-
-        <NutritionProducts />
-
-        {/* Create Window Modals  */}
-        {isModalOpen && (
-          <CreateVisualisationModal
-            onClose={handleCloseCreateVisualisationModal}
-            onCreate={handleVerificationCreateClick}
-          />
-        )}
-        {isVerificationModalOpen && (
-          <VerificationLoadingModal onClose={handleCloseVerificationModal} />
-        )}
       </div>
+
+      {isOpenCreateModal && (
+        <CreateModal
+          onClose={handleCloseCreateModal}
+          onCreate={handleOpenVerificationCreateModal}
+        />
+      )}
+
+      {isOpenVerificationModal && (
+        <VerificationLoadingModal onClose={handleCloseVerificationModal} />
+      )}
     </section>
   );
 };

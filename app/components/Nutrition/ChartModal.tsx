@@ -8,17 +8,17 @@ interface ChartModalProps {
 
 const ChartModal: React.FC<ChartModalProps> = ({ onClose, onCreate }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 px-5 py-3">
+    <div className="fixed inset-0 flex items-center justify-center z-50 px-5 py-3 windows-bg">
       {/* If Click outside the white box then Window Close  */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-[#0F1017B2] bg-opacity-70"
+        className="absolute inset-0"
       ></div>
 
       <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[800px] relative min-h-full">
         {/* Close Window btn */}
         <Image
-          src="/assets/icons/close-icon.svg"
+          src="/assets/icon/close-icon.svg"
           alt="close-icon"
           width={16}
           height={16}
@@ -157,7 +157,7 @@ const ChartModal: React.FC<ChartModalProps> = ({ onClose, onCreate }) => {
           <button
             type="button"
             onClick={onCreate}
-            className="bg-[#3D2278] mt-12 text-white rounded-[10px] w-full min-h-12 max-w-[200px] mx-auto text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
+            className="bg-gradient mt-12 text-white rounded-[10px] w-full min-h-12 max-w-[200px] mx-auto text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
           >
             Download
           </button>

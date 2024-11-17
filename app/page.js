@@ -1,17 +1,15 @@
 import Header from "./components/Header.tsx";
-import Hero from "./components/Visualization/Hero.tsx";
-import NavTabs from "./components/NavTabs.tsx";
+import Hero from "./components/Body/Hero.tsx";
 import Footer from "./components/Footer.tsx";
-import MenuModal from "./components/MenuModal.tsx";
+import Slider from "./components/Body/Slider.tsx";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="workoutbg bg-no-repeat bg-center bg-cover relative pb-10 md:pb-20">
-        <NavTabs />
+      <main className="pt-5 md:pt-10 pb-10 md:pb-20">
         <Hero />
-        <MenuModal/>
+        <Slider />
       </main>
       <Footer />
     </>
