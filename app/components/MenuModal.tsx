@@ -11,6 +11,7 @@ import CoachForgotPasswordModal from "./CoachesWindows/CoachForgotPasswordModal"
 import FavoriteModal from "./FavoritesModal";
 import VerificationLoadingModal from "./Body/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
+import LanguageDropdown from "./LanguageDropdown";
 
 const MenuModal = () => {
   const dropdownRef = useRef(null);
@@ -39,6 +40,7 @@ const MenuModal = () => {
   const handleOpenMenuModal = () => {
     setIsOpenMenuModal(!isOpenMenuModal);
   };
+  
 
   //  Open UserLogin Modal
   const handleUserLoginModal = () => {
@@ -212,7 +214,11 @@ const MenuModal = () => {
               />
             </button>
 
-            <div className="min-w-[200px] w-full logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
+            <div className="max-w-[200px] w-full md:hidden block">
+              <LanguageDropdown />
+            </div>
+
+            <div className="min-w-[200px] w-full mt-5 logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
               <button
                 onClick={handleCoachRegisterModal}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"

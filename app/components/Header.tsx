@@ -57,7 +57,9 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <LanguageDropdown />
+          <div className="hidden md:flex">
+            <LanguageDropdown />
+          </div>
 
           {/* Menu Icon  */}
           <MenuModal />

@@ -48,7 +48,7 @@ const LanguageDropdown = () => {
 
   return (
     <div>
-      <div className="logomenubg bg-white px-5 py-[19px] hidden md:flex items-center gap-4 rounded-[14px] h-[60px] relative">
+      <div className="logomenubg bg-white px-5 py-[19px] flex items-center gap-4 rounded-[14px] h-[60px] relative justify-between">
         <button
           onClick={handleOpenLanguageDropdwon}
           className="flex items-center gap-1"
@@ -101,7 +101,7 @@ const LanguageDropdown = () => {
             className="absolute inset-0 windows-bg w-full h-full"
           ></div>
 
-          <div className="relative flex flex-col items-end z-[999]">
+          <div className="relative flex flex-col items-end z-[999] min-w-[200px] w-full">
             {/* Close Btn  */}
             <button
               onClick={handleOpenLanguageDropdwon}
@@ -115,10 +115,10 @@ const LanguageDropdown = () => {
               />
             </button>
 
-            <div className="logomenubg bg-white px-5 py-[19px] hidden md:flex items-center gap-4 rounded-[14px] h-[60px] relative mb-5">
+            <div className="logomenubg bg-white px-5 py-[19px] flex items-center justify-between gap-4 rounded-[14px] h-[60px] relative mb-5 max-w-[200px] w-full">
               <button
                 onClick={handleOpenLanguageDropdwon}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 justify-between"
               >
                 <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
                   <img
