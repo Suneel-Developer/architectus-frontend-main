@@ -80,7 +80,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
               </option>
               <option value="Sports">Sports</option>
               <option value="podcasts">Podcasts</option>
-              <option value="Product /service">Product /service</option>
+              <option value="Product /service">Products</option>
             </select>
             <MdKeyboardArrowDown
               className={`absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl ${
