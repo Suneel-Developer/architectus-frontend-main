@@ -3,21 +3,35 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-interface DownloadModalProps {
+interface SupplierRegisterModalProps {
   onClose: () => void;
   onLogin: () => void;
   onCreate: () => void;
+  closeAndOpenCoachModal: (option: string) => void;
 }
 
-const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
+const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
   onClose,
   onLogin,
   onCreate,
+  closeAndOpenCoachModal,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Product /service");
+
+  // Handle dropdown change
+  const handleDropdownChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+
+    if (value === "Sports" || value === "podcasts") {
+      closeAndOpenCoachModal(value);
+    }
+  };
+
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
-      {/* If Click outside the white box then Window Close  */}
       <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative min-h-full">
@@ -33,21 +47,21 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
         />
 
         <form className="flex flex-col gap-y-5 h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
+          {/* Select Options  */}
           <div className="relative mt-6">
             <select
+              value={selectedOption}
+              onChange={handleDropdownChange}
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
             >
               <option value="Sports">Sports</option>
               <option value="podcasts">Podcasts</option>
               <option value="Product /service">Products</option>
             </select>
-            <MdKeyboardArrowDown
-              className={`absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            />
+            <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl " />
           </div>
 
+          {/* Add File  */}
           <div className="relative borderUpload py-5 md:py-10">
             <input
               className="absolute inset-0 w-full h-full opacity-0 z-50 cursor-pointer"

@@ -18,8 +18,8 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
 }) => {
   const [videoSrc1, setVideoSrc1] = useState(null);
   const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [isSupplierRegisterModal, setIsSupplierRegisterModal] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("sports");
 
   const handleFileChange1 = (event: any) => {
     const file = event.target.files[0];
@@ -30,13 +30,15 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
   };
 
   const handleOpenSupplierRegisterModal = (event: any) => {
-    if (event.target.value === "Product /service") {
+    if (event.target.value === "product") {
       setIsSupplierRegisterModal(true);
     }
+    setSelectedOption(event.target.value);
   };
 
   const handleCloseSupplierRegisterModal = () => {
     setIsSupplierRegisterModal(false);
+    setSelectedOption("sports");
   };
 
   const handleOpenSupplierPlanModal = () => {
@@ -49,9 +51,13 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
     setIsSupplierRegisterModal(true);
   };
 
+  const closeAndOpenCoachModal = (option: string) => {
+    setSelectedOption(option);
+    setIsSupplierRegisterModal(false);
+  };
+
   return (
     <div className="fixed inset-0 min-h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
-      {/* If Click outside the white box then Window Close  */}
       <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative min-h-full md:min-h-fit">
@@ -69,20 +75,15 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
         <form className="flex flex-col gap-y-4 h-[90vh] md:h-[82vh] overflow-y-scroll overflow-x-hidden formscrollbar">
           <div className="relative mt-5">
             <select
-              onClick={() => setIsOpen((prev) => !prev)}
               onChange={handleOpenSupplierRegisterModal}
-              onBlur={() => setIsOpen(false)}
+              value={selectedOption}
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
             >
-              <option value="Sports">Sports</option>
+              <option value="sports">Sports</option>
               <option value="podcasts">Podcasts</option>
-              <option value="Product /service">Products</option>
+              <option value="product">Products</option>
             </select>
-            <MdKeyboardArrowDown
-              className={`absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            />
+            <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl" />
           </div>
 
           {/* Video Uploader 1 */}
@@ -182,6 +183,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
             onLogin={function (): void {
               throw new Error("Function not implemented.");
             }}
+            closeAndOpenCoachModal={closeAndOpenCoachModal}
           />
         </div>
       )}
