@@ -5,13 +5,13 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import SupplierRegisterModal from "../Store/SupplierRegisterModal";
 import SupplierPlan from "../Store/SupplierPlan";
 
-interface CoachRegisterModalProps {
+interface RegisterModalProps {
   onClose: () => void;
   onLogin: () => void;
   onCaptcha: () => void;
 }
 
-const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
+const RegisterModal: React.FC<RegisterModalProps> = ({
   onClose,
   onLogin,
   onCaptcha,
@@ -51,7 +51,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
     setIsSupplierRegisterModal(true);
   };
 
-  const closeAndOpenCoachModal = (option: string) => {
+  const closeAndOpenSportsModal = (option: string) => {
     setSelectedOption(option);
     setIsSupplierRegisterModal(false);
   };
@@ -183,7 +183,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
             onLogin={function (): void {
               throw new Error("Function not implemented.");
             }}
-            closeAndOpenCoachModal={closeAndOpenCoachModal}
+            closeAndOpenSportsModal={closeAndOpenSportsModal}
           />
         </div>
       )}
@@ -195,4 +195,4 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
   );
 };
 
-export default CoachRegisterModal;
+export default RegisterModal;

@@ -6,6 +6,9 @@ import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
 import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
+import { MdOutlineTextsms } from "react-icons/md";
+
+
 import ShareModal from "../Body/ShareModal";
 import CreateSendModal from "../Body/CreateSendModal";
 import VerificationLoadingModal from "../Body/VerificationLoadingModal";
@@ -342,13 +345,7 @@ const SportsProducts: React.FC = () => {
                         onClick={handleOpenCreateSend}
                         className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]"
                       >
-                        <Image
-                          src="/assets/icon/facebook-messenger.svg"
-                          alt="facebook-messenger"
-                          width={12}
-                          height={12}
-                          loading="lazy"
-                        />
+                        <MdOutlineTextsms />
                       </button>
 
                       <button className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]">

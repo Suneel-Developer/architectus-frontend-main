@@ -5,9 +5,9 @@ import UserLoginModal from "./UserForm/UserLoginModal";
 import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
 import SupportModal from "./SupportModal";
-import CoachLoginModal from "./CoachesWindows/CoachLoginModal";
-import CoachRegisterModal from "./CoachesWindows/CoachRegisterModal";
-import CoachForgotPasswordModal from "./CoachesWindows/CoachForgotPasswordModal";
+import SportsLoginModal from "./Sports/LoginModal";
+import SportsRegisterModal from "./Sports/RegisterModal";
+import SportsForgotPasswordModal from "./Sports/ForgotPasswordModal";
 import FavoriteModal from "./FavoritesModal";
 import VerificationLoadingModal from "./Body/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
@@ -24,11 +24,11 @@ const MenuModal = () => {
   const [isUserForgotPasswordModalOpen, setIsUserForgotPasswordModalOpen] =
     useState<boolean>(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState<boolean>(false);
-  const [isCoachLoginModalOpen, setIsCoachLoginModalOpen] =
+  const [isSportsLoginModalOpen, setIsSportsLoginModalOpen] =
     useState<boolean>(false);
-  const [isCoachRegisterModalOpen, setIsCoachRegisterModalOpen] =
+  const [isSportsRegisterModalOpen, setIsSportsRegisterModalOpen] =
     useState<boolean>(false);
-  const [isCoachForgotPasswordModalOpen, setIsCoachForgotPasswordModalOpen] =
+  const [isSportsForgotPasswordModalOpen, setIsSportsForgotPasswordModalOpen] =
     useState<boolean>(false);
   const [isFavoritesModalOpen, setIsFavoritesModalOpen] =
     useState<boolean>(false);
@@ -89,40 +89,40 @@ const MenuModal = () => {
     setIsSupportModalOpen(false);
   };
 
-  //   Coach Login Modal
-  const handleCoachLoginModalClick = () => {
-    setIsCoachRegisterModalOpen(false);
-    setIsCoachLoginModalOpen(true);
+  //   Sports Login Modal
+  const handleSportsLoginModalClick = () => {
+    setIsSportsRegisterModalOpen(false);
+    setIsSportsLoginModalOpen(true);
     setIsOpenMenuModal(false);
   };
 
-  //  Close Coach Login Modal
-  const handleCloseCoachLoginModal = () => {
-    setIsCoachLoginModalOpen(false);
+  //  Close Sports Login Modal
+  const handleCloseSportsLoginModal = () => {
+    setIsSportsLoginModalOpen(false);
   };
 
-  //  Open Coach Register Modal
-  const handleCoachRegisterModal = () => {
-    setIsCoachLoginModalOpen(false);
-    setIsCoachRegisterModalOpen(true);
+  //  Open Sports Register Modal
+  const handleSportsRegisterModal = () => {
+    setIsSportsLoginModalOpen(false);
+    setIsSportsRegisterModalOpen(true);
     setIsOpenMenuModal(false);
   };
 
-  //  Close Coach Register Modal
-  const handleCloseCoachRegisterModal = () => {
-    setIsCoachRegisterModalOpen(false);
+  //  Close Sports Register Modal
+  const handleCloseSportsRegisterModal = () => {
+    setIsSportsRegisterModalOpen(false);
   };
 
-  //  Open Coach Forgot password Modal
-  const handleCoachForgotPasswordModal = () => {
-    setIsCoachLoginModalOpen(false);
-    setIsCoachRegisterModalOpen(false);
-    setIsCoachForgotPasswordModalOpen(true);
+  //  Open Sports Forgot password Modal
+  const handleSportsForgotPasswordModal = () => {
+    setIsSportsLoginModalOpen(false);
+    setIsSportsRegisterModalOpen(false);
+    setIsSportsForgotPasswordModalOpen(true);
   };
 
-  //  Close Coach Forgot password  Modal
-  const handleCloseCoachForgotPasswordModal = () => {
-    setIsCoachForgotPasswordModalOpen(false);
+  //  Close Sports Forgot password  Modal
+  const handleCloseSportsForgotPasswordModal = () => {
+    setIsSportsForgotPasswordModalOpen(false);
   };
 
   //  Open Favorites Modal
@@ -150,7 +150,7 @@ const MenuModal = () => {
 
   //  Open  Captcha Modal
   const handleOpenCaptchaModal = () => {
-    setIsCoachRegisterModalOpen(false);
+    setIsSportsRegisterModalOpen(false);
     setIsUserRegisterModalOpen(false);
     setIsOpenCaptchaModal(true);
     setIsOpenMenuModal(false);
@@ -220,7 +220,7 @@ const MenuModal = () => {
 
             <div className="min-w-[200px] w-full mt-3 logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
               <button
-                onClick={handleCoachRegisterModal}
+                onClick={handleSportsRegisterModal}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
                 <Image
@@ -345,28 +345,28 @@ const MenuModal = () => {
         </div>
       )}
 
-      {/* Coach Login Windows Render  */}
-      {isCoachLoginModalOpen && (
-        <CoachLoginModal
-          onClose={handleCloseCoachLoginModal}
-          onSignup={handleCoachRegisterModal}
-          onForgotPassword={handleCoachForgotPasswordModal}
+      {/* Sports Login Windows Render  */}
+      {isSportsLoginModalOpen && (
+        <SportsLoginModal
+          onClose={handleCloseSportsLoginModal}
+          onSignup={handleSportsRegisterModal}
+          onForgotPassword={handleSportsForgotPasswordModal}
         />
       )}
 
-      {/* Coach Register Windows Render  */}
-      {isCoachRegisterModalOpen && (
-        <CoachRegisterModal
-          onClose={handleCloseCoachRegisterModal}
-          onLogin={handleCoachLoginModalClick}
+      {/* Sports Register Windows Render  */}
+      {isSportsRegisterModalOpen && (
+        <SportsRegisterModal
+          onClose={handleCloseSportsRegisterModal}
+          onLogin={handleSportsLoginModalClick}
           onCaptcha={handleOpenCaptchaModal}
         />
       )}
 
-      {/* Coach Forgot passowr Windows Render  */}
-      {isCoachForgotPasswordModalOpen && (
-        <CoachForgotPasswordModal
-          onClose={handleCloseCoachForgotPasswordModal}
+      {/* Sports Forgot passowr Windows Render  */}
+      {isSportsForgotPasswordModalOpen && (
+        <SportsForgotPasswordModal
+          onClose={handleCloseSportsForgotPasswordModal}
         />
       )}
 

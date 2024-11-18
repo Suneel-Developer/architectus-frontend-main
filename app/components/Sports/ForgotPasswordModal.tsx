@@ -6,7 +6,7 @@ interface DownloadModalProps {
   onClose: () => void;
 }
 
-const CoachForgotPasswordModal: React.FC<DownloadModalProps> = ({ onClose }) => {
+const ForgotPasswordModal: React.FC<DownloadModalProps> = ({ onClose }) => {
   const [email, setEmail] = useState<string>("");
 
   const handleEmailChange = (e) => {
@@ -65,4 +65,4 @@ const CoachForgotPasswordModal: React.FC<DownloadModalProps> = ({ onClose }) => 
   );
 };
 
-export default CoachForgotPasswordModal;
+export default ForgotPasswordModal;

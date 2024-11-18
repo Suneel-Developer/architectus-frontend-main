@@ -4,13 +4,13 @@ import Image from "next/image";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { LuEye } from "react-icons/lu";
 
-interface CoachLoginModalProps {
+interface LoginModalProps {
   onClose: () => void;
   onSignup: () => void;
   onForgotPassword: () => void;
 }
 
-const CoachLoginModal: React.FC<CoachLoginModalProps> = ({
+const LoginModal: React.FC<LoginModalProps> = ({
   onClose,
   onSignup,
   onForgotPassword,
@@ -24,14 +24,11 @@ const CoachLoginModal: React.FC<CoachLoginModalProps> = ({
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 windows-bg">
       {/* If Click outside the white box then Window Close  */}
-      <div
-        onClick={onClose}
-        className="absolute inset-0 h-screen"
-      ></div>
+      <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left">
-          Coach Login
+          Login
         </h1>
 
         {/* Close Window btn */}
@@ -101,4 +98,4 @@ const CoachLoginModal: React.FC<CoachLoginModalProps> = ({
   );
 };
 
-export default CoachLoginModal;
+export default LoginModal;

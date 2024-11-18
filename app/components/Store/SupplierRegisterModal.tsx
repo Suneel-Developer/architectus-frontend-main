@@ -7,14 +7,14 @@ interface SupplierRegisterModalProps {
   onClose: () => void;
   onLogin: () => void;
   onCreate: () => void;
-  closeAndOpenCoachModal: (option: string) => void;
+  closeAndOpenSportsModal: (option: string) => void;
 }
 
 const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
   onClose,
   onLogin,
   onCreate,
-  closeAndOpenCoachModal,
+  closeAndOpenSportsModal,
 }) => {
   const [selectedOption, setSelectedOption] = useState("Product /service");
 
@@ -26,7 +26,7 @@ const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
     setSelectedOption(value);
 
     if (value === "Sports" || value === "podcasts") {
-      closeAndOpenCoachModal(value);
+      closeAndOpenSportsModal(value);
     }
   };
 
