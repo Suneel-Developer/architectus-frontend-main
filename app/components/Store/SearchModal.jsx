@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 
-const CreateModal = ({ onClose, onCreate }) => {
+const SearchModal = ({ onClose, onCreate }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [text, setText] = useState("");
   const recognitionRef = useRef(null);
@@ -59,20 +59,16 @@ const CreateModal = ({ onClose, onCreate }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 px-5 windows-bg">
-      <div
-        onClick={onClose}
-        className="absolute inset-0"
-      ></div>
-      
+      <div onClick={onClose} className="absolute inset-0"></div>
+
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left mb-4">
-          Create
+          Search
         </h1>
 
         <p className="text-sm text-[#0F0A19B2]">
-        Please describe in as much detail as possible what you intend to create, update, or modify.
-
-
+          Please describe in as much detail as possible what you intend to
+          search and your current location.
         </p>
 
         <Image
@@ -137,4 +133,4 @@ const CreateModal = ({ onClose, onCreate }) => {
   );
 };
 
-export default CreateModal;
+export default SearchModal;
