@@ -77,6 +77,8 @@ const SportsProducts: React.FC = () => {
   const [playingIndex, setPlayingIndex] = useState(null);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
   const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
+  const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
+    useState<boolean>(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   // Handle showing reviews for a specific slide
@@ -101,6 +103,16 @@ const SportsProducts: React.FC = () => {
     }
 
     setLastSlideIndex(currentIndex);
+  };
+
+  // Open Add Rating Window
+  const handleOpenAddRatingModal = () => {
+    setIsOpenAddRatingModal(true);
+  };
+
+  // Close Add Rating Window
+  const handleCloseAddRatingModal = () => {
+    setIsOpenAddRatingModal(false);
   };
 
   const handleOpenShareModal = () => {
@@ -351,29 +363,29 @@ const SportsProducts: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
-                  <button
-                    onClick={() => handleToggleReviews(index)}
-                    className="flex items-center justify-between w-full"
-                  >
-                    <span className="text-xl font-medium">Reviews (40)</span>
-                    <Image
-                      src="/assets/icon/angle-down-small.svg"
-                      alt="angle-down-small"
-                      width={14}
-                      height={9}
-                    />
-                  </button>
+              <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
+                <button
+                  onClick={() => handleToggleReviews(index)}
+                  className="flex items-center justify-between w-full"
+                >
+                  <span className="text-xl font-medium">Reviews (40)</span>
+                  <Image
+                    src="/assets/icon/angle-down-small.svg"
+                    alt="angle-down-small"
+                    width={14}
+                    height={9}
+                  />
+                </button>
 
-                  {/* Reviews  */}
-                  {showReviewsIndex === index && (
-                    <div>
-                      <ReviewsForm />
-                      <ReviewsList />
-                    </div>
-                  )}
-                </div>
+                {/* Reviews  */}
+                {showReviewsIndex === index && (
+                  <div>
+                    <ReviewsForm onOpen={handleOpenAddRatingModal} />
+                    <ReviewsList />
+                  </div>
+                )}
               </div>
             </div>
           </SwiperSlide>
@@ -398,6 +410,11 @@ const SportsProducts: React.FC = () => {
       {/* Favorute Window  */}
       {isOpenFavoritesModal && (
         <FavoriteModal onClose={handleCloseFavoritesModal} />
+      )}
+
+      {/* Add Rating Modal  */}
+      {isOpenAddRatingModal && (
+        <AddRatingModal onClose={handleCloseAddRatingModal} />
       )}
     </div>
   );

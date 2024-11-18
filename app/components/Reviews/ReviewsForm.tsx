@@ -2,25 +2,17 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
-import AddRatingModal from "./AddRatingModal";
 
-const ReviewsForm: React.FC = () => {
+interface DownloadModalProps {
+  onOpen: () => void;
+}
+
+
+const ReviewsForm: React.FC<DownloadModalProps>= ({ onOpen }) => {
   const [selectedRating, setSelectedRating] = useState<number>(0);
-  const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
-    useState<boolean>(false);
 
   const handleStarClick = (rating: number) => {
     setSelectedRating(rating);
-  };
-
-  // Open Add Rating Window
-  const handleOpenAddRatingModal = () => {
-    setIsOpenAddRatingModal(true);
-  };
-
-  // Close Add Rating Window
-  const handleCloseAddRatingModal = () => {
-    setIsOpenAddRatingModal(false);
   };
 
   return (
@@ -49,10 +41,7 @@ const ReviewsForm: React.FC = () => {
           className="bg-white rounded-[14px] h-[112px] p-5 placeholder:text-[#0000005C] w-full mt-5 outline-none"
         ></textarea>
 
-        <button
-          // onClick={handleOpenAddRatingModal}
-          className="bg-gradient text-white rounded-[14px] w-full h-12 mt-2 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
-        >
+        <button onClick={onOpen} className="bg-gradient text-white rounded-[14px] w-full h-12 mt-2 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
           Submit
           <Image
             src="/assets/icon/arrow-right-small.svg"
@@ -63,10 +52,6 @@ const ReviewsForm: React.FC = () => {
           />
         </button>
       </div>
-
-      {isOpenAddRatingModal && (
-        <AddRatingModal onClose={handleCloseAddRatingModal} />
-      )}
     </>
   );
 };

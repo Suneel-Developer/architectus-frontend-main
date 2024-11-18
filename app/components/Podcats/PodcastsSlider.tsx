@@ -12,6 +12,7 @@ import VerificationLoadingModal from "../Body/VerificationLoadingModal";
 import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import FavoriteModal from "../FavoritesModal";
+import AddRatingModal from "../Reviews/AddRatingModal";
 
 const podcastsdata = [
   {
@@ -73,6 +74,8 @@ const PodcatsVideos: React.FC = () => {
     useState<Boolean>(false);
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
+  const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
+    useState<boolean>(false);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
   const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
@@ -102,6 +105,15 @@ const PodcatsVideos: React.FC = () => {
     setLastSlideIndex(currentIndex);
   };
 
+  // Open Add Rating Window
+  const handleOpenAddRatingModal = () => {
+    setIsOpenAddRatingModal(true);
+  };
+
+  // Close Add Rating Window
+  const handleCloseAddRatingModal = () => {
+    setIsOpenAddRatingModal(false);
+  };
 
   const handleOpenShareModal = () => {
     setIsShareModalVisible(true);
@@ -369,7 +381,7 @@ const PodcatsVideos: React.FC = () => {
                   {/* Reviews  */}
                   {showReviewsIndex === index && (
                     <div>
-                      <ReviewsForm />
+                      <ReviewsForm onOpen={handleOpenAddRatingModal} />
                       <ReviewsList />
                     </div>
                   )}
@@ -397,6 +409,11 @@ const PodcatsVideos: React.FC = () => {
       {/* Favorute Window  */}
       {isOpenFavoritesModal && (
         <FavoriteModal onClose={handleCloseFavoritesModal} />
+      )}
+
+      {/* Add Rating Modal  */}
+      {isOpenAddRatingModal && (
+        <AddRatingModal onClose={handleCloseAddRatingModal} />
       )}
     </div>
   );

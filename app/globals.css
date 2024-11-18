@@ -37,6 +37,10 @@ body {
 .bg-gradient {
   background: linear-gradient(101.84deg, #5c24fc 2.78%, #9d7aff 98.95%);
 }
+.btn-red-gradient{
+  background: linear-gradient(101.84deg, #FC2424 2.78%, #FF7A7A 98.95%);
+
+}
 
 .windows-bg {
   background: linear-gradient(

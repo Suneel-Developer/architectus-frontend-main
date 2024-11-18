@@ -10,12 +10,15 @@ import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import ShareModal from "./ShareModal";
 import FavoriteModal from "../FavoritesModal";
+import AddRatingModal from "../Reviews/AddRatingModal";
 
 const Slider = () => {
   const [isShareModalVisible, setIsShareModalVisible] =
     useState<boolean>(false);
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
+  const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
+    useState<boolean>(false);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
   const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
 
@@ -41,6 +44,16 @@ const Slider = () => {
     }
 
     setLastSlideIndex(currentIndex);
+  };
+
+  // Open Add Rating Window
+  const handleOpenAddRatingModal = () => {
+    setIsOpenAddRatingModal(true);
+  };
+
+  // Close Add Rating Window
+  const handleCloseAddRatingModal = () => {
+    setIsOpenAddRatingModal(false);
   };
 
   // Open Share Window
@@ -151,7 +164,7 @@ const Slider = () => {
                 {/* Reviews  */}
                 {showReviewsIndex === index && (
                   <div>
-                    <ReviewsForm />
+                    <ReviewsForm onOpen={handleOpenAddRatingModal} />
                     <ReviewsList />
                   </div>
                 )}
@@ -167,6 +180,11 @@ const Slider = () => {
       {/* Favorute Window  */}
       {isOpenFavoritesModal && (
         <FavoriteModal onClose={handleCloseFavoritesModal} />
+      )}
+
+      {/* Add Rating Modal  */}
+      {isOpenAddRatingModal && (
+        <AddRatingModal onClose={handleCloseAddRatingModal} />
       )}
     </div>
   );

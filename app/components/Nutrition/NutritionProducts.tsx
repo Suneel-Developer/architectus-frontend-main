@@ -12,6 +12,7 @@ import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import Link from "next/link";
 import FavoriteModal from "../FavoritesModal";
+import AddRatingModal from "../Reviews/AddRatingModal";
 
 const nutritionproducts = [
   {
@@ -48,6 +49,8 @@ const NutritionProducts: React.FC = () => {
     useState<boolean>(false);
   const [isOpenDownloadModalOpen, setIsOpenDownloadModalOpen] =
     useState<boolean>(false);
+  const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
+    useState<boolean>(false);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
   const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
 
@@ -73,6 +76,16 @@ const NutritionProducts: React.FC = () => {
     }
 
     setLastSlideIndex(currentIndex);
+  };
+
+  // Open Add Rating Window
+  const handleOpenAddRatingModal = () => {
+    setIsOpenAddRatingModal(true);
+  };
+
+  // Close Add Rating Window
+  const handleCloseAddRatingModal = () => {
+    setIsOpenAddRatingModal(false);
   };
 
   // Open Favorites Modal
@@ -224,7 +237,7 @@ const NutritionProducts: React.FC = () => {
                 {/* Reviews  */}
                 {showReviewsIndex === index && (
                   <div>
-                    <ReviewsForm />
+                    <ReviewsForm onOpen={handleOpenAddRatingModal} />
                     <ReviewsList />
                   </div>
                 )}
@@ -253,6 +266,11 @@ const NutritionProducts: React.FC = () => {
       {/* Favorute Window  */}
       {isOpenFavoritesModal && (
         <FavoriteModal onClose={handleCloseFavoritesModal} />
+      )}
+
+      {/* Add Rating Modal  */}
+      {isOpenAddRatingModal && (
+        <AddRatingModal onClose={handleCloseAddRatingModal} />
       )}
     </div>
   );
