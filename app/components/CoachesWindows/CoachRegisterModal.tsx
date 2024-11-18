@@ -46,6 +46,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
 
   const handleCloseSupplierPlanModal = () => {
     setIsOpenSuplierPlanmodal(false);
+    setIsSupplierRegisterModal(true);
   };
 
   return (
@@ -130,29 +131,23 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
             )}
           </div>
 
-          <div>
-            {videoSrc1 && (
-              <div className="w-full">
-                <input
-                  type="text"
-                  placeholder="Title"
-                  className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 w-full mb-4 py-4 h-fit border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
-                />
+          <div className="w-full flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Title"
+              className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 w-full py-4 h-fit border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
+            />
 
-                <textarea
-                  placeholder="Enter Description"
-                  className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full h-fit min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
-                />
-              </div>
-            )}
-          </div>
+            <textarea
+              placeholder="Enter Description"
+              className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
+            />
 
-          {/* Enter your Language  */}
-          <div className="w-full">
+            {/* Enter your Language  */}
             <input
               type="text"
               placeholder="Language"
-              className="border placeholder:text-sm placeholder:text-[#9D9D9D] h-fit mb-5 w-full px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
+              className="border placeholder:text-sm placeholder:text-[#9D9D9D] h-fit w-full px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
             />
 
             {/* Enter Your Webiste link  */}
