@@ -75,16 +75,15 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
             <select
               onClick={() => setIsOpen((prev) => !prev)}
               onChange={handleOpenSupplierRegisterModal}
-              onBlur={() => setIsOpen(false)} // Optional: closes when the focus is lost
+              onBlur={() => setIsOpen(false)}
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
               defaultValue="Type of content"
             >
               <option value="Type of content" disabled>
                 Type of content
               </option>
-              <option value="Coach">Coach</option>
-              <option value="Tutorials">Tutorials</option>
-              <option value="Podcast">Podcast</option>
+              <option value="Sports">Sports</option>
+              <option value="podcasts">Podcasts</option>
               <option value="Product /service">Product /service</option>
             </select>
             <MdKeyboardArrowDown
@@ -129,7 +128,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
                     height="34"
                     decoding="async"
                     className="mx-auto"
-                    src="/assets/icons//icon/video-camera.svg"
+                    src="/assets/icon/video-camera.svg"
                   />
                   <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
                     <span>Drag and drop or </span>
@@ -186,7 +185,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
                     height="34"
                     decoding="async"
                     className="mx-auto"
-                    src="/assets/icons//icon/video-camera.svg"
+                    src="/assets/icon/video-camera.svg"
                   />
                   <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
                     <span>Drag and drop or </span>
@@ -236,27 +235,6 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
           <input
             type="text"
             placeholder="Add your website link"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
-          />
-
-          {/* Inter Instagram ID  */}
-          <input
-            type="text"
-            placeholder="Instagram"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
-          />
-
-          {/* Enter Facebook ID  */}
-          <input
-            type="text"
-            placeholder="Facebook"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
-          />
-
-          {/* Enter YouTube ID  */}
-          <input
-            type="text"
-            placeholder="YouTube"
             className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
           />
 

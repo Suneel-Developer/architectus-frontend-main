@@ -44,7 +44,7 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
                 height="34"
                 decoding="async"
                 className="mx-auto"
-                src="/assets/icons//icon/upload-icon.svg"
+                src="/assets/icon/upload-icon.svg"
               />
               <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
                 <label
