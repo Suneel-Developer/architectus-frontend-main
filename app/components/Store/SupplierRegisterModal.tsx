@@ -1,22 +1,22 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 
 interface DownloadModalProps {
   onClose: () => void;
   onLogin: () => void;
+  onCreate: () => void;
 }
 
 const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
   onClose,
   onLogin,
+  onCreate,
 }) => {
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
       {/* If Click outside the white box then Window Close  */}
-      <div
-        onClick={onClose}
-        className="absolute inset-0 h-screen"
-      ></div>
+      <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative min-h-full">
         {/* Close Window btn */}
@@ -47,10 +47,7 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
                 src="/assets/icon/upload-icon.svg"
               />
               <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
-                <label
-                  htmlFor="file-upload"
-                  className="relative"
-                >
+                <label htmlFor="file-upload" className="relative">
                   <span>Drag and drop </span>
                   <span className="text-[#3D2278] font-semibold">
                     or browse
@@ -105,14 +102,13 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
             className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
           />
 
-          <button className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+          <button onClick={onCreate} className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
             Continue
           </button>
 
           <p className="text-center text-sm text-[#0F0A19B2]">
             Already have an account?&nbsp;
             <span
-              onClick={onLogin}
               className="text-sm cursor-pointer font-semibold text-[#3D2278]"
             >
               Login

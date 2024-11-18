@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import SupplierRegisterModal from "../Store/SupplierRegisterModal";
+import SupplierPlan from "../Store/SupplierPlan";
 
 interface CoachRegisterModalProps {
   onClose: () => void;
@@ -16,7 +17,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
   onCaptcha,
 }) => {
   const [videoSrc1, setVideoSrc1] = useState(null);
-  const [videoSrc2, setVideoSrc2] = useState(null);
+  const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isSupplierRegisterModal, setIsSupplierRegisterModal] = useState(false);
 
@@ -28,19 +29,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
     }
   };
 
-  const handleFileChange2 = (event: any) => {
-    const file = event.target.files[0];
-    if (file) {
-      const videoURL = URL.createObjectURL(file);
-      setVideoSrc2(videoURL);
-    }
-  };
-
-  const handleSelectClick = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const handleOpenSupplierRegisterModal = (event) => {
+  const handleOpenSupplierRegisterModal = (event: any) => {
     if (event.target.value === "Product /service") {
       setIsSupplierRegisterModal(true);
     }
@@ -50,13 +39,19 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
     setIsSupplierRegisterModal(false);
   };
 
+  const handleOpenSupplierPlanModal = () => {
+    setIsOpenSuplierPlanmodal(true);
+    setIsSupplierRegisterModal(false);
+  };
+
+  const handleCloseSupplierPlanModal = () => {
+    setIsOpenSuplierPlanmodal(false);
+  };
+
   return (
     <div className="fixed inset-0 min-h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
       {/* If Click outside the white box then Window Close  */}
-      <div
-        onClick={onClose}
-        className="absolute inset-0 h-screen"
-      ></div>
+      <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative min-h-full">
         {/* Close Window btn */}
@@ -70,7 +65,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
           className="absolute top-3 right-4 cursor-pointer"
         />
 
-        <form className="flex flex-col gap-y-4 h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
+        <form className="flex flex-col gap-y-4 h-fit min-h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
           <div className="relative mt-5">
             <select
               onClick={() => setIsOpen((prev) => !prev)}
@@ -91,24 +86,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
                 isOpen ? "rotate-180" : ""
               }`}
             />
-
-            {isSupplierRegisterModal && (
-              <div className="z-50">
-                <SupplierRegisterModal
-                  onClose={handleCloseSupplierRegisterModal}
-                  onLogin={function (): void {
-                    throw new Error("Function not implemented.");
-                  }}
-                />
-              </div>
-            )}
           </div>
-
-          {/* Discription textarea  */}
-          <textarea
-            placeholder="Write a small description about your sport discipline, training method, exercise type, skill level."
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
-          />
 
           {/* Video Uploader 1 */}
           <div className="flex flex-col gap-4">
@@ -152,91 +130,38 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
             )}
           </div>
 
-          {videoSrc1 && (
-            <div className="w-full">
-              <input
-                type="text"
-                placeholder="Title"
-                className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 w-full mb-4 py-4 h-fit border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
-              />
-
-              <textarea
-                placeholder="Enter Description"
-                className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full h-fit min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
-              />
-            </div>
-          )}
-
-          {/* Video Uploader 2 */}
-          <div className="flex flex-col gap-4">
-            {!videoSrc2 && (
-              <div className="relative borderUpload py-5 md:py-10">
+          <div>
+            {videoSrc1 && (
+              <div className="w-full">
                 <input
-                  className="absolute inset-0 w-full h-full opacity-0 z-40 cursor-pointer"
-                  type="file"
-                  accept="video/*"
-                  onChange={handleFileChange2}
+                  type="text"
+                  placeholder="Title"
+                  className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 w-full mb-4 py-4 h-fit border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
                 />
-                <div className="text-center">
-                  <img
-                    alt="video-camera"
-                    loading="lazy"
-                    width="42"
-                    height="34"
-                    decoding="async"
-                    className="mx-auto"
-                    src="/assets/icon/video-camera.svg"
-                  />
-                  <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
-                    <span>Drag and drop or </span>
-                    <span className="text-[#3D2278] font-semibold">browse</span>
-                  </h3>
-                </div>
-              </div>
-            )}
 
-            {videoSrc2 && (
-              <div className="border-[#E7E7E7] flex-1 w-full h-[160px] rounded-[10px] bg-[#FAFAFA] overflow-hidden">
-                <div className="max-w-full md:max-w-[240px] w-full mx-auto h-[160px]">
-                  <video
-                    src={videoSrc2}
-                    autoPlay
-                    controls
-                    className="h-full w-full object-cover"
-                  ></video>
-                </div>
+                <textarea
+                  placeholder="Enter Description"
+                  className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full h-fit min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
+                />
               </div>
             )}
           </div>
 
-          {videoSrc2 && (
-            <div className="w-full">
-              <input
-                type="text"
-                placeholder="Title"
-                className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 w-full mb-4 py-4 h-fit border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
-              />
-
-              <textarea
-                placeholder="Enter Description"
-                className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full h-fit min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
-              />
-            </div>
-          )}
-
           {/* Enter your Language  */}
-          <input
-            type="text"
-            placeholder="Language"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit"
-          />
+          <div className="w-full">
+            <input
+              type="text"
+              placeholder="Language"
+              className="border placeholder:text-sm placeholder:text-[#9D9D9D] h-fit mb-5 w-full px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
+            />
 
-          {/* Enter Your Webiste link  */}
-          <input
-            type="text"
-            placeholder="Add your website link"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
-          />
+            {/* Enter Your Webiste link  */}
+            <input
+              type="text"
+              placeholder="Add your website link"
+              className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
+            />
+          </div>
 
           <button
             type="button"
@@ -257,6 +182,22 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
           </p>
         </form>
       </div>
+
+      {isSupplierRegisterModal && (
+        <div className="z-50">
+          <SupplierRegisterModal
+            onClose={handleCloseSupplierRegisterModal}
+            onCreate={handleOpenSupplierPlanModal}
+            onLogin={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        </div>
+      )}
+
+      {isOpenSuplierPlanmodal && (
+        <SupplierPlan onClose={handleCloseSupplierPlanModal} />
+      )}
     </div>
   );
 };
