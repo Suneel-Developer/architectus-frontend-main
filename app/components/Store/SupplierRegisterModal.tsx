@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 interface DownloadModalProps {
   onClose: () => void;
@@ -13,6 +14,7 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
   onLogin,
   onCreate,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
       {/* If Click outside the white box then Window Close  */}
@@ -31,7 +33,22 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
         />
 
         <form className="flex flex-col gap-y-5 h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
-          <div className="relative borderUpload py-5 md:py-10 mt-6">
+          <div className="relative mt-6">
+            <select
+              className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
+            >
+              <option value="Sports">Sports</option>
+              <option value="podcasts">Podcasts</option>
+              <option value="Product /service">Products</option>
+            </select>
+            <MdKeyboardArrowDown
+              className={`absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
+          </div>
+
+          <div className="relative borderUpload py-5 md:py-10">
             <input
               className="absolute inset-0 w-full h-full opacity-0 z-50 cursor-pointer"
               type="file"
@@ -102,15 +119,16 @@ const SupplierRegisterModal: React.FC<DownloadModalProps> = ({
             className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
           />
 
-          <button onClick={onCreate} className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+          <button
+            onClick={onCreate}
+            className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
+          >
             Continue
           </button>
 
           <p className="text-center text-sm text-[#0F0A19B2]">
             Already have an account?&nbsp;
-            <span
-              className="text-sm cursor-pointer font-semibold text-[#3D2278]"
-            >
+            <span className="text-sm cursor-pointer font-semibold text-[#3D2278]">
               Login
             </span>
           </p>
