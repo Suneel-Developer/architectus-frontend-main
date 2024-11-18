@@ -30,7 +30,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
   };
 
   const handleOpenSupplierRegisterModal = (event: any) => {
-    if (event.target.value === "product") {
+    if (event.target.value === "product/services") {
       setIsSupplierRegisterModal(true);
     }
     setSelectedOption(event.target.value);
@@ -81,7 +81,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
             >
               <option value="sports">Sports</option>
               <option value="podcasts">Podcasts</option>
-              <option value="product">Products</option>
+              <option value="product/services">Products / services</option>
             </select>
             <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl" />
           </div>

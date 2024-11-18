@@ -56,7 +56,7 @@ const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
             >
               <option value="Sports">Sports</option>
               <option value="podcasts">Podcasts</option>
-              <option value="Product /service">Products</option>
+              <option value="Product /service">Products / services</option>
             </select>
             <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl " />
           </div>
