@@ -115,7 +115,7 @@ const LanguageDropdown = () => {
               />
             </button>
 
-            <div className="logomenubg bg-white px-5 py-[19px] flex items-center justify-between gap-4 rounded-[14px] h-[60px] relative mb-5 max-w-[200px] w-full">
+            <div className="logomenubg bg-white px-5 py-[19px] flex items-center justify-between gap-4 rounded-[14px] h-[60px] relative mb-2 max-w-[200px] w-full">
               <button
                 onClick={handleOpenLanguageDropdwon}
                 className="flex items-center gap-1 justify-between"
