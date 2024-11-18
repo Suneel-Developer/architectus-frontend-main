@@ -54,7 +54,7 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
       {/* If Click outside the white box then Window Close  */}
       <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
-      <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative min-h-full">
+      <div className="bg-white rounded-[20px] p-5 md:p-7 w-full mx-auto max-w-[600px] relative min-h-full md:min-h-fit">
         {/* Close Window btn */}
         <Image
           src="/assets/icon/close-icon.svg"
@@ -66,18 +66,14 @@ const CoachRegisterModal: React.FC<CoachRegisterModalProps> = ({
           className="absolute top-3 right-4 cursor-pointer"
         />
 
-        <form className="flex flex-col gap-y-4 h-fit min-h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
+        <form className="flex flex-col gap-y-4 h-[90vh] md:h-[82vh] overflow-y-scroll overflow-x-hidden formscrollbar">
           <div className="relative mt-5">
             <select
               onClick={() => setIsOpen((prev) => !prev)}
               onChange={handleOpenSupplierRegisterModal}
               onBlur={() => setIsOpen(false)}
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
-              defaultValue="Type of content"
             >
-              <option value="Type of content" disabled>
-                Type of content
-              </option>
               <option value="Sports">Sports</option>
               <option value="podcasts">Podcasts</option>
               <option value="Product /service">Products</option>
