@@ -59,10 +59,7 @@ const SupportModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 windows-bg">
-      <div
-        onClick={onClose}
-        className="absolute inset-0 h-screen"
-      ></div>
+      <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left mb-4">
@@ -70,8 +67,10 @@ const SupportModal = ({ onClose }) => {
         </h1>
 
         <p className="text-sm text-[#0F0A19B2]">
-          Please describe in as much detail as possible what you intend to
-          create, update, or modify.
+          To create a support ticket, please provide detailed information about
+          your request. Be sure to include the category and any other relevant
+          details about your issue. The more specific your information, the
+          quicker and more effectively we can assist you.
         </p>
 
         <Image

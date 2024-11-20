@@ -61,10 +61,7 @@ const FavoriteModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 windows-bg">
-      <div
-        onClick={onClose}
-        className="absolute inset-0 h-screen"
-      ></div>
+      <div onClick={onClose} className="absolute inset-0 h-screen"></div>
 
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left mb-4">
@@ -72,8 +69,8 @@ const FavoriteModal = ({ onClose }) => {
         </h1>
 
         <p className="text-sm text-[#0F0A19B2]">
-          Please describe in as much detail as possible what you intend to
-          create, update, or modify.
+          Please provide specific details about the favorites you are searching
+          for, such as the topic and category.
         </p>
 
         <Image
@@ -120,7 +117,7 @@ const FavoriteModal = ({ onClose }) => {
 
         <div className="flex flex-col gap-5 items-center gap-y-5">
           <button
-            onClick={(() => router.push("/podcasts"))}
+            onClick={() => router.push("/podcasts")}
             className="bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
           >
             Continue
