@@ -66,13 +66,8 @@ const CreateSendModal = ({ onClose, onCreate }) => {
 
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left mb-4">
-          Create
+          Message
         </h1>
-
-        <p className="text-sm text-[#0F0A19B2]">
-          Please describe in as much detail as possible what you intend to
-          create, update, or modify.
-        </p>
 
         <Image
           src="/assets/icon/close-icon.svg"

@@ -67,10 +67,7 @@ const SupportModal = ({ onClose }) => {
         </h1>
 
         <p className="text-sm text-[#0F0A19B2]">
-          To create a support ticket, please provide detailed information about
-          your request. Be sure to include the category and any other relevant
-          details about your issue. The more specific your information, the
-          quicker and more effectively we can assist you.
+          Please provide detailed information about your request. Be sure to include the category and any other relevant details about your issue. The more specific your information, the quicker and more effectively we can assist you.
         </p>
 
         <Image
