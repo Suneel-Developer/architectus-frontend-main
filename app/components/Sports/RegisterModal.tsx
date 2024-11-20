@@ -17,6 +17,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   onCaptcha,
 }) => {
   const [videoSrc1, setVideoSrc1] = useState(null);
+  const [imageFile1, setImageFile1] = useState(null);
   const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
   const [isSupplierRegisterModal, setIsSupplierRegisterModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("sports");
@@ -26,6 +27,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
     if (file) {
       const videoURL = URL.createObjectURL(file);
       setVideoSrc1(videoURL);
+    }
+  };
+
+  const handleFileChange2 = (event: any) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageURL = URL.createObjectURL(file);
+      setImageFile1(imageURL);
     }
   };
 
@@ -80,10 +89,59 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
             >
               <option value="sports">Sports</option>
-              <option value="podcasts">Podcasts</option>
+              <option value="podcasts">Therapies</option>
               <option value="product/services">Products / services</option>
             </select>
             <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl" />
+          </div>
+
+          {/* Image File Uploader  */}
+          <div>
+            {!imageFile1 && (
+              <div className="relative borderUpload py-5 md:py-10">
+                <input
+                  className="absolute inset-0 w-full h-full opacity-0 z-50 cursor-pointer"
+                  type="file"
+                  onChange={handleFileChange2}
+                />
+                <div className="text-center">
+                  <img
+                    alt="upload"
+                    loading="lazy"
+                    width="42"
+                    height="34"
+                    decoding="async"
+                    className="mx-auto"
+                    src="/assets/icon/upload-icon.svg"
+                  />
+                  <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
+                    <label htmlFor="file-upload" className="relative">
+                      <span>Drag and drop </span>
+                      <span className="text-[#3D2278] font-semibold">
+                        or browse
+                      </span>
+                      <input
+                        id="file-upload"
+                        className="sr-only"
+                        type="file"
+                        name="file-upload"
+                      />
+                    </label>
+                  </h3>
+                </div>
+              </div>
+            )}
+
+            {imageFile1 && (
+              <div className="border-[#E7E7E7] flex-1 w-full h-[160px] rounded-[10px] bg-[#FAFAFA] overflow-hidden">
+                <div className="max-w-full md:max-w-[240px] w-full mx-auto h-[160px]">
+                  <img
+                    src={imageFile1}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Video Uploader 1 */}
@@ -139,14 +197,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               placeholder="Enter Description"
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
             />
-
-            {/* Enter your Language  */}
-            <input
-              type="text"
-              placeholder="Language"
-              className="border placeholder:text-sm placeholder:text-[#9D9D9D] h-fit w-full px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA]"
-            />
-
+            
             {/* Enter Your Webiste link  */}
             <input
               type="text"

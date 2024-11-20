@@ -10,7 +10,7 @@ const navLinks = [
   { name: "Body", path: "/" },
   { name: "Sports", path: "/sports" },
   { name: "Nutrition", path: "/nutrition" },
-  { name: "Podcasts", path: "/podcasts" },
+  { name: "Therapies", path: "/therapies" },
   { name: "Store", path: "/store" },
 ];
 

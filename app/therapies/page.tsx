@@ -1,20 +1,20 @@
 import React from "react";
 import Header from "../components/Header";
-import Hero from "../components/Podcats/Hero";
+import Hero from "../components/Therapies/Hero";
 import Footer from "../components/Footer";
-import PodcastsSlider from "../components/Podcats/PodcastsSlider";
+import TherapiesSlider from "../components/Therapies/TherapiesSlider";
 
-const Podcasts = () => {
+const Therapies = () => {
   return (
     <>
       <Header />
       <main className="pt-5 md:pt-10 pb-10 md:pb-20">
         <Hero />
-        <PodcastsSlider />
+        <TherapiesSlider />
       </main>
       <Footer />
     </>
   );
 };
 
-export default Podcasts;
+export default Therapies;

@@ -36,8 +36,9 @@ const Hero: React.FC = () => {
       <div className="mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-            Search for workout , sport discipline, training method,
-            exercise type, skill level.
+            Please provide a clear description of your health condition. If you
+            already know, include the specific type of therapy or treatment you
+            are looking for.
           </p>
 
           <button

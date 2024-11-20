@@ -68,7 +68,7 @@ const podcastsdata = [
   },
 ];
 
-const PodcatsVideos: React.FC = () => {
+const TherapiesVideos: React.FC = () => {
   const [isShareModalVisible, setIsShareModalVisible] =
     useState<boolean>(false);
   const [isOpenCreateSendModal, setIsOpenCreateSendModal] =
@@ -416,4 +416,4 @@ const PodcatsVideos: React.FC = () => {
   );
 };
 
-export default PodcatsVideos;
+export default TherapiesVideos;
