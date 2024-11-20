@@ -16,19 +16,11 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   onLogin,
   onCaptcha,
 }) => {
-  const [videoSrc1, setVideoSrc1] = useState(null);
   const [imageFile1, setImageFile1] = useState(null);
   const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
   const [isSupplierRegisterModal, setIsSupplierRegisterModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("sports");
 
-  const handleFileChange1 = (event: any) => {
-    const file = event.target.files[0];
-    if (file) {
-      const videoURL = URL.createObjectURL(file);
-      setVideoSrc1(videoURL);
-    }
-  };
 
   const handleFileChange2 = (event: any) => {
     const file = event.target.files[0];
@@ -144,47 +136,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             )}
           </div>
 
-          {/* Video Uploader 1 */}
-          <div className="flex flex-col gap-4">
-            {!videoSrc1 && (
-              <div className="relative borderUpload py-5 md:py-10">
-                <input
-                  className="absolute inset-0 w-full h-full opacity-0 z-40 cursor-pointer"
-                  type="file"
-                  accept="video/*"
-                  onChange={handleFileChange1}
-                />
-                <div className="text-center">
-                  <img
-                    alt="video-camera"
-                    loading="lazy"
-                    width="42"
-                    height="34"
-                    decoding="async"
-                    className="mx-auto"
-                    src="/assets/icon/video-camera.svg"
-                  />
-                  <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
-                    <span>Drag and drop or </span>
-                    <span className="text-[#3D2278] font-semibold">browse</span>
-                  </h3>
-                </div>
-              </div>
-            )}
-
-            {videoSrc1 && (
-              <div className="border-[#E7E7E7] flex-1 w-full h-[160px] rounded-[10px] bg-[#FAFAFA] overflow-hidden">
-                <div className="max-w-full md:max-w-[240px] w-full mx-auto h-[160px]">
-                  <video
-                    src={videoSrc1}
-                    autoPlay
-                    controls
-                    className="h-full w-full object-cover"
-                  ></video>
-                </div>
-              </div>
-            )}
-          </div>
 
           <div className="w-full flex flex-col gap-4">
             <input
