@@ -8,7 +8,6 @@ import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 import { MdOutlineTextsms } from "react-icons/md";
 
-
 import ShareModal from "../Body/ShareModal";
 import CreateSendModal from "../Body/CreateSendModal";
 import VerificationLoadingModal from "../Body/VerificationLoadingModal";
@@ -290,7 +289,7 @@ const SportsProducts: React.FC = () => {
                   {/* Training Types */}
                   <div className="flex flex-col gap-2">
                     <h3 className="text-sm font-semibold text-gradient">
-                      Training Types
+                      Keywords in use
                     </h3>
 
                     <div className="flex flex-wrap gap-[6px] items-center">
