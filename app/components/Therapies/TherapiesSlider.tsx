@@ -15,6 +15,7 @@ import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import FavoriteModal from "../FavoritesModal";
 import AddRatingModal from "../Reviews/AddRatingModal";
+import LanguagesDropdown from "./LanguageDropdowns";
 
 const podcastsdata = [
   {
@@ -285,26 +286,10 @@ const TherapiesVideos: React.FC = () => {
 
                 <p className="text-xs md:text-sm mb-4">{podcast.disc}</p>
 
+                {/* languages  */}
+                <LanguagesDropdown />
+
                 <div className="flex flex-col md:flex-row gap-5">
-                  {/* languages  */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-sm font-semibold text-gradient">
-                      Languages
-                    </h3>
-
-                    <span className="bg-[#ECECEC] w-fit text-sm rounded-lg px-3 py-1 flex items-center gap-2">
-                      <Image
-                        src="/assets/flags/en.png"
-                        alt={podcast.language}
-                        width={30}
-                        height={20}
-                        loading="lazy"
-                        className="w-[20px] h-[16px] rounded-[2px] overflow-hidden object-cover"
-                      />
-                      {podcast.language}
-                    </span>
-                  </div>
-
                   {/* Training Types */}
                   <div className="flex flex-col gap-2">
                     <h3 className="text-sm font-semibold text-gradient">
