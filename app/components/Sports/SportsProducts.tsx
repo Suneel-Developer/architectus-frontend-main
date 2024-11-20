@@ -286,23 +286,7 @@ const SportsProducts: React.FC = () => {
                 <p className="text-xs md:text-sm mb-4">{sports.disc}</p>
 
                 <div className="flex flex-col md:flex-row gap-5">
-                  {/* Training Types */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-sm font-semibold text-gradient">
-                      Keywords in use
-                    </h3>
-
-                    <div className="flex flex-wrap gap-[6px] items-center">
-                      {sports.specialties.map((specialty, index) => (
-                        <span
-                          key={index}
-                          className="bg-[#ECECEC] text-sm rounded-lg px-3 py-1"
-                        >
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  
 
                   {/* languages  */}
                   <div className="flex flex-col gap-2">
@@ -321,6 +305,24 @@ const SportsProducts: React.FC = () => {
                       />
                       {sports.language}
                     </span>
+                  </div>
+
+                  {/* Training Types */}
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-sm font-semibold text-gradient">
+                      Keywords in use
+                    </h3>
+
+                    <div className="flex flex-wrap gap-[6px] items-center">
+                      {sports.specialties.map((specialty, index) => (
+                        <span
+                          key={index}
+                          className="bg-[#ECECEC] text-sm rounded-lg px-3 py-1"
+                        >
+                          {specialty}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Social Icon  */}
