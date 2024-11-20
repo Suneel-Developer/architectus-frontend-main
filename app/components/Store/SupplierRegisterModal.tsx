@@ -105,7 +105,7 @@ const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
           />
 
           <textarea
-            placeholder="Write a small description about your product or service such as product/service type, relevant sports categories, and available shipping countries."
+            placeholder="Please provide a clear summary of the treatment, explaining how it works and which types of conditions it is intended for."
             className="border placeholder:text-sm resize-none placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
           />
 

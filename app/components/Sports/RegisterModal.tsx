@@ -194,7 +194,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             />
 
             <textarea
-              placeholder="Enter Description"
+              placeholder="Be as specific as possible — consider your sport discipline, training method, exercise type, skill level, full-body workouts, or focus on specific muscle groups."
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
             />
 
