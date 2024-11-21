@@ -7,7 +7,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import MenuModal from "./MenuModal";
 
 const navLinks = [
-  { name: "Body", path: "/" },
+  { name: "Avator", path: "/" },
   { name: "Sports", path: "/sports" },
   { name: "Nutrition", path: "/nutrition" },
   { name: "Therapies", path: "/therapies" },

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "../Body/CreateModal";
-import VerificationLoadingModal from "../Body/VerificationLoadingModal";
+import CreateModal from "../Avator/CreateModal";
+import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);

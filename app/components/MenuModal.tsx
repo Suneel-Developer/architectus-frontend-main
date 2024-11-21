@@ -9,7 +9,7 @@ import SportsLoginModal from "./Sports/LoginModal";
 import SportsRegisterModal from "./Sports/RegisterModal";
 import SportsForgotPasswordModal from "./Sports/ForgotPasswordModal";
 import FavoriteModal from "./FavoritesModal";
-import VerificationLoadingModal from "./Body/VerificationLoadingModal";
+import VerificationLoadingModal from "./Avator/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
 import LanguageDropdown from "./LanguageDropdown";
 

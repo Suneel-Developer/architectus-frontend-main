@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import SupplierRegisterModal from "../Store/SupplierRegisterModal";
+import AdvertiseModal from "../Store/AdvertiseModal";
 import SupplierPlan from "../Store/SupplierPlan";
 
 interface RegisterModalProps {
@@ -18,7 +18,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 }) => {
   const [imageFile1, setImageFile1] = useState(null);
   const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
-  const [isSupplierRegisterModal, setIsSupplierRegisterModal] = useState(false);
+  const [isAdvertiseModal, setIsAdvertiseModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("sports");
 
 
@@ -32,29 +32,29 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
   const handleOpenSupplierRegisterModal = (event: any) => {
     if (event.target.value === "advertise") {
-      setIsSupplierRegisterModal(true);
+      setIsAdvertiseModal(true);
     }
     setSelectedOption(event.target.value);
   };
 
   const handleCloseSupplierRegisterModal = () => {
-    setIsSupplierRegisterModal(false);
+    setIsAdvertiseModal(false);
     setSelectedOption("sports");
   };
 
   const handleOpenSupplierPlanModal = () => {
     setIsOpenSuplierPlanmodal(true);
-    setIsSupplierRegisterModal(false);
+    setIsAdvertiseModal(false);
   };
 
   const handleCloseSupplierPlanModal = () => {
     setIsOpenSuplierPlanmodal(false);
-    setIsSupplierRegisterModal(true);
+    setIsAdvertiseModal(true);
   };
 
   const closeAndOpenSportsModal = (option: string) => {
     setSelectedOption(option);
-    setIsSupplierRegisterModal(false);
+    setIsAdvertiseModal(false);
   };
 
   return (
@@ -165,6 +165,10 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             Register
           </button>
 
+          <button className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+            Upload
+          </button>
+
           <p className="text-center text-sm text-[#0F0A19B2]">
             Already have an account?&nbsp;
             <span
@@ -177,9 +181,9 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         </form>
       </div>
 
-      {isSupplierRegisterModal && (
+      {isAdvertiseModal && (
         <div className="z-50">
-          <SupplierRegisterModal
+          <AdvertiseModal
             onClose={handleCloseSupplierRegisterModal}
             onCreate={handleOpenSupplierPlanModal}
             onLogin={function (): void {

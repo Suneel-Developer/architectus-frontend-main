@@ -63,14 +63,14 @@ const CreateModal = ({ onClose, onCreate }) => {
         onClick={onClose}
         className="absolute inset-0"
       ></div>
-      
+
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
         <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left mb-4">
           Create
         </h1>
 
         <p className="text-sm text-[#0F0A19B2]">
-        Please describe in as much detail as possible what you intend to create, update, or modify.
+          Please describe in as much detail as possible what you intend to create, update, or modify.
 
 
         </p>
@@ -117,12 +117,16 @@ const CreateModal = ({ onClose, onCreate }) => {
           </button>
         </div>
 
-        <div className="flex flex-col gap-5 items-center gap-y-5">
+        <div className="flex flex-col gap-y-3 items-center">
           <button
             onClick={onCreate}
             className="bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
           >
             Create
+          </button>
+
+          <button className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+            Upload
           </button>
 
           <button

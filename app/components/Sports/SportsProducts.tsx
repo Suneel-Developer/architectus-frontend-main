@@ -8,9 +8,9 @@ import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 import { MdOutlineTextsms } from "react-icons/md";
 
-import ShareModal from "../Body/ShareModal";
-import CreateSendModal from "../Body/CreateSendModal";
-import VerificationLoadingModal from "../Body/VerificationLoadingModal";
+import ShareModal from "../Avator/ShareModal";
+import CreateSendModal from "../Avator/CreateSendModal";
+import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
 import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import FavoriteModal from "../FavoritesModal";

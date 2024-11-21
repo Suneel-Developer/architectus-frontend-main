@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import SearchModal from "./SearchModal";
-import VerificationLoadingModal from "../Body/VerificationLoadingModal";
+import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);

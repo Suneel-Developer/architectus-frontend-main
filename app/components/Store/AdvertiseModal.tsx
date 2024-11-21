@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-interface SupplierRegisterModalProps {
+interface AdvertiseModalProps {
   onClose: () => void;
   onLogin: () => void;
   onCreate: () => void;
   closeAndOpenSportsModal: (option: string) => void;
 }
 
-const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
+const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
   onClose,
   onLogin,
   onCreate,
@@ -140,6 +140,10 @@ const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
             Continue
           </button>
 
+          <button className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+            Upload
+          </button>
+
           <p className="text-center text-sm text-[#0F0A19B2]">
             Already have an account?&nbsp;
             <span className="text-sm cursor-pointer font-semibold text-[#3D2278]">
@@ -152,4 +156,4 @@ const SupplierRegisterModal: React.FC<SupplierRegisterModalProps> = ({
   );
 };
 
-export default SupplierRegisterModal;
+export default AdvertiseModal;
