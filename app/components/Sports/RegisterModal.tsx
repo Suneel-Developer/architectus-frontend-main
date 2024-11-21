@@ -74,7 +74,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         />
 
         <form className="flex flex-col gap-y-4 h-[90vh] md:h-[82vh] overflow-y-scroll overflow-x-hidden formscrollbar">
-          <div className="relative mt-5">
+          {/* <div className="relative mt-5">
             <select
               onChange={handleOpenSupplierRegisterModal}
               value={selectedOption}
@@ -85,7 +85,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               <option value="advertise">Advertise</option>
             </select>
             <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl" />
-          </div>
+          </div> */}
 
           {/* Image File Uploader  */}
           <div>
@@ -157,13 +157,13 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             />
           </div>
 
-          <button
+          {/* <button
             type="button"
             onClick={onCaptcha}
             className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
           >
             Register
-          </button>
+          </button> */}
 
           <button className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
             Upload

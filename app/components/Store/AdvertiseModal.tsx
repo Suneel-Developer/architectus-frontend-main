@@ -48,7 +48,7 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
 
         <form className="flex flex-col gap-y-5 h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
           {/* Select Options  */}
-          <div className="relative mt-6">
+          {/* <div className="relative mt-6">
             <select
               value={selectedOption}
               onChange={handleDropdownChange}
@@ -59,7 +59,7 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
               <option value="advertise">Advertise</option>
             </select>
             <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl " />
-          </div>
+          </div> */}
 
           {/* Add File  */}
           <div className="relative borderUpload py-5 md:py-10">
@@ -133,14 +133,14 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
             className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
           />
 
-          <button
+          {/* <button
             onClick={onCreate}
             className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
           >
             Continue
-          </button>
+          </button> */}
 
-          <button className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+          <button className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
             Upload
           </button>
 
