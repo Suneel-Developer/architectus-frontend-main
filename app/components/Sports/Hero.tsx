@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "../Avator/CreateModal";
+import CreateModal from "../Therapies/CreateModal";
 import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
+import RegisterModal from "./RegisterModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
   const [isOpenVerificationModal, setIsOpenVerificationModal] =
     useState<boolean>(false);
+    const [isOpenSportModal, setIsOpenSportModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenCreateModal = () => {
@@ -29,6 +31,18 @@ const Hero: React.FC = () => {
   const handleCloseVerificationModal = () => {
     setIsOpenVerificationModal(false);
     setIsOpenCreateModal(false);
+  };
+
+  
+  //   Open Sport Modal
+  const handleOpenSportModal = () => {
+    setIsOpenCreateModal(false);
+    setIsOpenSportModal(true);
+  };
+
+  //  Close Sport Modal
+  const handleCloseSportModal = () => {
+    setIsOpenSportModal(false);
   };
 
   return (
@@ -60,11 +74,21 @@ const Hero: React.FC = () => {
         <CreateModal
           onClose={handleCloseCreateModal}
           onCreate={handleOpenVerificationCreateModal}
+          openSports={handleOpenSportModal}
         />
+        
       )}
 
       {isOpenVerificationModal && (
         <VerificationLoadingModal onClose={handleCloseVerificationModal} />
+      )}
+
+      {isOpenSportModal && (
+        <RegisterModal
+          onClose={handleCloseSportModal}
+          onLogin={function (): void {}}
+          onCaptcha={function (): void {}}
+        />
       )}
     </section>
   );

@@ -219,7 +219,7 @@ const MenuModal = () => {
             </div>
 
             <div className="min-w-[200px] w-full mt-3 logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
-              <button
+              {/* <button
                 onClick={handleSportsRegisterModal}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
@@ -231,7 +231,7 @@ const MenuModal = () => {
                   loading="lazy"
                 />
                 <span>Create</span>
-              </button>
+              </button> */}
 
               <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
                 <Image

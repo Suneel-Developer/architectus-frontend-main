@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import SearchModal from "./SearchModal";
 import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
+import AdvertiseModal from "./AdvertiseModal";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenVerificationModal, setIsOpenVerificationModal] =
+    useState<boolean>(false);
+  const [isOpenAdvertiseModal, setIsOpenAdvertiseModal] =
     useState<boolean>(false);
 
   // Open Create modal
@@ -28,6 +31,18 @@ const Hero: React.FC = () => {
   //  Close VisualisationVerification Modal
   const handleCloseVerificationModal = () => {
     setIsOpenVerificationModal(false);
+    setIsOpenSearchModal(false);
+  };
+
+  //   Open Advertise Modal
+  const handleOpenAdvertiseModal = () => {
+    setIsOpenSearchModal(false);
+    setIsOpenAdvertiseModal(true);
+  };
+
+  //  Close Advertise Modal
+  const handleCloseAdvertiseModal = () => {
+    setIsOpenAdvertiseModal(false);
     setIsOpenSearchModal(false);
   };
 
@@ -59,11 +74,21 @@ const Hero: React.FC = () => {
         <SearchModal
           onClose={handleCloseSearchModal}
           onCreate={handleOpenVerificationCreateModal}
+          openAdertise={handleOpenAdvertiseModal}
         />
       )}
 
       {isOpenVerificationModal && (
         <VerificationLoadingModal onClose={handleCloseVerificationModal} />
+      )}
+
+      {isOpenAdvertiseModal && (
+        <AdvertiseModal
+          onClose={handleCloseAdvertiseModal}
+          onLogin={function (): void {}}
+          onCreate={function (): void {}}
+          closeAndOpenSportsModal={function (): void {}}
+        />
       )}
     </section>
   );
