@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "../Avator/CreateModal";
+import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
 
 const Hero: React.FC = () => {
