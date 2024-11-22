@@ -36,9 +36,7 @@ const Hero: React.FC = () => {
       <div className="px-4 md:px-[30px] mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-            Be as specific as possible: include ingredients, the type of
-            dish—such as appetizer, main course, dessert, juice, or smoothie—and
-            any key details that bring your vision to life.
+          Be as specific as possible: include the ingredients, specify the type of diet (e.g., vegan, omnivorous, pescatarian, etc.), and provide any key details that bring your recipe to life.
           </p>
 
           <button
