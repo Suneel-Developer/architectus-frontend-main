@@ -26,13 +26,13 @@ const LanguagesDropdown = () => {
     <div className="grid grid-cols-1 xs:grid-cols-2 gap-[10px] mb-3">
       {/* Audio Language Dropdown */}
       <div>
-        <label className="block text-purple-500 text-sm font-medium mb-2">
+        <label className="block text-gradient text-sm font-medium mb-2">
           Audio Language
         </label>
         <div className="relative">
           <button
             onClick={() => setIsAudioDropdownOpen(!isAudioDropdownOpen)}
-            className="w-full flex items-center justify-between bg-[#ECECEC] p-[10px] rounded-lg gap-1 text-sm font-medium"
+            className="w-full flex items-center justify-between bg-[#EEE8FD] p-[10px] rounded-lg gap-1 text-sm font-medium"
           >
             <div className="flex items-center gap-3">
               <img
@@ -50,7 +50,7 @@ const LanguagesDropdown = () => {
             />
           </button>
           {isAudioDropdownOpen && (
-            <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+            <ul className="absolute z-40 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
               {audioLanguages.map((lang) => (
                 <li
                   key={lang.code}
@@ -75,13 +75,13 @@ const LanguagesDropdown = () => {
 
       {/* Subtitle Language Dropdown */}
       <div>
-        <label className="block text-purple-500 text-sm font-medium mb-2">
+        <label className="block text-gradient text-sm font-medium mb-2">
           Subtitle Language
         </label>
         <div className="relative">
           <button
             onClick={() => setIsSubtitleDropdownOpen(!isSubtitleDropdownOpen)}
-            className="w-full flex items-center justify-between bg-[#ECECEC] p-[10px] rounded-lg gap-1 text-sm font-medium"
+            className="w-full flex items-center justify-between bg-[#EEE8FD] p-[10px] rounded-lg gap-1 text-sm font-medium"
           >
             <div className="flex items-center gap-3">
               <img

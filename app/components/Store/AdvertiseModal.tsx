@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { MdKeyboardArrowDown } from "react-icons/md";
 
 interface AdvertiseModalProps {
   onClose: () => void;
@@ -10,26 +9,7 @@ interface AdvertiseModalProps {
   closeAndOpenSportsModal: (option: string) => void;
 }
 
-const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
-  onClose,
-  onLogin,
-  onCreate,
-  closeAndOpenSportsModal,
-}) => {
-  const [selectedOption, setSelectedOption] = useState("advertise");
-
-  // Handle dropdown change
-  const handleDropdownChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const value = event.target.value;
-    setSelectedOption(value);
-
-    if (value === "Sports" || value === "therapies") {
-      closeAndOpenSportsModal(value);
-    }
-  };
-
+const AdvertiseModal: React.FC<AdvertiseModalProps> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
       <div onClick={onClose} className="absolute inset-0 h-screen"></div>
@@ -47,20 +27,6 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
         />
 
         <form className="flex flex-col gap-y-5 h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
-          {/* Select Options  */}
-          {/* <div className="relative mt-6">
-            <select
-              value={selectedOption}
-              onChange={handleDropdownChange}
-              className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
-            >
-              <option value="Sports">Sports</option>
-              <option value="therapies">Therapies</option>
-              <option value="advertise">Advertise</option>
-            </select>
-            <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl " />
-          </div> */}
-
           {/* Add File  */}
           <div className="relative borderUpload py-5 md:py-10">
             <input

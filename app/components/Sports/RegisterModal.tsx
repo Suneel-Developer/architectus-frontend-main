@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import AdvertiseModal from "../Store/AdvertiseModal";
 import SupplierPlan from "../Store/SupplierPlan";
 
@@ -19,8 +18,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   const [imageFile1, setImageFile1] = useState(null);
   const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
   const [isAdvertiseModal, setIsAdvertiseModal] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("sports");
-
 
   const handleFileChange2 = (event: any) => {
     const file = event.target.files[0];
@@ -30,16 +27,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
     }
   };
 
-  const handleOpenSupplierRegisterModal = (event: any) => {
-    if (event.target.value === "advertise") {
-      setIsAdvertiseModal(true);
-    }
-    setSelectedOption(event.target.value);
-  };
-
   const handleCloseSupplierRegisterModal = () => {
     setIsAdvertiseModal(false);
-    setSelectedOption("sports");
   };
 
   const handleOpenSupplierPlanModal = () => {
@@ -53,7 +42,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   };
 
   const closeAndOpenSportsModal = (option: string) => {
-    setSelectedOption(option);
     setIsAdvertiseModal(false);
   };
 
@@ -74,19 +62,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         />
 
         <form className="flex flex-col gap-y-4 h-[90vh] md:h-[82vh] overflow-y-scroll overflow-x-hidden formscrollbar">
-          {/* <div className="relative mt-5">
-            <select
-              onChange={handleOpenSupplierRegisterModal}
-              value={selectedOption}
-              className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit cursor-pointer appearance-none w-full"
-            >
-              <option value="sports">Sports</option>
-              <option value="therapies">Therapies</option>
-              <option value="advertise">Advertise</option>
-            </select>
-            <MdKeyboardArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 text-2xl" />
-          </div> */}
-
           {/* Image File Uploader  */}
           <div>
             {!imageFile1 && (
@@ -136,7 +111,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
             )}
           </div>
 
-
           <div className="w-full flex flex-col gap-4">
             <input
               type="text"
@@ -156,14 +130,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
             />
           </div>
-
-          {/* <button
-            type="button"
-            onClick={onCaptcha}
-            className="bg-gradient mt-3 text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-          >
-            Register
-          </button> */}
 
           <button className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
             Upload

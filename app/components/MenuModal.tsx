@@ -5,9 +5,6 @@ import UserLoginModal from "./UserForm/UserLoginModal";
 import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
 import SupportModal from "./SupportModal";
-import SportsLoginModal from "./Sports/LoginModal";
-import SportsRegisterModal from "./Sports/RegisterModal";
-import SportsForgotPasswordModal from "./Sports/ForgotPasswordModal";
 import FavoriteModal from "./FavoritesModal";
 import VerificationLoadingModal from "./Avator/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
@@ -24,12 +21,6 @@ const MenuModal = () => {
   const [isUserForgotPasswordModalOpen, setIsUserForgotPasswordModalOpen] =
     useState<boolean>(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState<boolean>(false);
-  const [isSportsLoginModalOpen, setIsSportsLoginModalOpen] =
-    useState<boolean>(false);
-  const [isSportsRegisterModalOpen, setIsSportsRegisterModalOpen] =
-    useState<boolean>(false);
-  const [isSportsForgotPasswordModalOpen, setIsSportsForgotPasswordModalOpen] =
-    useState<boolean>(false);
   const [isFavoritesModalOpen, setIsFavoritesModalOpen] =
     useState<boolean>(false);
   const [isVerificationModalOpen, setIsVerificationModalOpen] =
@@ -40,7 +31,6 @@ const MenuModal = () => {
   const handleOpenMenuModal = () => {
     setIsOpenMenuModal(!isOpenMenuModal);
   };
-  
 
   //  Open UserLogin Modal
   const handleUserLoginModal = () => {
@@ -89,42 +79,6 @@ const MenuModal = () => {
     setIsSupportModalOpen(false);
   };
 
-  //   Sports Login Modal
-  const handleSportsLoginModalClick = () => {
-    setIsSportsRegisterModalOpen(false);
-    setIsSportsLoginModalOpen(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Sports Login Modal
-  const handleCloseSportsLoginModal = () => {
-    setIsSportsLoginModalOpen(false);
-  };
-
-  //  Open Sports Register Modal
-  const handleSportsRegisterModal = () => {
-    setIsSportsLoginModalOpen(false);
-    setIsSportsRegisterModalOpen(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Sports Register Modal
-  const handleCloseSportsRegisterModal = () => {
-    setIsSportsRegisterModalOpen(false);
-  };
-
-  //  Open Sports Forgot password Modal
-  const handleSportsForgotPasswordModal = () => {
-    setIsSportsLoginModalOpen(false);
-    setIsSportsRegisterModalOpen(false);
-    setIsSportsForgotPasswordModalOpen(true);
-  };
-
-  //  Close Sports Forgot password  Modal
-  const handleCloseSportsForgotPasswordModal = () => {
-    setIsSportsForgotPasswordModalOpen(false);
-  };
-
   //  Open Favorites Modal
   const handleFavoritesModal = () => {
     setIsFavoritesModalOpen(true);
@@ -150,7 +104,6 @@ const MenuModal = () => {
 
   //  Open  Captcha Modal
   const handleOpenCaptchaModal = () => {
-    setIsSportsRegisterModalOpen(false);
     setIsUserRegisterModalOpen(false);
     setIsOpenCaptchaModal(true);
     setIsOpenMenuModal(false);
@@ -219,20 +172,6 @@ const MenuModal = () => {
             </div>
 
             <div className="min-w-[200px] w-full mt-3 logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
-              {/* <button
-                onClick={handleSportsRegisterModal}
-                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
-              >
-                <Image
-                  src="/assets/icon/plus-circle.svg"
-                  alt="plus-circle"
-                  width={20}
-                  height={20}
-                  loading="lazy"
-                />
-                <span>Create</span>
-              </button> */}
-
               <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
                 <Image
                   src="/assets/icon/document.svg"
@@ -343,31 +282,6 @@ const MenuModal = () => {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Sports Login Windows Render  */}
-      {isSportsLoginModalOpen && (
-        <SportsLoginModal
-          onClose={handleCloseSportsLoginModal}
-          onSignup={handleSportsRegisterModal}
-          onForgotPassword={handleSportsForgotPasswordModal}
-        />
-      )}
-
-      {/* Sports Register Windows Render  */}
-      {isSportsRegisterModalOpen && (
-        <SportsRegisterModal
-          onClose={handleCloseSportsRegisterModal}
-          onLogin={handleSportsLoginModalClick}
-          onCaptcha={handleOpenCaptchaModal}
-        />
-      )}
-
-      {/* Sports Forgot passowr Windows Render  */}
-      {isSportsForgotPasswordModalOpen && (
-        <SportsForgotPasswordModal
-          onClose={handleCloseSportsForgotPasswordModal}
-        />
       )}
 
       {/* User Login Windows Modal  */}
