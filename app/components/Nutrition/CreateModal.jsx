@@ -64,7 +64,7 @@ const CreateModal = ({ onClose, onCreate }) => {
   // Category Dropdwon 
 
   const [isOpenCategoryDrodpwon, setIsCategoryDrodpwon] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Jui Jutsu");
+  const [selectedCategory, setSelectedCategory] = useState("Appetizers & Starters");
 
   const categories = ["Appetizers & Starters", "Soups", "Main course", "Soups", "Juices", "Smoothies", "Salads", "Side Dishes", "Desserts", "Snacks", "Beverages", "Breakfast", "Breads", "Baked Goods", "Finger Foods", "Street Food"]
 
