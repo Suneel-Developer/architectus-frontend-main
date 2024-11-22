@@ -66,7 +66,7 @@ const CreateModal = ({ onClose, onCreate }) => {
   const [isOpenCategoryDrodpwon, setIsCategoryDrodpwon] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Jui Jutsu");
 
-  const categories = ["Jui Jutsu", "Boxer", "Kickboxer", "Karateka", "Bodybuilder", "Coach", "Swimmer", "Wrestler", "Sprinter", "Gymnast", "Weightlifter", "Cyclist", "Football Player", "Basketball Player ", "Tennis Player", "Rugby Player", "Volleyball Player"];
+  const categories = ["Appetizers & Starters", "Soups", "Main course", "Soups", "Juices", "Smoothies", "Salads", "Side Dishes", "Desserts", "Snacks", "Beverages", "Breakfast", "Breads", "Baked Goods", "Finger Foods", "Street Food"]
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
@@ -82,6 +82,17 @@ const CreateModal = ({ onClose, onCreate }) => {
       ></div>
 
       <div className="bg-white rounded-[30px] px-5 py-[30px] w-full mx-auto max-w-[600px] relative">
+        {/* Close Window btn */}
+        <Image
+          src="/assets/icon/close-icon.svg"
+          alt="close-icon"
+          width={18}
+          height={18}
+          onClick={onClose}
+          loading="lazy"
+          className="absolute md:top-5 right-[30px] cursor-pointer"
+        />
+
         <h1 className="font-semibold text-xl text-center mb-3">
           Create
         </h1>

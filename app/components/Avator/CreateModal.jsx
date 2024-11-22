@@ -8,9 +8,9 @@ import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 
 const CreateModal = ({ onClose, onCreate }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Appetizers & Starters ");
+  const [selectedOption, setSelectedOption] = useState("Jui Jutsu");
 
-  const avators = ["Appetizers & Starters", "Soups", "Main course", "Soups", "Juices", "Smoothies", "Salads", "Side Dishes", "Desserts", "Snacks", "Beverages", "Breakfast", "Breads", "Baked Goods", "Finger Foods", "Street Food"];
+  const avators = ["Jui Jutsu", "Boxer", "Kickboxer", "Karateka", "Bodybuilder", "Coach", "Swimmer", "Wrestler", "Sprinter", "Gymnast", "Weightlifter", "Cyclist", "Football Player", "Basketball Player ", "Tennis Player", "Rugby Player", "Volleyball Player"];
 
   const handleSelect = (option) => {
     setSelectedOption(option);
@@ -25,6 +25,17 @@ const CreateModal = ({ onClose, onCreate }) => {
       ></div>
 
       <div className="bg-white rounded-[30px] px-5 py-[30px] w-full mx-auto max-w-[600px] relative h-[95vh] overflow-y-scroll overflow-x-hidden formscrollbar">
+        {/* Close Window btn */}
+        <Image
+          src="/assets/icon/close-icon.svg"
+          alt="close-icon"
+          width={18}
+          height={18}
+          onClick={onClose}
+          loading="lazy"
+          className="absolute md:top-5 right-[30px] cursor-pointer"
+        />
+
         <h1 className="font-semibold text-xl text-center mb-3">
           Create
         </h1>
