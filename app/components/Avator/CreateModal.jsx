@@ -25,16 +25,7 @@ const CreateModal = ({ onClose, onCreate }) => {
       ></div>
 
       <div className="bg-white rounded-[30px] px-5 py-[30px] w-full mx-auto max-w-[600px] relative h-[95vh] overflow-y-scroll overflow-x-hidden formscrollbar">
-        {/* Close Window btn */}
-        <Image
-          src="/assets/icon/close-icon.svg"
-          alt="close-icon"
-          width={18}
-          height={18}
-          onClick={onClose}
-          loading="lazy"
-          className="absolute md:top-5 right-[30px] cursor-pointer"
-        />
+        
 
         <h1 className="font-semibold text-xl text-center mb-3">
           Create
