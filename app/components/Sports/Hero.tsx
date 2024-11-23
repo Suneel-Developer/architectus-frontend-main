@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
-    const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
+  const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
 
   //   Open Search Modal
@@ -22,7 +22,6 @@ const Hero: React.FC = () => {
     setIsOpenSearchModal(false);
   };
 
-
   //   Open Download Modal
   const handleOpenDownloadModal = () => {
     setIsOpenDownloadModal(true);
@@ -32,7 +31,6 @@ const Hero: React.FC = () => {
   const handleCloseDownloadModal = () => {
     setIsOpenDownloadModal(false);
   };
-
 
   //   Open VideoUpload Modal
   const handleOpenVideoUploadModal = () => {
@@ -50,9 +48,9 @@ const Hero: React.FC = () => {
       <div className="mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-            Be as specific as possible — consider your sport discipline,
-            training method, exercise type, skill level, full-body workouts, or
-            focus on specific muscle groups.
+            Be as specific as possible—consider your sport discipline, training
+            methods, types of exercises, skill level, and whether you're
+            targeting specific muscles or engaging in full-body workouts.
           </p>
 
           <div className="flex gap-3 w-full sm:w-auto">
@@ -73,7 +71,7 @@ const Hero: React.FC = () => {
               onClick={handleOpenDownloadModal}
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
             >
-               <Image
+              <Image
                 src="/assets/icon/download-alt.svg"
                 alt="download icon"
                 width={15}
@@ -97,7 +95,10 @@ const Hero: React.FC = () => {
       )}
 
       {isOpenVideoUploadModal && (
-        <UploadVideoModal onClose={handleCloseVideoUploadModal} openPayment={undefined} />
+        <UploadVideoModal
+          onClose={handleCloseVideoUploadModal}
+          openPayment={undefined}
+        />
       )}
     </section>
   );
