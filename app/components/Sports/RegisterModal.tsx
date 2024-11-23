@@ -1,23 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import AdvertiseModal from "../Store/AdvertiseModal";
-import SupplierPlan from "../Store/SupplierPlan";
 
 interface RegisterModalProps {
   onClose: () => void;
-  onLogin: () => void;
-  onCaptcha: () => void;
 }
 
-const RegisterModal: React.FC<RegisterModalProps> = ({
-  onClose,
-  onLogin,
-  onCaptcha,
-}) => {
+const RegisterModal: React.FC<RegisterModalProps> = ({ onClose }) => {
   const [imageFile1, setImageFile1] = useState(null);
-  const [isOpenSuplierPlanmodal, setIsOpenSuplierPlanmodal] = useState(null);
-  const [isAdvertiseModal, setIsAdvertiseModal] = useState(false);
 
   const handleFileChange2 = (event: any) => {
     const file = event.target.files[0];
@@ -25,24 +15,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
       const imageURL = URL.createObjectURL(file);
       setImageFile1(imageURL);
     }
-  };
-
-  const handleCloseSupplierRegisterModal = () => {
-    setIsAdvertiseModal(false);
-  };
-
-  const handleOpenSupplierPlanModal = () => {
-    setIsOpenSuplierPlanmodal(true);
-    setIsAdvertiseModal(false);
-  };
-
-  const handleCloseSupplierPlanModal = () => {
-    setIsOpenSuplierPlanmodal(false);
-    setIsAdvertiseModal(true);
-  };
-
-  const closeAndOpenSportsModal = (option: string) => {
-    setIsAdvertiseModal(false);
   };
 
   return (
@@ -137,32 +109,12 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
           <p className="text-center text-sm text-[#0F0A19B2]">
             Already have an account?&nbsp;
-            <span
-              onClick={onLogin}
-              className="text-sm cursor-pointer font-semibold text-[#3D2278]"
-            >
+            <span className="text-sm cursor-pointer font-semibold text-[#3D2278]">
               Login
             </span>
           </p>
         </form>
       </div>
-
-      {isAdvertiseModal && (
-        <div className="z-50">
-          <AdvertiseModal
-            onClose={handleCloseSupplierRegisterModal}
-            onCreate={handleOpenSupplierPlanModal}
-            onLogin={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            closeAndOpenSportsModal={closeAndOpenSportsModal}
-          />
-        </div>
-      )}
-
-      {isOpenSuplierPlanmodal && (
-        <SupplierPlan onClose={handleCloseSupplierPlanModal} />
-      )}
     </div>
   );
 };
