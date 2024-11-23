@@ -8,14 +8,14 @@ import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 import { MdOutlineTextsms } from "react-icons/md";
 
-import ShareModal from "../Avator/ShareModal";
-import CreateSendModal from "../Avator/CreateSendModal";
-import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
+import ShareModal from "../Create/ShareModal";
+import CreateSendModal from "../Create/CreateSendModal";
+import VerificationLoadingModal from "../Create/VerificationLoadingModal";
 import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import FavoriteModal from "../FavoritesModal";
 import AddRatingModal from "../Reviews/AddRatingModal";
-import LanguagesDropdown from "../Therapies/LanguageDropdowns";
+import LanguagesDropdown from "../Heal/LanguageDropdowns";
 
 const sportsdata = [
   {

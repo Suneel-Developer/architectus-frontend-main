@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
-import LanguagesDropdown from "../Therapies/LanguageDropdowns";
+import LanguagesDropdown from "../Heal/LanguageDropdowns";
 import { FaPause } from "react-icons/fa6";
 
 

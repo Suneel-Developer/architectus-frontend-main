@@ -1,20 +1,20 @@
 import React from "react";
 import Header from "../components/Header";
+import Hero from "../components/Heal/Hero";
 import Footer from "../components/Footer";
-import Hero from "../components/Nutrition/Hero";
-import NutritionProducts from "../components/Nutrition/NutritionProducts";
+import TherapiesSlider from "../components/Heal/TherapiesSlider";
 
-const Store: React.FC = () => {
+const Heal = () => {
   return (
     <>
       <Header />
       <main className="pt-5 md:pt-10 pb-10 md:pb-20">
         <Hero />
-        <NutritionProducts />
+        <TherapiesSlider />
       </main>
       <Footer />
     </>
   );
 };
 
-export default Store;
+export default Heal;

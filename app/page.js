@@ -1,7 +1,7 @@
 import Header from "./components/Header.tsx";
-import Hero from "./components/Avator/Hero.tsx";
+import Hero from "./components/Create/Hero.tsx";
 import Footer from "./components/Footer.tsx";
-import Slider from "./components/Avator/Slider.tsx";
+import Slider from "./components/Create/Slider.tsx";
 
 export default function Home() {
   return (

@@ -6,12 +6,14 @@ const LanguagesDropdown = () => {
     { code: "en", label: "English", flag: "/assets/flags/en.png" },
     { code: "es", label: "Spanish", flag: "/assets/flags/sp.png" },
     { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
+    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
   ];
 
   const subtitleLanguages = [
     { code: "nl", label: "Dutch", flag: "/assets/flags/du.png" },
     { code: "de", label: "German", flag: "/assets/flags/gr.png" },
     { code: "pt", label: "Portuguese", flag: "/assets/flags/pr.png" },
+    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
   ];
 
   const [selectedAudio, setSelectedAudio] = useState(audioLanguages[0]);

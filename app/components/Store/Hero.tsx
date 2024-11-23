@@ -2,16 +2,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import SearchModal from "./SearchModal";
-import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
+import VerificationLoadingModal from "../Create/VerificationLoadingModal";
 import AdvertiseModal from "./AdvertiseModal";
 import SupplierPlan from "./SupplierPlan";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
-  const [isOpenVerificationModal, setIsOpenVerificationModal] =
-    useState<boolean>(false);
   const [isOpenAdvertiseModal, setIsOpenAdvertiseModal] =
     useState<boolean>(false);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenSearchModal = () => {
@@ -20,18 +19,6 @@ const Hero: React.FC = () => {
 
   //   Close Create modal
   const handleCloseSearchModal = () => {
-    setIsOpenSearchModal(false);
-  };
-
-  //   Open VisualisationVerification Modal
-  const handleOpenVerificationCreateModal = () => {
-    setIsOpenSearchModal(false);
-    setIsOpenVerificationModal(true);
-  };
-
-  //  Close VisualisationVerification Modal
-  const handleCloseVerificationModal = () => {
-    setIsOpenVerificationModal(false);
     setIsOpenSearchModal(false);
   };
 
@@ -47,6 +34,16 @@ const Hero: React.FC = () => {
     setIsOpenSearchModal(false);
   };
 
+  //   Open Payment Modal
+  const handleOpenPaymentModal = () => {
+    setIsOpenAdvertiseModal(false);
+    setIsOpenPaymentModal(true);
+  };
+
+  //  Close Payment Modal
+  const handleClosePaymentModal = () => {
+    setIsOpenPaymentModal(false);
+  };
 
   return (
     <section>
@@ -71,25 +68,22 @@ const Hero: React.FC = () => {
           </button>
         </div>
       </div>
-
+      
       {isOpenSearchModal && (
         <SearchModal
           onClose={handleCloseSearchModal}
-          onCreate={handleOpenVerificationCreateModal}
           openAdertise={handleOpenAdvertiseModal}
         />
-      )}
-
-      {isOpenVerificationModal && (
-        <VerificationLoadingModal onClose={handleCloseVerificationModal} />
       )}
 
       {isOpenAdvertiseModal && (
         <AdvertiseModal
           onClose={handleCloseAdvertiseModal}
+          openPayment={handleOpenPaymentModal}
         />
       )}
-
+      \
+      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
     </section>
   );
 };

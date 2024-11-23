@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 
-const SearchModal = ({ onClose, onCreate, openAdertise }) => {
+const SearchModal = ({ onClose, openAdertise }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [text, setText] = useState("");
   const recognitionRef = useRef(null);
@@ -62,31 +62,21 @@ const SearchModal = ({ onClose, onCreate, openAdertise }) => {
       <div onClick={onClose} className="absolute inset-0"></div>
 
       <div className="bg-white rounded-[20px] p-6 md:p-7 w-full mx-auto max-w-[600px] relative">
-        <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-left mb-4">
+        <h1 className="font-bold text-xl md:text-2xl text-[#0B0B0B] text-center mb-4">
           Search
         </h1>
 
-        <p className="text-sm text-[#0F0A19B2]">
-          Please describe in as much detail as possible what you intend to
-          search and your current location.
+        <p className="text-sm text-[#0F0A19B2] text-center">
+          Please describe in as much detail as possible what you intend to create, update, or modify.
         </p>
 
-        <Image
-          src="/assets/icon/close-icon.svg"
-          alt="close-icon"
-          width={18}
-          height={18}
-          onClick={onClose}
-          loading="lazy"
-          className="absolute top-5 md:top-[30px] right-[30px] cursor-pointer"
-        />
-
-        <div className="relative my-6 md:my-8">
+        {/* Voice Recorder & convert into text  */}
+        <div className="relative my-5">
           <textarea
             value={text}
             placeholder="Type"
             onChange={(e) => setText(e.target.value)}
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] pl-5 pt-4 border-[#E7E7E7] text-[#0F0A19] w-full rounded-xl bg-[#FAFAFA] h-[140px]"
+            className="placeholder:text-[#0000005C] resize-none p-5 w-full rounded-[14px] bg-[#EEE8FD] h-[140px]"
           ></textarea>
 
           <button
@@ -94,45 +84,47 @@ const SearchModal = ({ onClose, onCreate, openAdertise }) => {
             onClick={handleMicClick}
           >
             {isRecording ? (
-              <Image
-                src="/assets/icon/pause-icon.svg"
-                alt="pause icon"
-                width={32}
-                height={32}
-                loading="lazy"
-              />
+              <FaPause className="text-2xl text-red-600" />
             ) : (
               <Image
-                src="/assets/icon/mic-icon.svg"
+                src="/assets/microphone.svg"
                 alt="mic icon"
-                width={32}
-                height={32}
+                width={19}
+                height={24}
                 loading="lazy"
               />
             )}
           </button>
         </div>
 
-        <div className="flex flex-col items-center gap-y-3">
-          <button
-            onClick={onCreate}
-            className="bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-          >
-            Search
-          </button>
-
-          <button
-            onClick={openAdertise}
-            className="bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-          >
-            Advertise
-          </button>
-
+        <div className="flex items-center gap-3">
           <button
             onClick={onClose}
-            className="border-[1.5px] border-[#3D2278] text-[#3D2278] rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-all duration-300 hover:bg-[#3D2278] hover:text-white"
+            className="btn-red-gradient text-white rounded-[14px] w-full max-w-[126px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
           >
             Cancel
+          </button>
+
+          <button onClick={openAdertise} className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
+            Advertise
+            <Image
+              src="/assets/icon/gallery-icon.svg"
+              alt="Gallery Icon"
+              width={19}
+              height={17}
+              loading="lazy"
+            />
+          </button>
+
+          <button className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
+            Search
+            <Image
+              src="/assets/icon/search-text.svg"
+              alt="Search Icon"
+              width={18}
+              height={10}
+              loading="lazy"
+            />
           </button>
         </div>
       </div>

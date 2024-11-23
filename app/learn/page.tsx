@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Sports/Hero";
 import SportsProducts from "../components/Sports/SportsProducts";
 
-const Sports: React.FC = () => {
+const Learn: React.FC = () => {
   return (
     <>
       <Header />
@@ -17,4 +17,4 @@ const Sports: React.FC = () => {
   );
 };
 
-export default Sports;
+export default Learn;

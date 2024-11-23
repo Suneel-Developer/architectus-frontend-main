@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import CreateModal from "./CreateModal";
-import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
+import VerificationLoadingModal from "../Create/VerificationLoadingModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);

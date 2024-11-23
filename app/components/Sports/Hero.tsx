@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "../Therapies/CreateModal";
-import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
-import VideoUploadModal from "../Avator/UploadVideoModal";
+import CreateModal from "../Heal/CreateModal";
+import VerificationLoadingModal from "../Create/VerificationLoadingModal";
+import VideoUploadModal from "../Create/UploadVideoModal";
 import SupplierPlan from "../Store/SupplierPlan";
 
 const Hero: React.FC = () => {
@@ -102,11 +102,8 @@ const Hero: React.FC = () => {
       {isOpenVideoUploadModal && (
         <VideoUploadModal
           onClose={handleCloseVideoUploadModal}
-          openPayment={handleOpenPaymentModal}
         />
       )}
-
-      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
     </section>
   );
 };

@@ -14,6 +14,7 @@ const LanguageDropdown = () => {
 
   const languages = [
     { code: "en", name: "English", flag: "/assets/flags/en.png" },
+    { code: "la", name: "Latvian", flag: "/assets/flags/Latvian.jpg" },
     { code: "in", name: "Indonesia", flag: "/assets/flags/in.png" },
     { code: "ar", name: "Arabic", flag: "/assets/flags/ar.png" },
     { code: "ch", name: "Chinese", flag: "/assets/flags/ch.png" },
