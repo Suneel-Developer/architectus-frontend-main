@@ -289,23 +289,7 @@ const SportsProducts: React.FC = () => {
                 <LanguagesDropdown />
                 
                 <div className="flex flex-col md:flex-row gap-5">
-                  {/* Training Types */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-sm font-semibold text-gradient">
-                      Keywords in use
-                    </h3>
 
-                    <div className="flex flex-wrap gap-[6px] items-center">
-                      {sports.specialties.map((specialty, index) => (
-                        <span
-                          key={index}
-                          className="bg-[#ECECEC] text-sm rounded-lg px-3 py-1"
-                        >
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
 
                   {/* Social Icon  */}
                   <div className="flex flex-col gap-2">
