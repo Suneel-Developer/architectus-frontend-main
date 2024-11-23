@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { IoIosArrowDown } from "react-icons/io";
 import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 import { FaPause } from "react-icons/fa6";
 
@@ -88,10 +87,8 @@ const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
           <Image src="/assets/avator-img.png" alt="avator img" width={100} height={100} className="rounded-full w-[157px] h-[157px] object-cover" />
         </div>
 
-        <LanguagesDropdown />
-
         {/* Voice Recorder & convert into text  */}
-        <div className="relative my-5">
+        <div className="relative mb-3 mt-5">
           <textarea
             value={text}
             placeholder="Type"
@@ -116,6 +113,8 @@ const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
             )}
           </button>
         </div>
+
+        <LanguagesDropdown />
 
         {/* Add File  */}
         <div onClick={onUploadVideo} className="relative cursor-pointer pt-8 pb-5 mb-5 bg-[#E4DAFF] border border-dashed rounded-[14px] border-[#3D2278]">
