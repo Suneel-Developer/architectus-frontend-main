@@ -3,8 +3,8 @@ import React, { useState } from "react";
 
 const LanguagesDropdown = () => {
   const audioLanguages = [
-    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
     { code: "en", label: "English", flag: "/assets/flags/en.png" },
+    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
     { code: "br", label: "Brazilian", flag: "/assets/flags/br.png" },
     { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
     { code: "sp", label: "Spanish", flag: "/assets/flags/sp.png" },
@@ -15,8 +15,8 @@ const LanguagesDropdown = () => {
   ];
 
   const subtitleLanguages = [
-    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
     { code: "en", label: "English", flag: "/assets/flags/en.png" },
+    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
     { code: "br", label: "Brazilian", flag: "/assets/flags/br.png" },
     { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
     { code: "sp", label: "Spanish", flag: "/assets/flags/sp.png" },
