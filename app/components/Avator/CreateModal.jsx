@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 import LanguagesDropdown from "../Therapies/LanguageDropdowns";
+import { FaPause } from "react-icons/fa6";
 
 
 const avators = ["Jui Jutsu", "Boxer", "Kickboxer", "Karateka", "Bodybuilder", "Coach", "Swimmer", "Wrestler", "Sprinter", "Gymnast", "Weightlifter", "Cyclist", "Football Player", "Basketball Player ", "Tennis Player", "Rugby Player", "Volleyball Player"];

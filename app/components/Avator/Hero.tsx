@@ -5,6 +5,7 @@ import CreateModal from "./CreateModal";
 import VideoUploadModal from "./UploadVideoModal";
 import VerificationLoadingModal from "./VerificationLoadingModal";
 
+
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
   const [isOpenVerificationModal, setIsOpenVerificationModal] =

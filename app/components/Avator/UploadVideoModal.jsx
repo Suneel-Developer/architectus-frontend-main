@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { IoIosArrowDown } from "react-icons/io";
 import { FaPause } from "react-icons/fa6";
 
 
