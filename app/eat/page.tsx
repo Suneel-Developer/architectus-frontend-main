@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Hero from "../components/Nutrition/Hero";
-import NutritionProducts from "../components/Nutrition/NutritionProducts";
+import Hero from "../components/Eat/Hero";
+import NutritionProducts from "../components/Eat/NutritionProducts";
 
 const Eat: React.FC = () => {
   return (

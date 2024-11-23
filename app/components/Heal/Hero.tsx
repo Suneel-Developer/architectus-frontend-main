@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import SearchModal from "./SearchModal";
 import DownloadModal from "../Create/DownloadModal";
+import UploadVideoModal from "../Create/UploadVideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
+    useState<boolean>(false);
+    const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
 
   //   Open Search Modal
@@ -28,6 +31,18 @@ const Hero: React.FC = () => {
   const handleCloseDownloadModal = () => {
     setIsOpenDownloadModal(false);
   };
+
+    //   Open VideoUpload Modal
+    const handleOpenVideoUploadModal = () => {
+      setIsOpenVideoUploadModal(true);
+      setIsOpenSearchModal(false);
+    };
+  
+    //  Close VideoUpload Modal
+    const handleCloseVideoUploadModal = () => {
+      setIsOpenVideoUploadModal(false);
+    };
+  
 
   return (
     <section className="px-4 md:px-[30px]">
@@ -69,9 +84,12 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {isOpenSearchModal && <SearchModal onClose={handleCloseSearchModal} />}
+      {isOpenSearchModal && <SearchModal onClose={handleCloseSearchModal} openUploadVideo={handleOpenVideoUploadModal} />}
       {isOpenDownloadModal && (
         <DownloadModal onClose={handleCloseDownloadModal} />
+      )}
+       {isOpenVideoUploadModal && (
+        <UploadVideoModal onClose={handleCloseVideoUploadModal} openPayment={undefined} />
       )}
     </section>
   );

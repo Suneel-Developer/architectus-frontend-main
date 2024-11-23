@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import DownloadModal from "../Create/DownloadModal";
 import SearchModal from "../Heal/SearchModal";
+import UploadVideoModal from "../Create/UploadVideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
+    useState<boolean>(false);
+    const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
 
   //   Open Search Modal
@@ -28,6 +31,18 @@ const Hero: React.FC = () => {
   //  Close Download Modal
   const handleCloseDownloadModal = () => {
     setIsOpenDownloadModal(false);
+  };
+
+
+  //   Open VideoUpload Modal
+  const handleOpenVideoUploadModal = () => {
+    setIsOpenVideoUploadModal(true);
+    setIsOpenSearchModal(false);
+  };
+
+  //  Close VideoUpload Modal
+  const handleCloseVideoUploadModal = () => {
+    setIsOpenVideoUploadModal(false);
   };
 
   return (
@@ -73,11 +88,16 @@ const Hero: React.FC = () => {
       {isOpenSearchModal && (
         <SearchModal
           onClose={handleCloseSearchModal}
+          openUploadVideo={handleOpenVideoUploadModal}
         />
       )}
 
       {isOpenDownloadModal && (
         <DownloadModal onClose={handleCloseDownloadModal} />
+      )}
+
+      {isOpenVideoUploadModal && (
+        <UploadVideoModal onClose={handleCloseVideoUploadModal} openPayment={undefined} />
       )}
     </section>
   );

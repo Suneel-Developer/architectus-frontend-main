@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Hero from "../components/Sports/Hero";
-import SportsProducts from "../components/Sports/SportsProducts";
+import Hero from "../components/learn/Hero";
+import SportsProducts from "../components/learn/SportsProducts";
 
 const Learn: React.FC = () => {
   return (

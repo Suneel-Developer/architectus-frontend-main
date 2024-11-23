@@ -5,7 +5,7 @@ import { FaPause } from "react-icons/fa6";
 
 
 
-const SearchModal = ({ onClose }) => {
+const SearchModal = ({ onClose, openUploadVideo }) => {
     const [isRecording, setIsRecording] = useState(false);
     const [text, setText] = useState("");
     const recognitionRef = useRef(null);
@@ -106,7 +106,7 @@ const SearchModal = ({ onClose }) => {
 
 
                 {/* Add File  */}
-                <div className="relative pt-8 pb-5 my-5 bg-[#E4DAFF] border border-dashed rounded-[14px] border-[#3D2278]">
+                <div onClick={openUploadVideo} className="relative cursor-pointer pt-8 pb-5 my-5 bg-[#E4DAFF] border border-dashed rounded-[14px] border-[#3D2278]">
                     <div className="text-center">
                         <Image
                             alt="upload"

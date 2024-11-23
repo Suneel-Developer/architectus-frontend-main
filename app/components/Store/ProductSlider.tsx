@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
 import ShareModal from "../Create/ShareModal";
-import ChartModal from "../Nutrition/ChartModal";
+import ChartModal from "../Eat/ChartModal";
 import DownloadModal from "../Create/DownloadModal";
 import Image from "next/image";
 import ReviewsForm from "../Reviews/ReviewsForm";
