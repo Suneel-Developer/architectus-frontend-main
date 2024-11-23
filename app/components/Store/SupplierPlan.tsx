@@ -72,7 +72,7 @@ const SupplierPlan: React.FC<SupplierPlanModalProps> = ({ onClose }) => {
             Pay Now
           </button>
 
-          <button onClick={onClose} className="border-[1.5px] border-[#3D2278] text-[#3D2278] rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-all duration-300 hover:bg-[#3D2278] hover:text-white">
+          <button className="border-[1.5px] border-[#3D2278] text-[#3D2278] rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-all duration-300 hover:bg-[#3D2278] hover:text-white">
             Edit Details
           </button>
         </div>
