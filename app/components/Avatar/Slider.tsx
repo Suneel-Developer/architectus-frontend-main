@@ -30,25 +30,6 @@ const avators = [
 ];
 const genders = ["Male", "Female"];
 
-const categories = [
-  "Appetizers & Starters",
-  "Soups",
-  "Main course",
-  "Soups",
-  "Juices",
-  "Smoothies",
-  "Salads",
-  "Side Dishes",
-  "Desserts",
-  "Snacks",
-  "Beverages",
-  "Breakfast",
-  "Breads",
-  "Baked Goods",
-  "Finger Foods",
-  "Street Food",
-];
-
 const Slider = () => {
   const [genderDropdowns, setGenderDropdowns] = useState({});
   const [avatarDropdowns, setAvatarDropdowns] = useState({});
@@ -58,24 +39,22 @@ const Slider = () => {
     useState<boolean>(false);
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
-  const [categoryDropdowns, setCategoryDropdowns] = useState({});
-  const [selectedCategory, setSelectedCategory] = useState({});
 
-  const toggleGenderDropdown = (index: any) => {
+  const toggleGenderDropdown = (index:any) => {
     setGenderDropdowns((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
 
-  const toggleAvatarDropdown = (index: any) => {
+  const toggleAvatarDropdown = (index:any) => {
     setAvatarDropdowns((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
 
-  const handleSelectGender = (index: any, gender: any) => {
+  const handleSelectGender = (index:any, gender:any) => {
     setSelectedGenders((prev) => ({
       ...prev,
       [index]: gender,
@@ -86,30 +65,12 @@ const Slider = () => {
     }));
   };
 
-  const handleSelectAvatar = (index: any, option: any) => {
+  const handleSelectAvatar = (index:any, option:any) => {
     setSelectedOptions((prev) => ({
       ...prev,
       [index]: option,
     }));
     setAvatarDropdowns((prev) => ({
-      ...prev,
-      [index]: false,
-    }));
-  };
-
-  const toggleCategoryDropdown = (index: any) => {
-    setCategoryDropdowns((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
-
-  const handleSelectCategory = (index: any, gender: any) => {
-    setSelectedCategory((prev) => ({
-      ...prev,
-      [index]: gender,
-    }));
-    setCategoryDropdowns((prev) => ({
       ...prev,
       [index]: false,
     }));
@@ -194,7 +155,7 @@ const Slider = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row gap-5 mt-5 mb-3">
+              <div className="flex flex-col md:flex-row gap-5 mt-5">
                 {/* Gender Dropdown */}
                 <div className="w-full">
                   <h3 className="text-base font-semibold text-gradient mb-2">
@@ -259,38 +220,6 @@ const Slider = () => {
                       </ul>
                     )}
                   </div>
-                </div>
-              </div>
-              <div className="w-full">
-                <h3 className="text-base font-semibold text-gradient mb-2">
-                  Food Category
-                </h3>
-
-                <div className="relative w-full">
-                  <button
-                    onClick={() => toggleCategoryDropdown(index)}
-                    className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
-                  >
-                    {selectedCategory[index] || "Appetizers & Starters"}
-                    <IoIosArrowDown
-                      className={`text-purple-500 text-xl ${
-                        categoryDropdowns[index] ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {categoryDropdowns[index] && (
-                    <ul className="z-50 w-full mt-1 bg-white border rounded-lg shadow-lg h-[150px] overflow-y-scroll formscrollbar">
-                      {categories.map((category, i) => (
-                        <li
-                          key={i}
-                          onClick={() => handleSelectCategory(index, category)}
-                          className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                        >
-                          {category}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               </div>
             </div>
