@@ -4,13 +4,9 @@ import Image from "next/image";
 
 interface AdvertiseModalProps {
   onClose: () => void;
-  openPayment: () => void;
 }
 
-const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
-  onClose,
-  openPayment,
-}) => {
+const AdvertiseModal: React.FC<AdvertiseModalProps> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center z-50 px-5 py-3 windows-bg">
       <div onClick={onClose} className="absolute inset-0 h-screen"></div>
@@ -100,10 +96,7 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
             className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
           />
 
-          <button
-            onClick={openPayment}
-            className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-          >
+          <button type="button" className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
             Upload
           </button>
 

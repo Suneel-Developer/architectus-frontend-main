@@ -12,7 +12,6 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenAdvertiseModal, setIsOpenAdvertiseModal] =
     useState<boolean>(false);
-  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenSearchModal = () => {
@@ -48,16 +47,6 @@ const Hero: React.FC = () => {
     setIsOpenSearchModal(false);
   };
 
-  //   Open Payment Modal
-  const handleOpenPaymentModal = () => {
-    setIsOpenAdvertiseModal(false);
-    setIsOpenPaymentModal(true);
-  };
-
-  //  Close Payment Modal
-  const handleClosePaymentModal = () => {
-    setIsOpenPaymentModal(false);
-  };
 
   return (
     <section>
@@ -98,11 +87,9 @@ const Hero: React.FC = () => {
       {isOpenAdvertiseModal && (
         <AdvertiseModal
           onClose={handleCloseAdvertiseModal}
-          openPayment={handleOpenPaymentModal}
         />
       )}
 
-      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
     </section>
   );
 };
