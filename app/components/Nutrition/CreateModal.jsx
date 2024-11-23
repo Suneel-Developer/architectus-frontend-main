@@ -61,18 +61,6 @@ const CreateModal = ({ onClose, onCreate }) => {
   };
 
 
-  // Category Dropdwon 
-
-  const [isOpenCategoryDrodpwon, setIsCategoryDrodpwon] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Appetizers & Starters");
-
-  const categories = ["Appetizers & Starters", "Soups", "Main course", "Soups", "Juices", "Smoothies", "Salads", "Side Dishes", "Desserts", "Snacks", "Beverages", "Breakfast", "Breads", "Baked Goods", "Finger Foods", "Street Food"]
-
-  const handleSelectCategory = (category) => {
-    setSelectedCategory(category);
-    setIsCategoryDrodpwon(false);
-  };
-
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 px-5 windows-bg">
@@ -91,36 +79,6 @@ const CreateModal = ({ onClose, onCreate }) => {
         <p className="text-sm text-center mb-5">
           Please describe in as much detail as possible what you intend to create, update, or modify.</p>
 
-        <div>
-          <h3 className="text-base font-semibold text-gradient mb-2">Select Category</h3>
-
-          {/* Avator dropdown  */}
-          <div className="relative">
-            {/* Dropdown Button */}
-            <button
-              onClick={() => setIsCategoryDrodpwon((prev) => !prev)}
-              className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
-            >
-              {selectedCategory}
-              <IoIosArrowDown className={`text-purple-500 text-xl ${isOpenCategoryDrodpwon ? "rotate-180" : ""}`} />
-            </button>
-
-            {/* Dropdown Menu */}
-            {isOpenCategoryDrodpwon && (
-              <ul className="absolute z-10 w-full mt-1 bg-white border rounded-lg shadow-lg h-[200px] overflow-y-scroll formscrollbar">
-                {categories.map((category, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleSelectCategory(category)}
-                    className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
 
 
         {/* Voice Recorder & convert into text  */}

@@ -222,7 +222,7 @@ const NutritionProducts: React.FC = () => {
               <div className="flex flex-col md:flex-row gap-5 mt-5">
                 <div className="w-full">
                   <h3 className="text-base font-semibold text-gradient mb-2">
-                    Select Category
+                    Food Category
                   </h3>
 
                   <div className="relative w-full">
@@ -230,7 +230,7 @@ const NutritionProducts: React.FC = () => {
                       onClick={() => toggleCategoryDropdown(index)}
                       className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
                     >
-                      {selectedCategory[index] || "Select Category"}
+                      {selectedCategory[index] || "Appetizers & Starters"}
                       <IoIosArrowDown
                         className={`text-purple-500 text-xl ${
                           categoryDropdowns[index] ? "rotate-180" : ""
