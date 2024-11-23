@@ -4,6 +4,7 @@ import Image from "next/image";
 import SearchModal from "./SearchModal";
 import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
 import AdvertiseModal from "./AdvertiseModal";
+import SupplierPlan from "./SupplierPlan";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
@@ -11,6 +12,7 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenAdvertiseModal, setIsOpenAdvertiseModal] =
     useState<boolean>(false);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenSearchModal = () => {
@@ -44,6 +46,17 @@ const Hero: React.FC = () => {
   const handleCloseAdvertiseModal = () => {
     setIsOpenAdvertiseModal(false);
     setIsOpenSearchModal(false);
+  };
+
+  //   Open Payment Modal
+  const handleOpenPaymentModal = () => {
+    setIsOpenAdvertiseModal(false);
+    setIsOpenPaymentModal(true);
+  };
+
+  //  Close Payment Modal
+  const handleClosePaymentModal = () => {
+    setIsOpenPaymentModal(false);
   };
 
   return (
@@ -85,11 +98,11 @@ const Hero: React.FC = () => {
       {isOpenAdvertiseModal && (
         <AdvertiseModal
           onClose={handleCloseAdvertiseModal}
-          onLogin={function (): void {}}
-          onCreate={function (): void {}}
-          closeAndOpenSportsModal={function (): void {}}
+          openPayment={handleOpenPaymentModal}
         />
       )}
+
+      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
     </section>
   );
 };

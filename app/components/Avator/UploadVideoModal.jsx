@@ -69,8 +69,6 @@ const UploadVideoModal = ({ onClose, openPayment }) => {
             ></div>
 
             <div className="bg-white rounded-[30px] px-5 py-[30px] w-full mx-auto max-w-[600px] relative h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
-
-
                 <h1 className="font-semibold text-xl text-center mb-3">
                     Upload Video
                 </h1>

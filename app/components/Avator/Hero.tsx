@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import CreateModal from "./CreateModal";
-import VideoUploadModal from "./UploadVideoModal";
 import VerificationLoadingModal from "./VerificationLoadingModal";
 import SupplierPlan from "../Store/SupplierPlan";
+import UploadVideoModal from "./UploadVideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
@@ -12,7 +12,6 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
-
   const [isOpenPaymentModal, setIsOpenPaymentModal] =
     useState<boolean>(false);
 
@@ -48,6 +47,7 @@ const Hero: React.FC = () => {
   const handleCloseVideoUploadModal = () => {
     setIsOpenVideoUploadModal(false);
   };
+
   //   Open Payment Modal
   const handleOpenPaymentModal = () => {
     setIsOpenVideoUploadModal(false);
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
       )}
 
       {isOpenVideoUploadModal && (
-        <VideoUploadModal onClose={handleCloseVideoUploadModal} openPayment={handleOpenPaymentModal} />
+        <UploadVideoModal onClose={handleCloseVideoUploadModal} openPayment={handleOpenPaymentModal} />
       )}
 
       {isOpenPaymentModal && (
