@@ -6,7 +6,7 @@ import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
 import SupportModal from "./SupportModal";
 import FavoriteModal from "./FavoritesModal";
-import VerificationLoadingModal from "./Create/VerificationLoadingModal";
+import VerificationLoadingModal from "./Avatar/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
 import LanguageDropdown from "./LanguageDropdown";
 

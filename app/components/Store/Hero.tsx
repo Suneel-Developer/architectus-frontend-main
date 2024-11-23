@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import SearchModal from "./SearchModal";
-import VerificationLoadingModal from "../Create/VerificationLoadingModal";
+import VerificationLoadingModal from "../Avatar/VerificationLoadingModal";
 import AdvertiseModal from "./AdvertiseModal";
 import SupplierPlan from "./SupplierPlan";
 

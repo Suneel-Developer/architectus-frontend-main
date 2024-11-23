@@ -28,9 +28,9 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "app/components/Create/SearchModal.jsx",
+    "app/components/Avatar/SearchModal.jsx",
     "app/components/SupportModal.jsx"
-, "app/components/FavoritesModal.jsx", "app/components/Create/CreateSendModal.jsx"  ],
+, "app/components/FavoritesModal.jsx", "app/components/Avatar/CreateSendModal.jsx"  ],
   "exclude": [
     "node_modules"
   ]

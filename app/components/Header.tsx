@@ -7,10 +7,10 @@ import LanguageDropdown from "./LanguageDropdown";
 import MenuModal from "./MenuModal";
 
 const navLinks = [
-  { name: "Create", path: "/" },
-  { name: "Learn", path: "/learn" },
-  { name: "Eat", path: "/eat" },
-  { name: "Heal", path: "/heal" },
+  { name: "Avatar", path: "/" },
+  { name: "Sports", path: "/sports" },
+  { name: "Nutrition", path: "/nutrition" },
+  { name: "Therapies", path: "/therapies" },
   { name: "Store", path: "/store" },
 ];
 

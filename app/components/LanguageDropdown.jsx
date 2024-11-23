@@ -7,24 +7,21 @@ const LanguageDropdown = () => {
   const [isOpeLanguageDropdwon, setIsOpenLanguageDropdwon] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState({
     code: "en",
-    name: "English",
+    label: "English",
     flag: "/assets/flags/en.png",
   });
   const dropdownRef = useRef(null);
 
   const languages = [
-    { code: "en", name: "English", flag: "/assets/flags/en.png" },
-    { code: "la", name: "Latvian", flag: "/assets/flags/Latvian.jpg" },
-    { code: "in", name: "Indonesia", flag: "/assets/flags/in.png" },
-    { code: "ar", name: "Arabic", flag: "/assets/flags/ar.png" },
-    { code: "ch", name: "Chinese", flag: "/assets/flags/ch.png" },
-    { code: "du", name: "Dutch", flag: "/assets/flags/du.png" },
-    { code: "fr", name: "French", flag: "/assets/flags/fr.png" },
-    { code: "gr", name: "German", flag: "/assets/flags/gr.png" },
-    { code: "ja", name: "Japanese", flag: "/assets/flags/ja.png" },
-    { code: "ko", name: "Korean", flag: "/assets/flags/ko.png" },
-    { code: "pr", name: "Portuguese", flag: "/assets/flags/pr.png" },
-    { code: "sp", name: "Spanish", flag: "/assets/flags/sp.png" },
+    { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
+    { code: "en", label: "English", flag: "/assets/flags/en.png" },
+    { code: "br", label: "Brazilian", flag: "/assets/flags/br.png" },
+    { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
+    { code: "sp", label: "Spanish", flag: "/assets/flags/sp.png" },
+    { code: "gr", label: "German", flag: "/assets/flags/gr.png" },
+    { code: "it", label: "Italian", flag: "/assets/flags/it.png" },
+    { code: "ru", label: "Russian", flag: "/assets/flags/ru.png" },
+    { code: "du", label: "Dutch", flag: "/assets/flags/du.png" },
   ];
 
   const handleSelect = (language) => {
@@ -124,7 +121,7 @@ const LanguageDropdown = () => {
                 <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
                   <img
                     src={selectedLanguage.flag}
-                    alt={`${selectedLanguage.name}-flag`}
+                    alt={`${selectedLanguage.label}-flag`}
                     width={27}
                     height={18}
                     loading="lazy"
@@ -160,13 +157,13 @@ const LanguageDropdown = () => {
             <div className="max-w-[200px] w-full logomenubg bg-white rounded-[20px] px-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
               {languages.map((language) => (
                 <button
-                  key={language.name}
+                  key={language.label}
                   className="py-5 border-b border-opacity-10 flex items-center gap-2"
                   onClick={() => handleSelect(language)}
                 >
                   <Image
                     src={language.flag}
-                    alt={`${language.name}-flag`}
+                    alt={`${language.label}-flag`}
                     width={100}
                     height={100}
                     loading="lazy"
@@ -174,7 +171,7 @@ const LanguageDropdown = () => {
                   />
 
                   <span className="text-[#222741] text-base font-medium">
-                    {language.name}
+                    {language.label}
                   </span>
                 </button>
               ))}

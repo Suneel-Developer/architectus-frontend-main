@@ -3,17 +3,27 @@ import React, { useState } from "react";
 
 const LanguagesDropdown = () => {
   const audioLanguages = [
-    { code: "en", label: "English", flag: "/assets/flags/en.png" },
-    { code: "es", label: "Spanish", flag: "/assets/flags/sp.png" },
-    { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
     { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
+    { code: "en", label: "English", flag: "/assets/flags/en.png" },
+    { code: "br", label: "Brazilian", flag: "/assets/flags/br.png" },
+    { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
+    { code: "sp", label: "Spanish", flag: "/assets/flags/sp.png" },
+    { code: "gr", label: "German", flag: "/assets/flags/gr.png" },
+    { code: "it", label: "Italian", flag: "/assets/flags/it.png" },
+    { code: "ru", label: "Russian", flag: "/assets/flags/ru.png" },
+    { code: "du", label: "Dutch", flag: "/assets/flags/du.png" },
   ];
 
   const subtitleLanguages = [
-    { code: "nl", label: "Dutch", flag: "/assets/flags/du.png" },
-    { code: "de", label: "German", flag: "/assets/flags/gr.png" },
-    { code: "pt", label: "Portuguese", flag: "/assets/flags/pr.png" },
     { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
+    { code: "en", label: "English", flag: "/assets/flags/en.png" },
+    { code: "br", label: "Brazilian", flag: "/assets/flags/br.png" },
+    { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
+    { code: "sp", label: "Spanish", flag: "/assets/flags/sp.png" },
+    { code: "gr", label: "German", flag: "/assets/flags/gr.png" },
+    { code: "it", label: "Italian", flag: "/assets/flags/it.png" },
+    { code: "ru", label: "Russian", flag: "/assets/flags/ru.png" },
+    { code: "du", label: "Dutch", flag: "/assets/flags/du.png" },
   ];
 
   const [selectedAudio, setSelectedAudio] = useState(audioLanguages[0]);
@@ -52,7 +62,7 @@ const LanguagesDropdown = () => {
             />
           </button>
           {isAudioDropdownOpen && (
-            <ul className="absolute z-40 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+            <ul className="absolute z-40 mt-2 w-full bg-white border h-[200px] overflow-y-scroll tabs-scrollbar border-gray-300 rounded-lg shadow-lg">
               {audioLanguages.map((lang) => (
                 <li
                   key={lang.code}
@@ -101,7 +111,7 @@ const LanguagesDropdown = () => {
             />
           </button>
           {isSubtitleDropdownOpen && (
-            <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+            <ul className="absolute z-10 mt-2 w-full bg-white border h-[200px] overflow-y-scroll tabs-scrollbar border-gray-300 rounded-lg shadow-lg">
               {subtitleLanguages.map((lang) => (
                 <li
                   key={lang.code}
