@@ -2,11 +2,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import CreateModal from "./CreateModal";
+import VideoUploadModal from "./UploadVideoModal";
 import VerificationLoadingModal from "./VerificationLoadingModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
   const [isOpenVerificationModal, setIsOpenVerificationModal] =
+    useState<boolean>(false);
+  const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
 
   // Open Create modal
@@ -29,6 +32,17 @@ const Hero: React.FC = () => {
   const handleCloseVerificationModal = () => {
     setIsOpenVerificationModal(false);
     setIsOpenCreateModal(false);
+  };
+
+  //   Open VideoUpload Modal
+  const handleOpenVideoUploadModal = () => {
+    setIsOpenCreateModal(false);
+    setIsOpenVideoUploadModal(true);
+  };
+
+  //  Close VideoUpload Modal
+  const handleCloseVideoUploadModal = () => {
+    setIsOpenVideoUploadModal(false);
   };
 
   return (
@@ -59,11 +73,16 @@ const Hero: React.FC = () => {
         <CreateModal
           onClose={handleCloseCreateModal}
           onCreate={handleOpenVerificationCreateModal}
+          onUploadVideo={handleOpenVideoUploadModal}
         />
       )}
 
       {isOpenVerificationModal && (
         <VerificationLoadingModal onClose={handleCloseVerificationModal} />
+      )}
+
+      {isOpenVideoUploadModal && (
+        <VideoUploadModal onClose={handleCloseVideoUploadModal} />
       )}
     </section>
   );

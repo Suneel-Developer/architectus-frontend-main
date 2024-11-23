@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 
-const CreateModal = ({ onClose, onCreate, openSports }) => {
+const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [text, setText] = useState("");
   const recognitionRef = useRef(null);
@@ -121,7 +121,7 @@ const CreateModal = ({ onClose, onCreate, openSports }) => {
             Search
           </button>
 
-          <button onClick={openSports} className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
+          <button onClick={onUploadVideo} className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90">
             Upload
           </button>
 

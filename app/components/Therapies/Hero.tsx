@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
-import RegisterModal from "../Sports/RegisterModal";
+import VideoUploadModal from "../Avator/UploadVideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
   const [isOpenVerificationModal, setIsOpenVerificationModal] =
     useState<boolean>(false);
-  const [isOpenSportModal, setIsOpenSportModal] = useState<boolean>(false);
+  const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
+    useState<boolean>(false);
 
   // Open Create modal
   const handleOpenCreateModal = () => {
@@ -33,15 +34,15 @@ const Hero: React.FC = () => {
     setIsOpenCreateModal(false);
   };
 
-  //   Open Sport Modal
-  const handleOpenSportModal = () => {
+  //   Open VideoUpload Modal
+  const handleOpenVideoUploadModal = () => {
     setIsOpenCreateModal(false);
-    setIsOpenSportModal(true);
+    setIsOpenVideoUploadModal(true);
   };
 
-  //  Close Sport Modal
-  const handleCloseSportModal = () => {
-    setIsOpenSportModal(false);
+  //  Close VideoUpload Modal
+  const handleCloseVideoUploadModal = () => {
+    setIsOpenVideoUploadModal(false);
   };
 
   return (
@@ -73,7 +74,7 @@ const Hero: React.FC = () => {
         <CreateModal
           onClose={handleCloseCreateModal}
           onCreate={handleOpenVerificationCreateModal}
-          openSports={handleOpenSportModal}
+          onUploadVideo={handleOpenVideoUploadModal}
         />
       )}
 
@@ -81,12 +82,8 @@ const Hero: React.FC = () => {
         <VerificationLoadingModal onClose={handleCloseVerificationModal} />
       )}
 
-      {isOpenSportModal && (
-        <RegisterModal
-          onClose={handleCloseSportModal}
-          onLogin={function (): void {}}
-          onCaptcha={function (): void {}}
-        />
+      {isOpenVideoUploadModal && (
+        <VideoUploadModal onClose={handleCloseVideoUploadModal} />
       )}
     </section>
   );
