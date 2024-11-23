@@ -4,6 +4,7 @@ import Image from "next/image";
 import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Avator/VerificationLoadingModal";
 import VideoUploadModal from "../Avator/UploadVideoModal";
+import SupplierPlan from "../Store/SupplierPlan";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
@@ -11,6 +12,7 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenCreateModal = () => {
@@ -43,6 +45,17 @@ const Hero: React.FC = () => {
   //  Close VideoUpload Modal
   const handleCloseVideoUploadModal = () => {
     setIsOpenVideoUploadModal(false);
+  };
+
+  //   Open Payment Modal
+  const handleOpenPaymentModal = () => {
+    setIsOpenVideoUploadModal(false);
+    setIsOpenPaymentModal(true);
+  };
+
+  //  Close Payment Modal
+  const handleClosePaymentModal = () => {
+    setIsOpenPaymentModal(false);
   };
 
   return (
@@ -83,8 +96,13 @@ const Hero: React.FC = () => {
       )}
 
       {isOpenVideoUploadModal && (
-        <VideoUploadModal onClose={handleCloseVideoUploadModal} />
+        <VideoUploadModal
+          onClose={handleCloseVideoUploadModal}
+          openPayment={handleOpenPaymentModal}
+        />
       )}
+
+      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
     </section>
   );
 };
