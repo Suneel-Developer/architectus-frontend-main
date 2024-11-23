@@ -166,7 +166,7 @@ const Slider = () => {
                       onClick={() => toggleGenderDropdown(index)}
                       className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
                     >
-                      {selectedGenders[index] || "Select Gender"}
+                      {selectedGenders[index] || "Male"}
                       <IoIosArrowDown
                         className={`text-purple-500 text-xl ${
                           genderDropdowns[index] ? "rotate-180" : ""
@@ -199,7 +199,7 @@ const Slider = () => {
                       onClick={() => toggleAvatarDropdown(index)}
                       className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
                     >
-                      {selectedOptions[index] || "Select Avatar"}
+                      {selectedOptions[index] || "Coach"}
                       <IoIosArrowDown
                         className={`text-purple-500 text-xl ${
                           avatarDropdowns[index] ? "rotate-180" : ""
