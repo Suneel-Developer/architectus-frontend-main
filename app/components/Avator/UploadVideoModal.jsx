@@ -163,7 +163,7 @@ const UploadVideoModal = ({ onClose }) => {
                     </button>
 
                     <button className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
-                        Create
+                        Upload
                         <Image
                             src="/assets/icon/arrow-right-small.svg"
                             alt="arrow-right-small"
