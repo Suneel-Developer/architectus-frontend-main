@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "../Heal/CreateModal";
+import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Create/VerificationLoadingModal";
 import VideoUploadModal from "../Create/UploadVideoModal";
-import SupplierPlan from "../Store/SupplierPlan";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
@@ -12,8 +11,7 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
-    const [isOpenPaymentModal, setIsOpenPaymentModal] =
-    useState<boolean>(false);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenCreateModal = () => {
@@ -48,7 +46,6 @@ const Hero: React.FC = () => {
     setIsOpenVideoUploadModal(false);
   };
 
-  
   //   Open Payment Modal
   const handleOpenPaymentModal = () => {
     setIsOpenVideoUploadModal(false);
@@ -59,8 +56,6 @@ const Hero: React.FC = () => {
   const handleClosePaymentModal = () => {
     setIsOpenPaymentModal(false);
   };
-
-
 
   return (
     <section className="px-4 md:px-[30px]">
@@ -102,6 +97,7 @@ const Hero: React.FC = () => {
       {isOpenVideoUploadModal && (
         <VideoUploadModal
           onClose={handleCloseVideoUploadModal}
+          openPayment={undefined}
         />
       )}
     </section>

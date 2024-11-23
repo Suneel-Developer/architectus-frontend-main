@@ -1,52 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "./CreateModal";
-import VerificationLoadingModal from "../Create/VerificationLoadingModal";
-import VideoUploadModal from "../Create/UploadVideoModal";
 import SearchModal from "./SearchModal";
 
 const Hero: React.FC = () => {
-  const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
-  const [isOpenVerificationModal, setIsOpenVerificationModal] =
-    useState<boolean>(false);
-  const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
-    useState<boolean>(false);
   const [isOpenSearchModal, setIsOpenSearchModal] =
     useState<boolean>(false);
 
-  // Open Create modal
-  const handleOpenCreateModal = () => {
-    setIsOpenCreateModal(true);
-  };
-
-  //   Close Create modal
-  const handleCloseCreateModal = () => {
-    setIsOpenCreateModal(false);
-  };
-
-  //   Open VisualisationVerification Modal
-  const handleOpenVerificationCreateModal = () => {
-    setIsOpenCreateModal(false);
-    setIsOpenVerificationModal(true);
-  };
-
-  //  Close VisualisationVerification Modal
-  const handleCloseVerificationModal = () => {
-    setIsOpenVerificationModal(false);
-    setIsOpenCreateModal(false);
-  };
-
-  //   Open VideoUpload Modal
-  const handleOpenVideoUploadModal = () => {
-    setIsOpenCreateModal(false);
-    setIsOpenVideoUploadModal(true);
-  };
-
-  //  Close VideoUpload Modal
-  const handleCloseVideoUploadModal = () => {
-    setIsOpenVideoUploadModal(false);
-  };
 
   //   Open Search Modal
   const handleOpenSearchModal = () => {
@@ -83,23 +43,6 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {isOpenCreateModal && (
-        <CreateModal
-          onClose={handleCloseCreateModal}
-          onCreate={handleOpenVerificationCreateModal}
-          onUploadVideo={handleOpenVideoUploadModal}
-        />
-      )}
-
-      {isOpenVerificationModal && (
-        <VerificationLoadingModal onClose={handleCloseVerificationModal} />
-      )}
-
-      {/* {isOpenVideoUploadModal && (
-        <VideoUploadModal
-          onClose={handleCloseVideoUploadModal}
-        />
-      )} */}
 
       {isOpenSearchModal && (
         <SearchModal onClose={handleCloseSearchModal} />
