@@ -40,21 +40,21 @@ const Slider = () => {
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
 
-  const toggleGenderDropdown = (index) => {
+  const toggleGenderDropdown = (index:any) => {
     setGenderDropdowns((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
 
-  const toggleAvatarDropdown = (index) => {
+  const toggleAvatarDropdown = (index:any) => {
     setAvatarDropdowns((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
 
-  const handleSelectGender = (index, gender) => {
+  const handleSelectGender = (index:any, gender:any) => {
     setSelectedGenders((prev) => ({
       ...prev,
       [index]: gender,
@@ -65,7 +65,7 @@ const Slider = () => {
     }));
   };
 
-  const handleSelectAvatar = (index, option) => {
+  const handleSelectAvatar = (index:any, option:any) => {
     setSelectedOptions((prev) => ({
       ...prev,
       [index]: option,

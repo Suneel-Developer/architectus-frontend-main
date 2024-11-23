@@ -8,11 +8,31 @@ import ShareModal from "../Avatar/ShareModal";
 import ChartModal from "./ChartModal";
 import DownloadModal from "../Avatar/DownloadModal";
 import Image from "next/image";
-import ReviewsForm from "../Reviews/ReviewsForm";
-import ReviewsList from "../Reviews/ReviewsList";
 import Link from "next/link";
 import FavoriteModal from "../FavoritesModal";
 import AddRatingModal from "../Reviews/AddRatingModal";
+import { IoIosArrowDown } from "react-icons/io";
+
+const avators = [
+  "Jui Jutsu",
+  "Boxer",
+  "Kickboxer",
+  "Karateka",
+  "Bodybuilder",
+  "Coach",
+  "Swimmer",
+  "Wrestler",
+  "Sprinter",
+  "Gymnast",
+  "Weightlifter",
+  "Cyclist",
+  "Football Player",
+  "Basketball Player ",
+  "Tennis Player",
+  "Rugby Player",
+  "Volleyball Player",
+];
+const genders = ["Male", "Female"];
 
 const nutritionproducts = [
   {
@@ -51,36 +71,45 @@ const NutritionProducts: React.FC = () => {
     useState<boolean>(false);
   const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
     useState<boolean>(false);
-  const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
-  const [lastSlideIndex, setLastSlideIndex] = useState<number | null>(null);
+    const [genderDropdowns, setGenderDropdowns] = useState({});
+    const [avatarDropdowns, setAvatarDropdowns] = useState({});
+    const [selectedOptions, setSelectedOptions] = useState({});
+    const [selectedGenders, setSelectedGenders] = useState({});
 
-  // Handle showing reviews for a specific slide
-  const handleToggleReviews = (index: number) => {
-    if (showReviewsIndex === index) {
-      setShowReviewsIndex(null);
-    } else {
-      setShowReviewsIndex(index);
-    }
+  const toggleGenderDropdown = (index:any) => {
+    setGenderDropdowns((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
-  // Handle slide change (prev/next slides only)
-  const handleSlideChange = (swiper: any) => {
-    const currentIndex = swiper.activeIndex;
-
-    if (
-      lastSlideIndex !== null &&
-      (currentIndex === lastSlideIndex - 1 ||
-        currentIndex === lastSlideIndex + 1)
-    ) {
-      setShowReviewsIndex(null);
-    }
-
-    setLastSlideIndex(currentIndex);
+  const toggleAvatarDropdown = (index:any) => {
+    setAvatarDropdowns((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
-  // Open Add Rating Window
-  const handleOpenAddRatingModal = () => {
-    setIsOpenAddRatingModal(true);
+  const handleSelectGender = (index:any, gender:any) => {
+    setSelectedGenders((prev) => ({
+      ...prev,
+      [index]: gender,
+    }));
+    setGenderDropdowns((prev) => ({
+      ...prev,
+      [index]: false,
+    }));
+  };
+
+  const handleSelectAvatar = (index:any, option:any) => {
+    setSelectedOptions((prev) => ({
+      ...prev,
+      [index]: option,
+    }));
+    setAvatarDropdowns((prev) => ({
+      ...prev,
+      [index]: false,
+    }));
   };
 
   // Close Add Rating Window
@@ -153,7 +182,6 @@ const NutritionProducts: React.FC = () => {
         }}
         modules={[Pagination]}
         className="mySwiper z-0"
-        onSlideChange={handleSlideChange}
       >
         {nutritionproducts.map((nutrition, index) => (
           <SwiperSlide key={index}>
@@ -219,28 +247,73 @@ const NutritionProducts: React.FC = () => {
                 />
               </div>
 
-              {/* Reviews  */}
-              <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
-                <button
-                  onClick={() => handleToggleReviews(index)}
-                  className="flex items-center justify-between w-full"
-                >
-                  <span className="text-xl font-medium">Reviews (40)</span>
-                  <Image
-                    src="/assets/icon/angle-down-small.svg"
-                    alt="angle-down-small"
-                    width={14}
-                    height={9}
-                  />
-                </button>
-
-                {/* Reviews  */}
-                {showReviewsIndex === index && (
-                  <div>
-                    <ReviewsForm onOpen={handleOpenAddRatingModal} />
-                    <ReviewsList />
+              {/* Gender & Avator Drodpdowns  */}
+              <div className="flex flex-col md:flex-row gap-5 mt-5">
+                {/* Gender Dropdown */}
+                <div className="w-full">
+                  <h3 className="text-base font-semibold text-gradient mb-2">
+                    Select Gender
+                  </h3>
+                  <div className="relative w-full">
+                    <button
+                      onClick={() => toggleGenderDropdown(index)}
+                      className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
+                    >
+                      {selectedGenders[index] || "Select Gender"}
+                      <IoIosArrowDown
+                        className={`text-purple-500 text-xl ${
+                          genderDropdowns[index] ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {genderDropdowns[index] && (
+                      <ul className="z-50 w-full mt-1 bg-white border rounded-lg shadow-lg h-fit min-h-[80px] overflow-y-scroll formscrollbar">
+                        {genders.map((gender, i) => (
+                          <li
+                            key={i}
+                            onClick={() => handleSelectGender(index, gender)}
+                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                          >
+                            {gender}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                )}
+                </div>
+
+                {/* Avatar Dropdown */}
+                <div className="w-full">
+                  <h3 className="text-base font-semibold text-gradient mb-2">
+                    Select Avatar
+                  </h3>
+                  <div className="relative w-full">
+                    <button
+                      onClick={() => toggleAvatarDropdown(index)}
+                      className="w-full bg-[#EEE8FD] text-gray-700 px-5 py-3 text-base font-semibold rounded-[14px] flex justify-between items-center"
+                    >
+                      {selectedOptions[index] || "Select Avatar"}
+                      <IoIosArrowDown
+                        className={`text-purple-500 text-xl ${
+                          avatarDropdowns[index] ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {avatarDropdowns[index] && (
+                      <ul className="z-50 w-full mt-1 bg-white border rounded-lg shadow-lg h-[150px] overflow-y-scroll formscrollbar">
+                        {avators.map((avator, i) => (
+                          <li
+                            key={i}
+                            onClick={() => handleSelectAvatar(index, avator)}
+                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                          >
+                            {avator}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </SwiperSlide>
