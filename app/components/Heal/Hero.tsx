@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import SearchModal from "./SearchModal";
+import DownloadModal from "../Create/DownloadModal";
 
 const Hero: React.FC = () => {
-  const [isOpenSearchModal, setIsOpenSearchModal] =
+  const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
+  const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
-
 
   //   Open Search Modal
   const handleOpenSearchModal = () => {
@@ -16,6 +17,16 @@ const Hero: React.FC = () => {
   //  Close Search Modal
   const handleCloseSearchModal = () => {
     setIsOpenSearchModal(false);
+  };
+
+  //   Open Download Modal
+  const handleOpenDownloadModal = () => {
+    setIsOpenDownloadModal(true);
+  };
+
+  //  Close Download Modal
+  const handleCloseDownloadModal = () => {
+    setIsOpenDownloadModal(false);
   };
 
   return (
@@ -28,24 +39,39 @@ const Hero: React.FC = () => {
             are looking for.
           </p>
 
-          <button
-            onClick={handleOpenSearchModal}
-            className="max-w-[204px] w-full rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-          >
-            <Image
-              src="/assets/icon/search-text.svg"
-              alt="search-text icon"
-              width={19}
-              height={19}
-            />
-            Search
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <button
+              onClick={handleOpenSearchModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/search-text.svg"
+                alt="search-text icon"
+                width={19}
+                height={19}
+              />
+              Search
+            </button>
+
+            <button
+              onClick={handleOpenDownloadModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
+              />
+              Download
+            </button>
+          </div>
         </div>
       </div>
 
-
-      {isOpenSearchModal && (
-        <SearchModal onClose={handleCloseSearchModal} />
+      {isOpenSearchModal && <SearchModal onClose={handleCloseSearchModal} />}
+      {isOpenDownloadModal && (
+        <DownloadModal onClose={handleCloseDownloadModal} />
       )}
     </section>
   );

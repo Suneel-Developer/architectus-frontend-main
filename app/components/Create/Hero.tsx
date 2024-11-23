@@ -5,6 +5,7 @@ import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "./VerificationLoadingModal";
 import SupplierPlan from "../Store/SupplierPlan";
 import UploadVideoModal from "./UploadVideoModal";
+import DownloadModal from "./DownloadModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
@@ -12,7 +13,8 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
-  const [isOpenPaymentModal, setIsOpenPaymentModal] =
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
+  const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
 
   // Open Create modal
@@ -59,6 +61,16 @@ const Hero: React.FC = () => {
     setIsOpenPaymentModal(false);
   };
 
+  //   Open Download Modal
+  const handleOpenDownloadModal = () => {
+    setIsOpenDownloadModal(true);
+  };
+
+  //  Close Download Modal
+  const handleCloseDownloadModal = () => {
+    setIsOpenDownloadModal(false);
+  };
+
   return (
     <section>
       <div className="px-4 md:px-[30px] mb-5 md:mb-8">
@@ -68,18 +80,33 @@ const Hero: React.FC = () => {
             to improve, shape, and size.
           </p>
 
-          <button
-            onClick={handleOpenCreateModal}
-            className="max-w-[204px] w-full rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-          >
-            <Image
-              src="/assets/icon/w-plus-circle.svg"
-              alt="plus circle icon"
-              width={20}
-              height={20}
-            />
-            Create
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <button
+              onClick={handleOpenCreateModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
+              />
+              Create
+            </button>
+
+            <button
+              onClick={handleOpenDownloadModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
+              />
+              Download
+            </button>
+          </div>
         </div>
       </div>
 
@@ -96,12 +123,14 @@ const Hero: React.FC = () => {
       )}
 
       {isOpenVideoUploadModal && (
-        <UploadVideoModal onClose={handleCloseVideoUploadModal} openPayment={handleOpenPaymentModal} />
+        <UploadVideoModal
+          onClose={handleCloseVideoUploadModal}
+          openPayment={handleOpenPaymentModal}
+        />
       )}
 
-      {isOpenPaymentModal && (
-        <SupplierPlan onClose={handleClosePaymentModal} />
-      )}
+      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
+      {isOpenDownloadModal && <DownloadModal onClose={handleCloseDownloadModal} />}
     </section>
   );
 };

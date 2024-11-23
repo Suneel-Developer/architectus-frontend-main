@@ -98,15 +98,26 @@ const SearchModal = ({ onClose, openAdertise }) => {
           </button>
         </div>
 
+        <button onClick={openAdertise} className="bg-gradient text-white rounded-[14px] w-full mb-3 h-12 text-center flex sm:hidden items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
+          Advertise
+          <Image
+            src="/assets/icon/gallery-icon.svg"
+            alt="Gallery Icon"
+            width={19}
+            height={17}
+            loading="lazy"
+          />
+        </button>
+
         <div className="flex items-center gap-3">
           <button
             onClick={onClose}
-            className="btn-red-gradient text-white rounded-[14px] w-full max-w-[126px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
+            className="btn-red-gradient text-white rounded-[14px] w-full sm:max-w-[126px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
           >
             Cancel
           </button>
 
-          <button onClick={openAdertise} className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
+          <button onClick={openAdertise} className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center hidden sm:flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
             Advertise
             <Image
               src="/assets/icon/gallery-icon.svg"
@@ -117,7 +128,7 @@ const SearchModal = ({ onClose, openAdertise }) => {
             />
           </button>
 
-          <button className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
+          <button className="bg-gradient text-white rounded-[14px] w-full sm:max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
             Search
             <Image
               src="/assets/icon/search-text.svg"

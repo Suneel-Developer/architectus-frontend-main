@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Create/VerificationLoadingModal";
+import DownloadModal from "../Create/DownloadModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
   const [isOpenVerificationModal, setIsOpenVerificationModal] =
+    useState<boolean>(false);
+  const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
 
   // Open Create modal
@@ -31,26 +34,53 @@ const Hero: React.FC = () => {
     setIsOpenCreateModal(false);
   };
 
+  //   Open Download Modal
+  const handleOpenDownloadModal = () => {
+    setIsOpenDownloadModal(true);
+  };
+
+  //  Close Download Modal
+  const handleCloseDownloadModal = () => {
+    setIsOpenDownloadModal(false);
+  };
+
   return (
     <section>
       <div className="px-4 md:px-[30px] mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-          Be as specific as possible: include the ingredients, specify the type of diet (e.g., vegan, omnivorous, pescatarian, etc.), and provide any key details that bring your recipe to life.
+            Be as specific as possible: include the ingredients, specify the
+            type of diet (e.g., vegan, omnivorous, pescatarian, etc.), and
+            provide any key details that bring your recipe to life.
           </p>
 
-          <button
-            onClick={handleOpenCreateModal}
-            className="max-w-[204px] w-full rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-          >
-            <Image
-              src="/assets/icon/w-plus-circle.svg"
-              alt="plus circle icon"
-              width={20}
-              height={20}
-            />
-            Create
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <button
+              onClick={handleOpenCreateModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
+              />
+              Create
+            </button>
+
+            <button
+              onClick={handleOpenDownloadModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
+              />
+              Download
+            </button>
+          </div>
         </div>
       </div>
 
@@ -63,6 +93,9 @@ const Hero: React.FC = () => {
 
       {isOpenVerificationModal && (
         <VerificationLoadingModal onClose={handleCloseVerificationModal} />
+      )}
+      {isOpenDownloadModal && (
+        <DownloadModal onClose={handleCloseDownloadModal} />
       )}
     </section>
   );

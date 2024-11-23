@@ -4,6 +4,7 @@ import Image from "next/image";
 import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Create/VerificationLoadingModal";
 import VideoUploadModal from "../Create/UploadVideoModal";
+import DownloadModal from "../Create/DownloadModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
@@ -11,7 +12,8 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
-  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
+  const [isOpenDownloadModal, setIsOpenDownloadModal] =
+    useState<boolean>(false);
 
   // Open Create modal
   const handleOpenCreateModal = () => {
@@ -46,15 +48,14 @@ const Hero: React.FC = () => {
     setIsOpenVideoUploadModal(false);
   };
 
-  //   Open Payment Modal
-  const handleOpenPaymentModal = () => {
-    setIsOpenVideoUploadModal(false);
-    setIsOpenPaymentModal(true);
+  //   Open Download Modal
+  const handleOpenDownloadModal = () => {
+    setIsOpenDownloadModal(true);
   };
 
-  //  Close Payment Modal
-  const handleClosePaymentModal = () => {
-    setIsOpenPaymentModal(false);
+  //  Close Download Modal
+  const handleCloseDownloadModal = () => {
+    setIsOpenDownloadModal(false);
   };
 
   return (
@@ -67,18 +68,33 @@ const Hero: React.FC = () => {
             focus on specific muscle groups.
           </p>
 
-          <button
-            onClick={handleOpenCreateModal}
-            className="max-w-[204px] w-full rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-          >
-            <Image
-              src="/assets/icon/search-text.svg"
-              alt="search-text icon"
-              width={19}
-              height={19}
-            />
-            Search
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <button
+              onClick={handleOpenCreateModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/search-text.svg"
+                alt="search-text icon"
+                width={19}
+                height={19}
+              />
+              Search
+            </button>
+
+            <button
+              onClick={handleOpenDownloadModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
+              />
+              Download
+            </button>
+          </div>
         </div>
       </div>
 
@@ -99,6 +115,9 @@ const Hero: React.FC = () => {
           onClose={handleCloseVideoUploadModal}
           openPayment={undefined}
         />
+      )}
+      {isOpenDownloadModal && (
+        <DownloadModal onClose={handleCloseDownloadModal} />
       )}
     </section>
   );
