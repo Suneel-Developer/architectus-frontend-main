@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { FaPause } from "react-icons/fa6";
 
 const SearchModal = ({ onClose, openAdertise }) => {
   const [isRecording, setIsRecording] = useState(false);
