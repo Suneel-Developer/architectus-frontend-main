@@ -159,7 +159,7 @@ const Slider = () => {
                 {/* Gender Dropdown */}
                 <div className="w-full">
                   <h3 className="text-base font-semibold text-gradient mb-2">
-                    Select Gender
+                     Gender
                   </h3>
                   <div className="relative w-full">
                     <button
@@ -192,7 +192,7 @@ const Slider = () => {
                 {/* Avatar Dropdown */}
                 <div className="w-full">
                   <h3 className="text-base font-semibold text-gradient mb-2">
-                    Select Avatar
+                     Avatar
                   </h3>
                   <div className="relative w-full">
                     <button
