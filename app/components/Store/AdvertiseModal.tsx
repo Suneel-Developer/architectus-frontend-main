@@ -29,7 +29,7 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
 
         <form className="flex flex-col gap-y-5 h-[90vh] overflow-y-scroll overflow-x-hidden formscrollbar">
           {/* Add File  */}
-          <div className="relative borderUpload py-5 md:py-10">
+          <div className="relative pt-8 pb-5 my-5 bg-[#E4DAFF] border border-dashed rounded-[14px] border-[#3D2278]">
             <input
               className="absolute inset-0 w-full h-full opacity-0 z-50 cursor-pointer"
               type="file"
@@ -44,10 +44,10 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
                 className="mx-auto"
                 src="/assets/icon/upload-icon.svg"
               />
-              <h3 className="mt-6 text-sm font-normal text-[#0B0B0B]">
+              <h3 className="mt-6 text-base font-normal text-gradient">
                 <label htmlFor="file-upload" className="relative">
-                  <span>Drag and drop </span>
-                  <span className="text-[#3D2278] font-semibold">
+                  <span className="text-gradient">Drag and drop </span>
+                  <span className="font-semibold text-gradient">
                     or browse
                   </span>
                   <input
@@ -68,36 +68,36 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
           <input
             type="text"
             placeholder="Title"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 rounded-[10px] bg-[#FAFAFA] h-fit"
+            className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
 
           <textarea
             placeholder="Please provide a clear summary of the treatment, explaining how it works and which types of conditions it is intended for."
-            className="border placeholder:text-sm resize-none placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full min-h-[140px] rounded-[10px] bg-[#FAFAFA]"
+            className="resize-none  min-h-[140px] bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
 
           <input
             type="text"
             placeholder="Brand Name"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
+            className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
 
           <input
             type="text"
             placeholder="Price"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
+            className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
 
           <input
             type="text"
             placeholder="Discount Price"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
+            className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
 
           <input
             type="text"
             placeholder="Website link"
-            className="border placeholder:text-sm placeholder:text-[#9D9D9D] px-5 py-4 border-[#E7E7E7] flex-1 w-full rounded-[10px] bg-[#FAFAFA]"
+            className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
 
           <button
