@@ -77,16 +77,10 @@ const UploadVideoModal = ({ onClose, openPayment }) => {
                     Please describe in as much detail as possible what you intend to create, update, or modify.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-5 mt-7">
-                    <div className="w-full">
-                        <label htmlFor="filename" className="text-gradient text-base font-semibold mb-2 block">File name</label>
-                        <input type="text" placeholder="Enter File Name . . ." className="bg-[#EEE8FD] rounded-[14px] py-3 px-4 placeholder:text-[#0000005C] w-full" />
-                    </div>
 
-                    <div className="w-full">
-                        <label htmlFor="title" className="text-gradient text-base font-semibold mb-2 block">Title</label>
-                        <input type="text" placeholder="Enter Title . . ." className="bg-[#EEE8FD] rounded-[14px] py-3 px-4 placeholder:text-[#0000005C] w-full" />
-                    </div>
+                <div className="w-full mt-7">
+                    <label htmlFor="title" className="text-gradient text-base font-semibold mb-2 block">Title</label>
+                    <input type="text" placeholder="Enter Title . . ." className="bg-[#EEE8FD] rounded-[14px] py-3 px-4 placeholder:text-[#0000005C] w-full" />
                 </div>
 
                 {/* Voice Recorder & convert into text  */}
