@@ -116,18 +116,8 @@ const UploadVideoModal = ({ onClose, openPayment }) => {
                     </button>
                 </div>
 
-                {/* Type Translate Audio & Subtitles  */}
-                <div className="flex flex-col sm:flex-row gap-5">
-                    <div className="w-full">
-                        <label htmlFor="translateaudio" className="text-gradient text-base font-semibold mb-2 block">Translate Audio</label>
-                        <textarea type="text" placeholder="Type . . ." className="bg-[#EEE8FD] rounded-[14px] h-[140px] p-4 placeholder:text-[#0000005C] w-full" />
-                    </div>
+                <input type="text" placeholder="Website Link" className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C]" />
 
-                    <div className="w-full">
-                        <label htmlFor="translatesubtitles" className="text-gradient text-base font-semibold mb-2 block">Translate Subtitles</label>
-                        <textarea type="text" placeholder="Type . . ." className="bg-[#EEE8FD] rounded-[14px] h-[140px] p-4 placeholder:text-[#0000005C] w-full" />
-                    </div>
-                </div>
 
                 {/* Add File  */}
                 <div className="relative pt-8 pb-5 my-5 bg-[#E4DAFF] border border-dashed rounded-[14px] border-[#3D2278]">
