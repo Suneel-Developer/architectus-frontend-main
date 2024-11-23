@@ -98,11 +98,11 @@ const Hero: React.FC = () => {
               onClick={handleOpenDownloadModal}
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
             >
-              <Image
-                src="/assets/icon/w-plus-circle.svg"
-                alt="plus circle icon"
-                width={20}
-                height={20}
+               <Image
+                src="/assets/icon/download-alt.svg"
+                alt="download icon"
+                width={15}
+                height={18}
               />
               Download
             </button>

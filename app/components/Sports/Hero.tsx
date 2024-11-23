@@ -1,52 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CreateModal from "./CreateModal";
-import VerificationLoadingModal from "../Create/VerificationLoadingModal";
-import VideoUploadModal from "../Create/UploadVideoModal";
 import DownloadModal from "../Create/DownloadModal";
+import SearchModal from "../Heal/SearchModal";
 
 const Hero: React.FC = () => {
-  const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
-  const [isOpenVerificationModal, setIsOpenVerificationModal] =
-    useState<boolean>(false);
-  const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
-    useState<boolean>(false);
+  const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
 
-  // Open Create modal
-  const handleOpenCreateModal = () => {
-    setIsOpenCreateModal(true);
+  //   Open Search Modal
+  const handleOpenSearchModal = () => {
+    setIsOpenSearchModal(true);
   };
 
-  //   Close Create modal
-  const handleCloseCreateModal = () => {
-    setIsOpenCreateModal(false);
+  //  Close Search Modal
+  const handleCloseSearchModal = () => {
+    setIsOpenSearchModal(false);
   };
 
-  //   Open VisualisationVerification Modal
-  const handleOpenVerificationCreateModal = () => {
-    setIsOpenCreateModal(false);
-    setIsOpenVerificationModal(true);
-  };
-
-  //  Close VisualisationVerification Modal
-  const handleCloseVerificationModal = () => {
-    setIsOpenVerificationModal(false);
-    setIsOpenCreateModal(false);
-  };
-
-  //   Open VideoUpload Modal
-  const handleOpenVideoUploadModal = () => {
-    setIsOpenCreateModal(false);
-    setIsOpenVideoUploadModal(true);
-  };
-
-  //  Close VideoUpload Modal
-  const handleCloseVideoUploadModal = () => {
-    setIsOpenVideoUploadModal(false);
-  };
 
   //   Open Download Modal
   const handleOpenDownloadModal = () => {
@@ -70,7 +42,7 @@ const Hero: React.FC = () => {
 
           <div className="flex gap-3 w-full sm:w-auto">
             <button
-              onClick={handleOpenCreateModal}
+              onClick={handleOpenSearchModal}
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
             >
               <Image
@@ -86,11 +58,11 @@ const Hero: React.FC = () => {
               onClick={handleOpenDownloadModal}
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
             >
-              <Image
-                src="/assets/icon/w-plus-circle.svg"
-                alt="plus circle icon"
-                width={20}
-                height={20}
+               <Image
+                src="/assets/icon/download-alt.svg"
+                alt="download icon"
+                width={15}
+                height={18}
               />
               Download
             </button>
@@ -98,24 +70,12 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {isOpenCreateModal && (
-        <CreateModal
-          onClose={handleCloseCreateModal}
-          onCreate={handleOpenVerificationCreateModal}
-          onUploadVideo={handleOpenVideoUploadModal}
+      {isOpenSearchModal && (
+        <SearchModal
+          onClose={handleCloseSearchModal}
         />
       )}
 
-      {isOpenVerificationModal && (
-        <VerificationLoadingModal onClose={handleCloseVerificationModal} />
-      )}
-
-      {isOpenVideoUploadModal && (
-        <VideoUploadModal
-          onClose={handleCloseVideoUploadModal}
-          openPayment={undefined}
-        />
-      )}
       {isOpenDownloadModal && (
         <DownloadModal onClose={handleCloseDownloadModal} />
       )}
