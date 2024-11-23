@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
             Be as specific as possible—consider your sport discipline, training
-            methods, types of exercises, skill level, and whether you're
+            methods, types of exercises, skill level, and whether you&apos;re
             targeting specific muscles or engaging in full-body workouts.
           </p>
 
