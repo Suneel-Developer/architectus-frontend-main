@@ -79,7 +79,7 @@ const CreateSendModal = ({ onClose, onCreate }) => {
           className="absolute top-5 md:top-[30px] right-[30px] cursor-pointer"
         />
 
-        <div className="relative my-6 md:my-8">
+        <div className="relative mt-6 mb-4">
           <textarea
             value={text}
             placeholder="Type"
@@ -111,19 +111,23 @@ const CreateSendModal = ({ onClose, onCreate }) => {
           </button>
         </div>
 
-        <div className="flex flex-col gap-5 items-center gap-y-5">
-          <button
-            onClick={onCreate}
-            className="bg-gradient text-white rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
-          >
-            Send
-          </button>
-
+        <div className="flex items-center justify-between gap-2">
           <button
             onClick={onClose}
-            className="border-[1.5px] border-[#3D2278] text-[#3D2278] rounded-[10px] w-full h-12 md:h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-all duration-300 hover:bg-[#3D2278] hover:text-white"
+            className="btn-red-gradient text-white rounded-[14px] w-full max-w-[126px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
           >
             Cancel
+          </button>
+
+          <button onClick={onCreate} className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
+            Create
+            <Image
+              src="/assets/icon/arrow-right-small.svg"
+              alt="arrow-right-small"
+              width={18}
+              height={10}
+              loading="lazy"
+            />
           </button>
         </div>
       </div>
