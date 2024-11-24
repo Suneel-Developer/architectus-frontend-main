@@ -2,6 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { FaPause } from "react-icons/fa6";
+import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 
 
 
@@ -78,11 +79,6 @@ const UploadVideoModal = ({ onClose, openPayment }) => {
                 </p>
 
 
-                <div className="w-full mt-7">
-                    <label htmlFor="title" className="text-gradient text-base font-semibold mb-2 block">Title</label>
-                    <input type="text" placeholder="Enter Title . . ." className="bg-[#EEE8FD] rounded-[14px] py-3 px-4 placeholder:text-[#0000005C] w-full" />
-                </div>
-
                 {/* Voice Recorder & convert into text  */}
                 <div className="relative my-5">
                     <textarea
@@ -109,6 +105,8 @@ const UploadVideoModal = ({ onClose, openPayment }) => {
                         )}
                     </button>
                 </div>
+
+                <LanguagesDropdown/>
 
                 <input type="text" placeholder="Website Link" className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C]" />
 
