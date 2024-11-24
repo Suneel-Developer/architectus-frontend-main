@@ -120,7 +120,7 @@ const CreateSendModal = ({ onClose, onCreate }) => {
           </button>
 
           <button onClick={onCreate} className="bg-gradient text-white rounded-[14px] w-full max-w-[260px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90">
-            Create
+            Send
             <Image
               src="/assets/icon/arrow-right-small.svg"
               alt="arrow-right-small"

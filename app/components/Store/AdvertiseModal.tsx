@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { FiUpload } from "react-icons/fi";
 
 interface AdvertiseModalProps {
   onClose: () => void;
@@ -47,9 +48,7 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
               <h3 className="mt-6 text-base font-normal text-gradient">
                 <label htmlFor="file-upload" className="relative">
                   <span className="text-gradient">Drag and drop </span>
-                  <span className="font-semibold text-gradient">
-                    or browse
-                  </span>
+                  <span className="font-semibold text-gradient">or browse</span>
                   <input
                     id="file-upload"
                     className="sr-only"
@@ -99,13 +98,14 @@ const AdvertiseModal: React.FC<AdvertiseModalProps> = ({
             placeholder="Website link"
             className="bg-[#E4DAFF] p-4 w-full rounded-[14px] placeholder:text-[#0000005C] outline-none"
           />
-
+          
           <button
             onClick={openPayment}
             type="button"
-            className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90"
+            className="bg-gradient text-white rounded-[10px] w-full min-h-12 md:min-h-[52px] text-center px-3 text-sm md:text-lg tracking-[2%] font-medium transition-opacity duration-300 hover:opacity-90 flex items-center gap-3 justify-center"
           >
             Upload
+            <FiUpload className="text-xl" />
           </button>
 
           <p className="text-center text-sm text-[#0F0A19B2]">
