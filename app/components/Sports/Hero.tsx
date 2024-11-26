@@ -4,6 +4,7 @@ import Image from "next/image";
 import DownloadModal from "../Avatar/DownloadModal";
 import SearchModal from "../Therapies/SearchModal";
 import UploadVideoModal from "../Avatar/UploadVideoModal";
+import VideoModal from "../Avatar/VideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
@@ -11,6 +12,7 @@ const Hero: React.FC = () => {
     useState<boolean>(false);
   const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
+  const [isOpenVideoModal, setIsOpenVideoModal] = useState<boolean>(false);
 
   //   Open Search Modal
   const handleOpenSearchModal = () => {
@@ -43,18 +45,30 @@ const Hero: React.FC = () => {
     setIsOpenVideoUploadModal(false);
   };
 
+  //   Open Video Modal
+  const handleOpenVideoModal = () => {
+    setIsOpenVideoModal(true);
+  };
+
+  //  Close Video Modal
+  const handleCloseVideoModal = () => {
+    setIsOpenVideoModal(false);
+  };
+
   return (
     <section className="px-4 md:px-[30px]">
       <div className="mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col lg:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-            Be as specific as possible—consider your sport discipline, training
-            methods, types of exercises, skill level, and whether you&apos;re
-            targeting specific muscles or engaging in full-body workouts.
+            Resource for all things related to sports, offering the latest
+            trends, tips, tutorials, podcasts, and more.
           </p>
 
           <div className="flex gap-3 w-full sm:w-auto flex-wrap sm:flex-nowrap">
-            <button className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:base px-2 sm:px-4 py-4 font-medium">
+            <button
+              onClick={handleOpenVideoModal}
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
+            >
               <Image
                 src="/assets/icon/info-circle.svg"
                 alt="info circle icon"
@@ -67,7 +81,7 @@ const Hero: React.FC = () => {
 
             <button
               onClick={handleOpenDownloadModal}
-              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:base px-2 sm:px-4 py-4 font-medium"
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
             >
               <Image
                 src="/assets/icon/download-alt.svg"
@@ -80,7 +94,7 @@ const Hero: React.FC = () => {
 
             <button
               onClick={handleOpenSearchModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium text-sm sm:base"
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium text-sm sm:text-base"
             >
               <Image
                 src="/assets/icon/search-text.svg"
@@ -111,6 +125,9 @@ const Hero: React.FC = () => {
           openPayment={undefined}
         />
       )}
+
+      {/* Video Windows  */}
+      {isOpenVideoModal && <VideoModal onClose={handleCloseVideoModal} />}
     </section>
   );
 };

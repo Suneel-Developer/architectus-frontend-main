@@ -5,12 +5,14 @@ import SearchModal from "./SearchModal";
 import VerificationLoadingModal from "../Avatar/VerificationLoadingModal";
 import AdvertiseModal from "./AdvertiseModal";
 import SupplierPlan from "./SupplierPlan";
+import VideoModal from "../Avatar/VideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenAdvertiseModal, setIsOpenAdvertiseModal] =
     useState<boolean>(false);
   const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
+  const [isOpenVideoModal, setIsOpenVideoModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenSearchModal = () => {
@@ -45,17 +47,30 @@ const Hero: React.FC = () => {
     setIsOpenPaymentModal(false);
   };
 
+  //   Open Video Modal
+  const handleOpenVideoModal = () => {
+    setIsOpenVideoModal(true);
+  };
+
+  //  Close Video Modal
+  const handleCloseVideoModal = () => {
+    setIsOpenVideoModal(false);
+  };
+
   return (
     <section>
       <div className="px-4 md:px-[30px] mb-5 md:mb-8">
         <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
-            Search for workout supplements, vitamins, training equipment,
-            sportswear, events and country location.
+            Find the ideal products and services to support your journey toward
+            staying fit and healthy.
           </p>
 
           <div className="flex gap-3 w-full sm:w-auto">
-            <button className="w-full sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:base px-2 sm:px-4 py-4 font-medium">
+            <button
+              onClick={handleOpenVideoModal}
+              className="w-full sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
+            >
               <Image
                 src="/assets/icon/info-circle.svg"
                 alt="info circle icon"
@@ -68,7 +83,7 @@ const Hero: React.FC = () => {
 
             <button
               onClick={handleOpenSearchModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:base px-2 sm:px-4 py-4 text-white font-medium"
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium"
             >
               <Image
                 src="/assets/icon/search-text.svg"
@@ -95,6 +110,8 @@ const Hero: React.FC = () => {
       )}
       \
       {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
+      {/* Video Windows  */}
+      {isOpenVideoModal && <VideoModal onClose={handleCloseVideoModal} />}
     </section>
   );
 };
