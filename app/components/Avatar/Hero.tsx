@@ -6,6 +6,7 @@ import VerificationLoadingModal from "./VerificationLoadingModal";
 import SupplierPlan from "../Store/SupplierPlan";
 import UploadVideoModal from "./UploadVideoModal";
 import DownloadModal from "./DownloadModal";
+import VideoModal from "./VideoModal";
 
 const Hero: React.FC = () => {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
@@ -16,6 +17,7 @@ const Hero: React.FC = () => {
   const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
+  const [isOpenVideoModal, setIsOpenVideoModal] = useState<boolean>(false);
 
   // Open Create modal
   const handleOpenCreateModal = () => {
@@ -71,6 +73,16 @@ const Hero: React.FC = () => {
     setIsOpenDownloadModal(false);
   };
 
+  //   Open Video Modal
+  const handleOpenVideoModal = () => {
+    setIsOpenVideoModal(true);
+  };
+
+  //  Close Video Modal
+  const handleCloseVideoModal = () => {
+    setIsOpenVideoModal(false);
+  };
+
   return (
     <section>
       <div className="px-4 md:px-[30px] mb-5 md:mb-8">
@@ -83,6 +95,7 @@ const Hero: React.FC = () => {
 
           <div className="flex gap-3 w-full sm:w-auto flex-wrap sm:flex-nowrap">
             <button
+              onClick={handleOpenVideoModal}
               className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium"
             >
               <Image
@@ -144,9 +157,14 @@ const Hero: React.FC = () => {
       )}
 
       {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
+
+      {/* Download Windows  */}
       {isOpenDownloadModal && (
         <DownloadModal onClose={handleCloseDownloadModal} />
       )}
+
+      {/* Video Windows  */}
+      {isOpenVideoModal && <VideoModal onClose={handleCloseVideoModal} />}
     </section>
   );
 };
