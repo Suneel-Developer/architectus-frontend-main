@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex gap-3 w-full sm:w-auto">
-            <button className="w-full sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium">
+            <button className="w-full sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:base px-2 sm:px-4 py-4 font-medium">
               <Image
                 src="/assets/icon/info-circle.svg"
                 alt="info circle icon"
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
 
             <button
               onClick={handleOpenSearchModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:base px-2 sm:px-4 py-4 text-white font-medium"
             >
               <Image
                 src="/assets/icon/search-text.svg"
