@@ -54,28 +54,39 @@ const Hero: React.FC = () => {
             sportswear, events and country location.
           </p>
 
-          <button
-            onClick={handleOpenSearchModal}
-            className="max-w-[204px] w-full rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-          >
-            <Image
-              src="/assets/icon/search-text.svg"
-              alt="search-text icon"
-              width={19}
-              height={19}
-            />
-            Search
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <button className="w-full sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium">
+              <Image
+                src="/assets/icon/info-circle.svg"
+                alt="info circle icon"
+                width={20}
+                height={20}
+                className="z-40"
+              />
+              How It Works
+            </button>
+
+            <button
+              onClick={handleOpenSearchModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
+            >
+              <Image
+                src="/assets/icon/search-text.svg"
+                alt="search-text icon"
+                width={19}
+                height={19}
+              />
+              Search
+            </button>
+          </div>
         </div>
       </div>
-      
       {isOpenSearchModal && (
         <SearchModal
           onClose={handleCloseSearchModal}
           openAdertise={handleOpenAdvertiseModal}
         />
       )}
-
       {isOpenAdvertiseModal && (
         <AdvertiseModal
           onClose={handleCloseAdvertiseModal}

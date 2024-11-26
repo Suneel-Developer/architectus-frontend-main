@@ -39,7 +39,14 @@ body {
 }
 .btn-red-gradient{
   background: linear-gradient(101.84deg, #FC2424 2.78%, #FF7A7A 98.95%);
+}
 
+.bg-gradient-playbtn{
+  background: linear-gradient(101.84deg, #16AE8A 2.78%, #3DE6BE 98.95%);
+}
+
+.bg-gradient-pausebtn{
+  background: linear-gradient(101.84deg, #FCC224 2.78%, #FF8A7A 98.95%);
 }
 
 .windows-bg {
@@ -64,6 +71,10 @@ body {
 
 .footer-blur {
   backdrop-filter: blur(150px);
+}
+
+.shadow-1{
+  box-shadow: 0px 15px 40px 0px #CAB3B366;
 }
 
 .mySwiper .swiper-pagination-bullet {

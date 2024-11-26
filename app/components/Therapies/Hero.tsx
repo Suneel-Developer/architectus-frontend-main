@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
     useState<boolean>(false);
-    const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
+  const [isOpenVideoUploadModal, setIsOpenVideoUploadModal] =
     useState<boolean>(false);
 
   //   Open Search Modal
@@ -32,29 +32,52 @@ const Hero: React.FC = () => {
     setIsOpenDownloadModal(false);
   };
 
-    //   Open VideoUpload Modal
-    const handleOpenVideoUploadModal = () => {
-      setIsOpenVideoUploadModal(true);
-      setIsOpenSearchModal(false);
-    };
-  
-    //  Close VideoUpload Modal
-    const handleCloseVideoUploadModal = () => {
-      setIsOpenVideoUploadModal(false);
-    };
-  
+  //   Open VideoUpload Modal
+  const handleOpenVideoUploadModal = () => {
+    setIsOpenVideoUploadModal(true);
+    setIsOpenSearchModal(false);
+  };
+
+  //  Close VideoUpload Modal
+  const handleCloseVideoUploadModal = () => {
+    setIsOpenVideoUploadModal(false);
+  };
 
   return (
     <section className="px-4 md:px-[30px]">
       <div className="mb-5 md:mb-8">
-        <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
+        <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col lg:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
             Please provide a clear description of your health condition. If you
             already know, include the specific type of therapy or treatment you
             are looking for.
           </p>
 
-          <div className="flex gap-3 w-full sm:w-auto">
+          <div className="flex gap-3 w-full sm:w-auto flex-wrap sm:flex-nowrap">
+            <button className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium">
+              <Image
+                src="/assets/icon/info-circle.svg"
+                alt="info circle icon"
+                width={20}
+                height={20}
+                className="z-40"
+              />
+              How It Works
+            </button>
+
+            <button
+              onClick={handleOpenDownloadModal}
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium"
+            >
+              <Image
+                src="/assets/icon/download-alt.svg"
+                alt="download icon"
+                width={15}
+                height={18}
+              />
+              Download
+            </button>
+
             <button
               onClick={handleOpenSearchModal}
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
@@ -68,28 +91,24 @@ const Hero: React.FC = () => {
               Search
             </button>
 
-            <button
-              onClick={handleOpenDownloadModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-            >
-              <Image
-                src="/assets/icon/download-alt.svg"
-                alt="download icon"
-                width={15}
-                height={18}
-              />
-              Download
-            </button>
           </div>
         </div>
       </div>
 
-      {isOpenSearchModal && <SearchModal onClose={handleCloseSearchModal} openUploadVideo={handleOpenVideoUploadModal} />}
+      {isOpenSearchModal && (
+        <SearchModal
+          onClose={handleCloseSearchModal}
+          openUploadVideo={handleOpenVideoUploadModal}
+        />
+      )}
       {isOpenDownloadModal && (
         <DownloadModal onClose={handleCloseDownloadModal} />
       )}
-       {isOpenVideoUploadModal && (
-        <UploadVideoModal onClose={handleCloseVideoUploadModal} openPayment={undefined} />
+      {isOpenVideoUploadModal && (
+        <UploadVideoModal
+          onClose={handleCloseVideoUploadModal}
+          openPayment={undefined}
+        />
       )}
     </section>
   );

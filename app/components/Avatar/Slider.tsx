@@ -40,21 +40,21 @@ const Slider = () => {
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
 
-  const toggleGenderDropdown = (index:any) => {
+  const toggleGenderDropdown = (index: any) => {
     setGenderDropdowns((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
 
-  const toggleAvatarDropdown = (index:any) => {
+  const toggleAvatarDropdown = (index: any) => {
     setAvatarDropdowns((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
 
-  const handleSelectGender = (index:any, gender:any) => {
+  const handleSelectGender = (index: any, gender: any) => {
     setSelectedGenders((prev) => ({
       ...prev,
       [index]: gender,
@@ -65,7 +65,7 @@ const Slider = () => {
     }));
   };
 
-  const handleSelectAvatar = (index:any, option:any) => {
+  const handleSelectAvatar = (index: any, option: any) => {
     setSelectedOptions((prev) => ({
       ...prev,
       [index]: option,
@@ -155,11 +155,30 @@ const Slider = () => {
                 </div>
               </div>
 
+              <div className="flex items-center justify-center gap-3 mt-3">
+                <button className="bg-gradient w-10 md:w-[61px] h-10 md:h-[61px] rounded-lg md:rounded-xl flex items-center justify-center">
+                  <Image src="/assets/icon/arrow-left-small.svg" alt="arrow-left-small" width={18} height={10} />
+                </button>
+
+                <button className="bg-gradient-pausebtn w-10 md:w-[61px] h-10 md:h-[61px] rounded-lg md:rounded-xl flex items-center justify-center">
+                  <Image src="/assets/icon/pause.svg" alt="pause" width={18} height={10} />
+                </button>
+
+                <button className="bg-gradient-playbtn w-10 md:w-[61px] h-10 md:h-[61px] rounded-lg md:rounded-xl flex items-center justify-center">
+                  <Image src="/assets/icon/play.svg" alt="play" width={18} height={10} />
+                </button>
+
+                <button className="bg-gradient w-10 md:w-[61px] h-10 md:h-[61px] rounded-lg md:rounded-xl flex items-center justify-center">
+                  <Image src="/assets/icon/arrow-left-small.svg" alt="arrow-right-small" width={18} height={10} className="rotate-180" />
+                </button>
+              </div>
+
+              {/* Dropdowns  */}
               <div className="flex flex-col md:flex-row gap-5 mt-5">
                 {/* Gender Dropdown */}
                 <div className="w-full">
                   <h3 className="text-base font-semibold text-gradient mb-2">
-                     Gender
+                    Gender
                   </h3>
                   <div className="relative w-full">
                     <button
@@ -192,7 +211,7 @@ const Slider = () => {
                 {/* Avatar Dropdown */}
                 <div className="w-full">
                   <h3 className="text-base font-semibold text-gradient mb-2">
-                     Avatar
+                    Avatar
                   </h3>
                   <div className="relative w-full">
                     <button

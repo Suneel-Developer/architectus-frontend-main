@@ -46,14 +46,38 @@ const Hero: React.FC = () => {
   return (
     <section className="px-4 md:px-[30px]">
       <div className="mb-5 md:mb-8">
-        <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col md:flex-row px-5 md:px-[30px] py-5">
+        <div className="logomenubg bg-white w-full rounded-[30px] flex items-center justify-between gap-5 md:gap-10 flex-col lg:flex-row px-5 md:px-[30px] py-5">
           <p className="flex-1 text-base md:text-xl text-center md:text-start">
             Be as specific as possible—consider your sport discipline, training
             methods, types of exercises, skill level, and whether you&apos;re
             targeting specific muscles or engaging in full-body workouts.
           </p>
 
-          <div className="flex gap-3 w-full sm:w-auto">
+          <div className="flex gap-3 w-full sm:w-auto flex-wrap sm:flex-nowrap">
+            <button className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium">
+              <Image
+                src="/assets/icon/info-circle.svg"
+                alt="info circle icon"
+                width={20}
+                height={20}
+                className="z-40"
+              />
+              How It Works
+            </button>
+
+            <button
+              onClick={handleOpenDownloadModal}
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center p-4 font-medium"
+            >
+              <Image
+                src="/assets/icon/download-alt.svg"
+                alt="download icon"
+                width={15}
+                height={18}
+              />
+              Download
+            </button>
+
             <button
               onClick={handleOpenSearchModal}
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
@@ -65,19 +89,6 @@ const Hero: React.FC = () => {
                 height={19}
               />
               Search
-            </button>
-
-            <button
-              onClick={handleOpenDownloadModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-            >
-              <Image
-                src="/assets/icon/download-alt.svg"
-                alt="download icon"
-                width={15}
-                height={18}
-              />
-              Download
             </button>
           </div>
         </div>
