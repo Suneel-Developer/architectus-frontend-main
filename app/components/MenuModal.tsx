@@ -6,9 +6,12 @@ import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
 import SupportModal from "./SupportModal";
 import FavoriteModal from "./FavoritesModal";
-import VerificationLoadingModal from "./Avatar/VerificationLoadingModal";
 import CaptchaModal from "./CaptchaModal";
 import LanguageDropdown from "./LanguageDropdown";
+import SettingsModal from "./Settings";
+import CallsModal from "./CallsModal";
+import ReviewsRatingsModal from "./ReviewsRatingsModal";
+import PostModal from "./PostModal";
 
 const MenuModal = () => {
   const dropdownRef = useRef(null);
@@ -23,9 +26,13 @@ const MenuModal = () => {
   const [isSupportModalOpen, setIsSupportModalOpen] = useState<boolean>(false);
   const [isFavoritesModalOpen, setIsFavoritesModalOpen] =
     useState<boolean>(false);
-  const [isVerificationModalOpen, setIsVerificationModalOpen] =
-    useState<boolean>(false);
   const [isOpenCaptchaModal, setIsOpenCaptchaModal] = useState<boolean>(false);
+  const [isOpenSettingsModal, setIsOpenSettingsModal] =
+    useState<boolean>(false);
+  const [isOpenCallsModal, setIsOpenCallsModal] = useState<boolean>(false);
+  const [isOpenReviewsRatingsModal, setIsOpenReviewsRatingsModal] =
+    useState<boolean>(false);
+  const [isOpenPostModal, setIsOpenPostModal] = useState<boolean>(false);
 
   // Open Menu Modal
   const handleOpenMenuModal = () => {
@@ -90,18 +97,6 @@ const MenuModal = () => {
     setIsFavoritesModalOpen(false);
   };
 
-  //  Open Verification Modal
-  const handleVerificationModal = () => {
-    setIsFavoritesModalOpen(false);
-    setIsVerificationModalOpen(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Verification Modal
-  const handleCloseVerificationModal = () => {
-    setIsVerificationModalOpen(false);
-  };
-
   //  Open  Captcha Modal
   const handleOpenCaptchaModal = () => {
     setIsUserRegisterModalOpen(false);
@@ -112,6 +107,51 @@ const MenuModal = () => {
   //  Close  Captcha Modal
   const handleCloseCaptchaModal = () => {
     setIsOpenCaptchaModal(false);
+    setIsOpenMenuModal(false);
+  };
+
+  //  Open  Settings Modal
+  const handleOpenSettingsModal = () => {
+    setIsOpenSettingsModal(true);
+    setIsOpenMenuModal(false);
+  };
+
+  //  Close  Settings Modal
+  const handleCloseSettingsModal = () => {
+    setIsOpenSettingsModal(false);
+  };
+
+  //  Open Calls Modal
+  const handleOpenCallsModal = () => {
+    setIsOpenCallsModal(true);
+    setIsOpenMenuModal(false);
+  };
+
+  //  Close Calls Modal
+  const handleCloseCallsModal = () => {
+    setIsOpenCallsModal(false);
+  };
+
+  //  Open ReviewsRatings Modal
+  const handleOpenReviewsRatingsModal = () => {
+    setIsOpenReviewsRatingsModal(true);
+    setIsOpenMenuModal(false);
+  };
+
+  //  Close ReviewsRatings Modal
+  const handleCloseReviewsRatingsModal = () => {
+    setIsOpenReviewsRatingsModal(false);
+  };
+
+  //  Open Post Modal
+  const handleOpenPostModal = () => {
+    setIsOpenPostModal(true);
+    setIsOpenMenuModal(false);
+  };
+
+  //  Close Post Modal
+  const handleClosePostModal = () => {
+    setIsOpenPostModal(false);
   };
 
   useEffect(() => {
@@ -172,7 +212,11 @@ const MenuModal = () => {
             </div>
 
             <div className="min-w-[200px] w-full mt-3 logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
-              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+              {/* POST BTN  */}
+              <button
+                onClick={handleOpenPostModal}
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
+              >
                 <Image
                   src="/assets/icon/document.svg"
                   alt="document"
@@ -183,7 +227,11 @@ const MenuModal = () => {
                 <span>Post</span>
               </button>
 
-              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+              {/* REVIEW BTN  */}
+              <button
+                onClick={handleOpenReviewsRatingsModal}
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
+              >
                 <Image
                   src="/assets/icon/star-tag.svg"
                   alt="star-tag"
@@ -194,6 +242,7 @@ const MenuModal = () => {
                 <span>Review</span>
               </button>
 
+              {/* FAVORIES BTN  */}
               <button
                 onClick={handleFavoritesModal}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
@@ -208,7 +257,11 @@ const MenuModal = () => {
                 <span>Favorites</span>
               </button>
 
-              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+              {/* CALLS BTN  */}
+              <button
+                onClick={handleOpenCallsModal}
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
+              >
                 <Image
                   src="/assets/icon/phone-call.svg"
                   alt="phone-call"
@@ -219,6 +272,7 @@ const MenuModal = () => {
                 <span>Calls</span>
               </button>
 
+              {/* MESSAGES BTN  */}
               <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
                 <Image
                   src="/assets/icon/chats-text.svg"
@@ -230,7 +284,11 @@ const MenuModal = () => {
                 <span>Messages</span>
               </button>
 
-              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+              {/* SETTINGS BTN  */}
+              <button
+                onClick={handleOpenSettingsModal}
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
+              >
                 <Image
                   src="/assets/icon/settings.svg"
                   alt="settings"
@@ -241,6 +299,7 @@ const MenuModal = () => {
                 <span>Settings</span>
               </button>
 
+              {/* SUPPORT BTN  */}
               <button
                 onClick={handleSupportModal}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
@@ -255,6 +314,7 @@ const MenuModal = () => {
                 <span>Support</span>
               </button>
 
+              {/* REGISTER BTN  */}
               <button
                 onClick={handleUserRegisterModal}
                 className="py-4 flex items-center gap-2 text-base font-medium"
@@ -269,6 +329,7 @@ const MenuModal = () => {
                 <span>Register</span>
               </button>
 
+              {/* LOGOUT BTN  */}
               <button className="closebtn-bg p-4 flex items-center justify-center gap-2 text-base font-medium text-white rounded-[14px] mt-5">
                 <Image
                   src="/assets/icon/log-out.svg"
@@ -315,12 +376,24 @@ const MenuModal = () => {
         <FavoriteModal onClose={handleCloseFavoritesModal} />
       )}
 
-      {/* Verification Windows Modal  */}
-      {isVerificationModalOpen && (
-        <VerificationLoadingModal onClose={handleCloseVerificationModal} />
+      {/* Captcha Modal  */}
+      {isOpenCaptchaModal && <CaptchaModal onClose={handleCloseCaptchaModal} />}
+
+      {/* Settings Modal  */}
+      {isOpenSettingsModal && (
+        <SettingsModal onClose={handleCloseSettingsModal} />
       )}
 
-      {isOpenCaptchaModal && <CaptchaModal onClose={handleCloseCaptchaModal} />}
+      {/* Calls Modal  */}
+      {isOpenCallsModal && <CallsModal onClose={handleCloseCallsModal} />}
+
+      {/* Reviews & Ratings Modal  */}
+      {isOpenReviewsRatingsModal && (
+        <ReviewsRatingsModal onClose={handleCloseReviewsRatingsModal} />
+      )}
+
+      {/* Post Modal  */}
+      {isOpenPostModal && <PostModal onClose={handleClosePostModal} />}
     </div>
   );
 };
