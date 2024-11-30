@@ -130,7 +130,7 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
 
               <div
                 onClick={toggleSwitch}
-                className="w-10 h-6 flex items-center rounded-full p-1 cursor-pointer bg-gradient"
+                className={`w-10 h-6 flex items-center rounded-full p-1 cursor-pointer ${isOn ? "bg-gradient" : "bg-gray-300"}`}
               >
                 <div
                   className={`w-4 h-4 bg-white rounded-full transform transition-transform duration-300 ${
