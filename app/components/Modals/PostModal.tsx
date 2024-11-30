@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
+import { IoCloseSharp } from "react-icons/io5";
 
 interface ModalProps {
   onClose: () => void;
@@ -65,6 +66,11 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
 
       <div className="h-full w-full md:w-auto overflow-y-scroll overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center">
         <div className="bg-white rounded-[30px] px-4 md:px-5 py-[30px] w-full m-auto md:min-w-[690px] max-w-[690px] relative">
+          {/* Close Window btn */}
+          <button onClick={onClose} className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4">
+            <IoCloseSharp />
+          </button>
+
           <h1 className="font-semibold text-xl text-center mb-5">Post</h1>
 
           {/* Categories Dropdwon  */}
@@ -192,13 +198,6 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
               </div>
             ))}
           </div>
-
-          <button
-            onClick={onClose}
-            className="btn-red-gradient mt-4 text-white rounded-[14px] w-full max-w-[126px] min-h-12 text-center mx-auto flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </div>

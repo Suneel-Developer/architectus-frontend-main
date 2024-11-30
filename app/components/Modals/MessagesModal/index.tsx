@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import MessagesList from "./MessagesList";
 import Chat from "./Chat";
 import ReceivingLanguage from "../Dropdwons/ReceivingLanguage";
-import Image from "next/image";
+import { IoCloseSharp } from "react-icons/io5";
 
 interface MessagesModalProps {
   onClose: () => void;
@@ -111,15 +111,9 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
 
       <div className="w-full max-w-[1200px] h-[95vh] p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between relative">
         {/* Close Window btn */}
-        <Image
-          src="/assets/icon/close-icon.svg"
-          alt="close-icon"
-          width={18}
-          height={18}
-          onClick={onClose}
-          loading="lazy"
-          className="absolute top-6 right-6 cursor-pointer hidden md:block"
-        />
+        <button onClick={onClose} className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4">
+          <IoCloseSharp />
+        </button>
 
         <h3 className="text-xl font-medium text-center">Messages</h3>
 
@@ -176,13 +170,6 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
             </>
           )}
         </div>
-
-        <button
-          onClick={onClose}
-          className="btn-red-gradient mt-4 text-white rounded-[14px] w-full max-w-[126px] min-h-12 text-center mx-auto flex md:hidden items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
-        >
-          Cancel
-        </button>
       </div>
     </div>
   );

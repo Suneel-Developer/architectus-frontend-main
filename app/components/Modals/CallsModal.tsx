@@ -3,31 +3,15 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { LiaCheckDoubleSolid } from "react-icons/lia";
 import ReceivingLanguage from "./Dropdwons/ReceivingLanguage";
+import { IoCloseSharp } from "react-icons/io5";
 
 interface ModalProps {
   onClose: () => void;
 }
 
-const receivingLanguageCountries = [
-  { code: "en", label: "English", flag: "/assets/flags/en.png" },
-  { code: "la", label: "Latvian", flag: "/assets/flags/Latvian.jpg" },
-  { code: "br", label: "Brazilian", flag: "/assets/flags/br.png" },
-  { code: "fr", label: "French", flag: "/assets/flags/fr.png" },
-  { code: "sp", label: "Spanish", flag: "/assets/flags/sp.png" },
-  { code: "gr", label: "German", flag: "/assets/flags/gr.png" },
-  { code: "it", label: "Italian", flag: "/assets/flags/it.png" },
-  { code: "ru", label: "Russian", flag: "/assets/flags/ru.png" },
-  { code: "du", label: "Dutch", flag: "/assets/flags/du.png" },
-];
-
 const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
   const [isOn, setIsOn] = useState<boolean>(false);
   const toggleSwitch = () => setIsOn(!isOn);
-
-  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(
-    receivingLanguageCountries[0]
-  );
 
   // Helper function to get call details based on the type
   const getCallDetails = (type: string) => {
@@ -74,6 +58,11 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
 
       <div className="h-full w-full md:w-auto overflow-y-scroll overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center">
         <div className="bg-white rounded-[30px] px-4 md:px-5 py-[30px] w-full m-auto md:min-w-[690px] max-w-[690px] relative">
+          {/* Close Window btn */}
+          <button onClick={onClose} className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4">
+            <IoCloseSharp />
+          </button>
+
           <h1 className="font-semibold text-xl text-center mb-3">Calls</h1>
 
           <p className="text-sm text-center mb-8">Manage All your Calls</p>
@@ -163,13 +152,6 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
               );
             })}
           </div>
-
-          <button
-            onClick={onClose}
-            className="btn-red-gradient mt-4 text-white rounded-[14px] w-full max-w-[126px] min-h-12 mx-auto text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </div>

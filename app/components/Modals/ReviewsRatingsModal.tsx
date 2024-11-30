@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { IoCloseSharp } from "react-icons/io5";
 
 const reviewsData = [
   {
@@ -41,8 +42,16 @@ const ReviewsRatingsModal: React.FC<ModalProps> = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center z-50 p-5 windows-bg">
       <div onClick={onClose} className="absolute inset-0"></div>
 
-      <div className="h-full w-full md:w-auto overflow-y-scroll overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center">
+      <div className="h-full w-full md:w-auto overflow-y-scroll overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center relative">
         <div className="bg-white rounded-[30px] px-4 md:px-5 py-[30px] w-full m-auto md:min-w-[690px] max-w-[690px] relative">
+          {/* Close Window btn */}
+          <button
+            onClick={onClose}
+            className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4"
+          >
+            <IoCloseSharp />
+          </button>
+          
           <h1 className="font-semibold text-xl text-center mb-3">
             Reviews & Ratings
           </h1>
@@ -81,7 +90,13 @@ const ReviewsRatingsModal: React.FC<ModalProps> = ({ onClose }) => {
 
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, index) => (
-                     <Image key={index} src="/assets/icon/filled-star.svg" alt="filled star" width={20} height={20} />
+                      <Image
+                        key={index}
+                        src="/assets/icon/filled-star.svg"
+                        alt="filled star"
+                        width={20}
+                        height={20}
+                      />
                     ))}
                   </div>
                 </div>
@@ -106,13 +121,6 @@ const ReviewsRatingsModal: React.FC<ModalProps> = ({ onClose }) => {
               </div>
             ))}
           </div>
-
-          <button
-            onClick={onClose}
-            className="btn-red-gradient mt-4 text-white rounded-[14px] w-full max-w-[126px] min-h-12 mx-auto text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </div>
