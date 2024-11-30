@@ -1,9 +1,5 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/swiper-bundle.css";
-import { Pagination } from "swiper/modules";
 import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 import { MdOutlineTextsms } from "react-icons/md";
@@ -93,21 +89,6 @@ const TherapiesVideos: React.FC = () => {
     }
   };
 
-  // Handle slide change (prev/next slides only)
-  const handleSlideChange = (swiper: any) => {
-    const currentIndex = swiper.activeIndex;
-
-    if (
-      lastSlideIndex !== null &&
-      (currentIndex === lastSlideIndex - 1 ||
-        currentIndex === lastSlideIndex + 1)
-    ) {
-      setShowReviewsIndex(null);
-    }
-
-    setLastSlideIndex(currentIndex);
-  };
-
   // Open Add Rating Window
   const handleOpenAddRatingModal = () => {
     setIsOpenAddRatingModal(true);
@@ -169,192 +150,166 @@ const TherapiesVideos: React.FC = () => {
 
   return (
     <div className="mx-auto z-10 px-5 md:px-0">
-      <Swiper
-        spaceBetween={20}
-        centeredSlides={true}
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        breakpoints={{
-          10: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-        onSlideChange={handleSlideChange}
-      >
+      <div className="max-w-[1200px] w-full mx-auto flex flex-col gap-5">
         {podcastsdata.map((podcast, index) => (
-          <SwiperSlide key={index}>
-            <div className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5 mb-12 md:mb-16">
-              {/* header */}
-              <div className="flex items-center w-full justify-between gap-3 mb-5">
-                {/* Profile & name  */}
-                <div className="flex items-center gap-3">
+          <div className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5">
+            {/* header */}
+            <div className="flex items-center w-full justify-between gap-3 mb-5">
+              {/* Profile & name  */}
+              <div className="flex items-center gap-3">
+                <Image
+                  src={podcast.image}
+                  alt={podcast.name}
+                  width={100}
+                  height={100}
+                  loading="lazy"
+                  className="w-10 md:w-14 h-10 md:h-14 rounded-full object-cover"
+                />
+                <h2 className="text-lg md:text-2xl font-semibold">
+                  @{podcast.name}
+                </h2>
+              </div>
+
+              <div className="flex gap-3">
+                {/* Share btn  */}
+                <button
+                  onClick={handleOpenShareModal}
+                  className="logomenubg bg-[#BACCFD42] rounded-lg md:rounded-[14px] w-10 md:w-14 h-10 md:h-14 flex items-center justify-center"
+                >
                   <Image
-                    src={podcast.image}
-                    alt={podcast.name}
-                    width={100}
-                    height={100}
+                    src="/assets/icon/arrow-share.svg"
+                    alt="arrow-share"
                     loading="lazy"
-                    className="w-10 md:w-14 h-10 md:h-14 rounded-full object-cover"
+                    width={18}
+                    height={16}
                   />
-                  <h2 className="text-lg md:text-2xl font-semibold">
-                    @{podcast.name}
-                  </h2>
+                </button>
+
+                {/* Favourtes btn  */}
+                <button
+                  onClick={handleOpenFavoritesModal}
+                  className="logomenubg bg-[#BACCFD42] rounded-lg md:rounded-[14px] w-10 md:w-14 h-10 md:h-14 flex items-center justify-center"
+                >
+                  <Image
+                    src="/assets/icon/favioures-iocn.svg"
+                    alt="heart"
+                    loading="lazy"
+                    width={18}
+                    height={16}
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* Video  */}
+            <div className="rounded-2xl overflow-hidden h-[180px] md:h-[280px] mb-4">
+              {playingIndex === index ? (
+                <video
+                  ref={(el) => {
+                    if (el) {
+                      videoRefs.current[index] = el;
+                    }
+                  }}
+                  src={podcast.sportsvideo}
+                  loop
+                  autoPlay
+                  muted
+                  controls
+                  className="w-full h-full object-cover"
+                  onPause={() => handlePause(index)}
+                ></video>
+              ) : (
+                <div className="relative w-full h-full">
+                  <img
+                    src={podcast.sportsvideothumbnail}
+                    alt="Thumbnail"
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={() => handlePlay(index)}
+                    className="bg-[#3D2278] text-white text-base flex items-center justify-center transition-opacity duration-300 hover:opacity-90 w-12 h-12 rounded-full absolute top-0 left-0 right-0 bottom-0 m-auto"
+                  >
+                    <FaPlay />
+                  </button>
                 </div>
+              )}
+            </div>
 
-                <div className="flex gap-3">
-                  {/* Share btn  */}
-                  <button
-                    onClick={handleOpenShareModal}
-                    className="logomenubg bg-[#BACCFD42] rounded-lg md:rounded-[14px] w-10 md:w-14 h-10 md:h-14 flex items-center justify-center"
-                  >
-                    <Image
-                      src="/assets/icon/arrow-share.svg"
-                      alt="arrow-share"
-                      loading="lazy"
-                      width={18}
-                      height={16}
-                    />
-                  </button>
+            {/* Details section */}
+            <div className="flex flex-col mt-5">
+              <h2 className="text-base md:text-lg font-medium mb-1">
+                {podcast.videotitle}
+              </h2>
 
-                  {/* Favourtes btn  */}
-                  <button
-                    onClick={handleOpenFavoritesModal}
-                    className="logomenubg bg-[#BACCFD42] rounded-lg md:rounded-[14px] w-10 md:w-14 h-10 md:h-14 flex items-center justify-center"
-                  >
-                    <Image
-                      src="/assets/icon/favioures-iocn.svg"
-                      alt="heart"
-                      loading="lazy"
-                      width={18}
-                      height={16}
-                    />
-                  </button>
+              <p className="text-xs md:text-sm mb-4">{podcast.disc}</p>
+
+              {/* languages  */}
+              <LanguagesDropdown />
+
+              <div className="flex flex-col md:flex-row gap-5">
+                {/* Social Icon  */}
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-sm font-semibold text-gradient">
+                    Social Media
+                  </h3>
+
+                  <div className="flex gap-[6px] items-center">
+                    <button className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]">
+                      <Image
+                        src="/assets/icon/globe-earth.svg"
+                        alt="globe-earth"
+                        width={12}
+                        height={12}
+                        loading="lazy"
+                      />
+                    </button>
+
+                    <button
+                      onClick={handleOpenCreateSend}
+                      className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]"
+                    >
+                      <MdOutlineTextsms />
+                    </button>
+
+                    <button className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]">
+                      <Image
+                        src="/assets/icon/phone-call-2.svg"
+                        alt="phone-call-2"
+                        width={12}
+                        height={12}
+                        loading="lazy"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              {/* Video  */}
-              <div className="rounded-2xl overflow-hidden h-[180px] md:h-[280px] mb-4">
-                {playingIndex === index ? (
-                  <video
-                    ref={(el) => {
-                      if (el) {
-                        videoRefs.current[index] = el;
-                      }
-                    }}
-                    src={podcast.sportsvideo}
-                    loop
-                    autoPlay
-                    muted
-                    controls
-                    className="w-full h-full object-cover"
-                    onPause={() => handlePause(index)}
-                  ></video>
-                ) : (
-                  <div className="relative w-full h-full">
-                    <img
-                      src={podcast.sportsvideothumbnail}
-                      alt="Thumbnail"
-                      className="w-full h-full object-cover"
-                    />
-                    <button
-                      onClick={() => handlePlay(index)}
-                      className="bg-[#3D2278] text-white text-base flex items-center justify-center transition-opacity duration-300 hover:opacity-90 w-12 h-12 rounded-full absolute top-0 left-0 right-0 bottom-0 m-auto"
-                    >
-                      <FaPlay />
-                    </button>
+              <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
+                <button
+                  onClick={() => handleToggleReviews(index)}
+                  className="flex items-center justify-between w-full"
+                >
+                  <span className="text-xl font-medium">Reviews (40)</span>
+                  <Image
+                    src="/assets/icon/angle-down-small.svg"
+                    alt="angle-down-small"
+                    width={14}
+                    height={9}
+                  />
+                </button>
+
+                {/* Reviews  */}
+                {showReviewsIndex === index && (
+                  <div>
+                    <ReviewsForm onOpen={handleOpenAddRatingModal} />
+                    <ReviewsList />
                   </div>
                 )}
               </div>
-
-              {/* Details section */}
-              <div className="flex flex-col mt-5">
-                <h2 className="text-base md:text-lg font-medium mb-1">
-                  {podcast.videotitle}
-                </h2>
-
-                <p className="text-xs md:text-sm mb-4">{podcast.disc}</p>
-
-                {/* languages  */}
-                <LanguagesDropdown />
-
-                <div className="flex flex-col md:flex-row gap-5">
-
-                  {/* Social Icon  */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-sm font-semibold text-gradient">
-                      Social Media
-                    </h3>
-
-                    <div className="flex gap-[6px] items-center">
-                      <button className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]">
-                        <Image
-                          src="/assets/icon/globe-earth.svg"
-                          alt="globe-earth"
-                          width={12}
-                          height={12}
-                          loading="lazy"
-                        />
-                      </button>
-
-                      <button
-                        onClick={handleOpenCreateSend}
-                        className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]"
-                      >
-                        <MdOutlineTextsms />
-                      </button>
-
-                      <button className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center bg-[#ECECEC]">
-                        <Image
-                          src="/assets/icon/phone-call-2.svg"
-                          alt="phone-call-2"
-                          width={12}
-                          height={12}
-                          loading="lazy"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
-                  <button
-                    onClick={() => handleToggleReviews(index)}
-                    className="flex items-center justify-between w-full"
-                  >
-                    <span className="text-xl font-medium">Reviews (40)</span>
-                    <Image
-                      src="/assets/icon/angle-down-small.svg"
-                      alt="angle-down-small"
-                      width={14}
-                      height={9}
-                    />
-                  </button>
-
-                  {/* Reviews  */}
-                  {showReviewsIndex === index && (
-                    <div>
-                      <ReviewsForm onOpen={handleOpenAddRatingModal} />
-                      <ReviewsList />
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
+      </div>
 
       {/* Create & verification Windows  */}
       {isOpenCreateSendModal && (
