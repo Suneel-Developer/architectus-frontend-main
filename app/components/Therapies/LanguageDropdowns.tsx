@@ -38,7 +38,7 @@ const LanguagesDropdown = () => {
     <div className="grid grid-cols-1 xs:grid-cols-2 gap-[10px] mb-3">
       {/* Audio Language Dropdown */}
       <div>
-        <label className="block text-gradient text-sm font-medium mb-2">
+        <label className="block text-gradient text-base font-medium mb-2">
           Audio Language
         </label>
         <div className="relative">
@@ -87,7 +87,7 @@ const LanguagesDropdown = () => {
 
       {/* Subtitle Language Dropdown */}
       <div>
-        <label className="block text-gradient text-sm font-medium mb-2">
+        <label className="block text-gradient text-base font-medium mb-2">
           Subtitle Language
         </label>
         <div className="relative">

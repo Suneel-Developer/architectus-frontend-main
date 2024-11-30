@@ -120,7 +120,7 @@ const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
         <div className="flex flex-col md:flex-row gap-5 mb-5">
           {/* Gender Dropdown */}
           <div className="w-full">
-            <h3 className="text-base font-semibold text-gradient mb-2">
+            <h3 className="text-base font-medium text-gradient mb-2">
               Gender
             </h3>
 
@@ -131,7 +131,7 @@ const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
 
           {/* Avatar Dropdown */}
           <div className="w-full">
-            <h3 className="text-base font-semibold text-gradient mb-2">
+            <h3 className="text-base font-medium text-gradient mb-2">
               Avatar
             </h3>
 
