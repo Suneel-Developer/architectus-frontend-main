@@ -152,7 +152,7 @@ const TherapiesVideos: React.FC = () => {
     <div className="mx-auto z-10 px-5 md:px-0">
       <div className="max-w-[1200px] w-full mx-auto flex flex-col gap-5">
         {podcastsdata.map((podcast, index) => (
-          <div className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5">
+          <div key={index} className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5">
             {/* header */}
             <div className="flex items-center w-full justify-between gap-3 mb-5">
               {/* Profile & name  */}
