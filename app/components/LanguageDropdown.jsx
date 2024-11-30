@@ -122,8 +122,6 @@ const LanguageDropdown = () => {
                   <img
                     src={selectedLanguage.flag}
                     alt={`${selectedLanguage.label}-flag`}
-                    width={27}
-                    height={18}
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />

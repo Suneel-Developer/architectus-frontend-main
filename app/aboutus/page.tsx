@@ -17,9 +17,11 @@ const AboutUs: React.FC = () => {
                 Contact&nbsp;
                 <span className="relative">
                   <span className="text-[#3D2278]">Us</span>
-                  <img
+                  <Image
                     src="/assets/contactline.webp"
                     alt="contactline"
+                    width={100}
+                    height={100}
                     className="absolute left-0 top-[50px] md:top-[65px] lg:top-[76px]"
                   />
                 </span>

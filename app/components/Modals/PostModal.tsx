@@ -99,7 +99,7 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
 
           <div className="flex flex-col gap-4 mt-5">
             {podcastsdata.map((podcast, index) => (
-              <div className="bg-[#EEE8FD] rounded-3xl p-3 md:p-4">
+              <div key={index} className="bg-[#EEE8FD] rounded-3xl p-3 md:p-4">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <div className="w-12 md:w-[60px] h-12 md:h-[60px] rounded-full overflow-hidden">
