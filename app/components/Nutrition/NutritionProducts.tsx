@@ -14,24 +14,6 @@ const nutritionproducts = [
     name: "Loaded",
     link: "https://www.trufit.eu/lv/4endurance-pro-loaded#168=422",
   },
-  {
-    id: 2,
-    image: "/assets/product-2.png",
-    name: "Pro Flex",
-    link: "https://www.trufit.eu/lv/4endurance-pro-pro-flex#168=1256",
-  },
-  {
-    id: 3,
-    image: "/assets/product-3.png",
-    name: "L-Carnitine Energy Gel",
-    link: "https://www.trufit.eu/lv/4endurance-pro-l-carnitine-energy-gel#168=1288",
-  },
-  {
-    id: 4,
-    image: "/assets/product-4.png",
-    name: "Acetyl-L-Carnitine",
-    link: "https://www.trufit.eu/lv/4endurance-pro-acetyl-l-carnitine#168=422",
-  },
 ];
 
 const NutritionProducts: React.FC = () => {
