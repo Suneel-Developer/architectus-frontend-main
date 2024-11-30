@@ -3,6 +3,8 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 import { FaPause } from "react-icons/fa6";
+import SelectGender from "../Modals/Dropdwons/SelectGender";
+import AvatorsCategories from "../Modals/Dropdwons/AvatorsCategories";
 
 
 
@@ -113,6 +115,32 @@ const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
             )}
           </button>
         </div>
+
+        {/* Dropdowns  */}
+        <div className="flex flex-col md:flex-row gap-5 mb-5">
+          {/* Gender Dropdown */}
+          <div className="w-full">
+            <h3 className="text-base font-semibold text-gradient mb-2">
+              Gender
+            </h3>
+
+            <div>
+              <SelectGender />
+            </div>
+          </div>
+
+          {/* Avatar Dropdown */}
+          <div className="w-full">
+            <h3 className="text-base font-semibold text-gradient mb-2">
+              Avatar
+            </h3>
+
+            <div>
+              <AvatorsCategories />
+            </div>
+          </div>
+        </div>
+
 
         <LanguagesDropdown />
 
