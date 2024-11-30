@@ -109,7 +109,7 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center z-50 p-3 md:p-5 windows-bg">
       <div onClick={onClose} className="absolute inset-0"></div>
 
-      <div className="w-full max-w-[1200px] h-[95vh] p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between relative">
+      <div className="w-full max-w-[1200px] h-[90vh] p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between relative">
         {/* Close Window btn */}
         <button onClick={onClose} className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4">
           <IoCloseSharp />
