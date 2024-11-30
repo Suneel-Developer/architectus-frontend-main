@@ -194,3 +194,8 @@ body {
   transform: scale(0.95) !important;
   transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease !important;
 }
+
+
+.messges-chat{
+  height: -webkit-fill-available;
+}

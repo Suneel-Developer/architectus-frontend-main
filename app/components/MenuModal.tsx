@@ -4,14 +4,15 @@ import React, { useState, useEffect, useRef } from "react";
 import UserLoginModal from "./UserForm/UserLoginModal";
 import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
-import SupportModal from "./SupportModal";
-import FavoriteModal from "./FavoritesModal";
-import CaptchaModal from "./CaptchaModal";
+import SupportModal from "./Modals/SupportModal";
+import FavoriteModal from "./Modals/FavoritesModal";
+import CaptchaModal from "./Modals/CaptchaModal";
 import LanguageDropdown from "./LanguageDropdown";
-import SettingsModal from "./Settings";
-import CallsModal from "./CallsModal";
-import ReviewsRatingsModal from "./ReviewsRatingsModal";
-import PostModal from "./PostModal";
+import SettingsModal from "./Modals/SettingsModal";
+import CallsModal from "./Modals/CallsModal";
+import ReviewsRatingsModal from "./Modals/ReviewsRatingsModal";
+import PostModal from "./Modals/PostModal";
+import MessagesModal from "./Modals/MessagesModal/index";
 
 const MenuModal = () => {
   const dropdownRef = useRef(null);
@@ -33,6 +34,8 @@ const MenuModal = () => {
   const [isOpenReviewsRatingsModal, setIsOpenReviewsRatingsModal] =
     useState<boolean>(false);
   const [isOpenPostModal, setIsOpenPostModal] = useState<boolean>(false);
+  const [isOpenMessagesModal, setIsOpenMessagesModal] =
+    useState<boolean>(false);
 
   // Open Menu Modal
   const handleOpenMenuModal = () => {
@@ -154,6 +157,17 @@ const MenuModal = () => {
     setIsOpenPostModal(false);
   };
 
+  //  Open Messages Modal
+  const handleOpenMessagesModal = () => {
+    setIsOpenMessagesModal(true);
+    setIsOpenMenuModal(false);
+  };
+
+  //  Close Messages Modal
+  const handleCloseMessagesModal = () => {
+    setIsOpenMessagesModal(false);
+  };
+
   useEffect(() => {
     if (isOpenMenuModal) {
       document.body.classList.add("no-scroll");
@@ -273,7 +287,10 @@ const MenuModal = () => {
               </button>
 
               {/* MESSAGES BTN  */}
-              <button className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium">
+              <button
+                onClick={handleOpenMessagesModal}
+                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
+              >
                 <Image
                   src="/assets/icon/chats-text.svg"
                   alt="chats-text"
@@ -394,6 +411,11 @@ const MenuModal = () => {
 
       {/* Post Modal  */}
       {isOpenPostModal && <PostModal onClose={handleClosePostModal} />}
+
+      {/* Messages Modal  */}
+      {isOpenMessagesModal && (
+        <MessagesModal onClose={handleCloseMessagesModal} />
+      )}
     </div>
   );
 };

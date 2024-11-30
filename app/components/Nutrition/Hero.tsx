@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "../Avatar/VerificationLoadingModal";
-import DownloadModal from "../Avatar/DownloadModal";
+import DownloadModal from "../Modals/DownloadModal";
 import VideoModal from "../Avatar/VideoModal";
 
 const Hero: React.FC = () => {
@@ -75,7 +75,6 @@ const Hero: React.FC = () => {
                 alt="info circle icon"
                 width={20}
                 height={20}
-                className="z-40"
               />
               How It Works
             </button>

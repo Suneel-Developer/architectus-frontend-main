@@ -4,14 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
-import ShareModal from "../Avatar/ShareModal";
+import ShareModal from "../Modals/ShareModal";
 import ChartModal from "../Nutrition/ChartModal";
-import DownloadModal from "../Avatar/DownloadModal";
+import DownloadModal from "../Modals/DownloadModal";
 import Image from "next/image";
 import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
 import Link from "next/link";
-import FavoriteModal from "../FavoritesModal";
+import FavoriteModal from "../Modals/FavoritesModal";
 import AddRatingModal from "../Reviews/AddRatingModal";
 
 const nutritionproducts = [

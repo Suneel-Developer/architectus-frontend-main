@@ -5,7 +5,7 @@ import CreateModal from "./CreateModal";
 import VerificationLoadingModal from "./VerificationLoadingModal";
 import SupplierPlan from "../Store/SupplierPlan";
 import UploadVideoModal from "./UploadVideoModal";
-import DownloadModal from "./DownloadModal";
+import DownloadModal from "../Modals/DownloadModal";
 import VideoModal from "./VideoModal";
 
 const Hero: React.FC = () => {
@@ -102,7 +102,6 @@ const Hero: React.FC = () => {
                 alt="info circle icon"
                 width={20}
                 height={20}
-                className="z-40"
               />
               How It Works
             </button>

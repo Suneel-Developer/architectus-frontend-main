@@ -8,12 +8,12 @@ import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 import { MdOutlineTextsms } from "react-icons/md";
 
-import ShareModal from "../Avatar/ShareModal";
+import ShareModal from "../Modals/ShareModal";
 import CreateSendModal from "../Avatar/CreateSendModal";
 import VerificationLoadingModal from "../Avatar/VerificationLoadingModal";
 import ReviewsForm from "../Reviews/ReviewsForm";
 import ReviewsList from "../Reviews/ReviewsList";
-import FavoriteModal from "../FavoritesModal";
+import FavoriteModal from "../Modals/FavoritesModal";
 import AddRatingModal from "../Reviews/AddRatingModal";
 import LanguagesDropdown from "./LanguageDropdowns";
 

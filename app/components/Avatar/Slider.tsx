@@ -5,8 +5,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { IoIosArrowDown } from "react-icons/io";
-import ShareModal from "./ShareModal";
-import FavoriteModal from "../FavoritesModal";
+import ShareModal from "../Modals/ShareModal";
+import FavoriteModal from "../Modals/FavoritesModal";
 import Image from "next/image";
 
 const avators = [

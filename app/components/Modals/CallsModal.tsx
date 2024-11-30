@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { LiaCheckDoubleSolid } from "react-icons/lia";
+import ReceivingLanguage from "./Dropdwons/ReceivingLanguage";
 
 interface ModalProps {
   onClose: () => void;
@@ -102,49 +103,8 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
                 Receiving Language
               </h3>
 
-              <div className="relative w-full">
-                <button
-                  onClick={() =>
-                    setIsCountryDropdownOpen(!isCountryDropdownOpen)
-                  }
-                  className="w-full md:w-[315px] flex items-center justify-between bg-[#EEE8FD] p-[10px] rounded-xl gap-1 text-sm md:text-base font-medium"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={selectedCountry.flag}
-                      alt={selectedCountry.label}
-                      className="w-6 h-5 rounded-sm"
-                    />
-                    <span>{selectedCountry.label}</span>
-                  </div>
-                  <Image
-                    src="/assets/icon/angle-down-small.svg"
-                    alt="angle-down-small"
-                    width={14}
-                    height={9}
-                  />
-                </button>
-                {isCountryDropdownOpen && (
-                  <ul className="absolute z-40 mt-[6px] w-full bg-white border h-[170px] overflow-y-scroll tabs-scrollbar border-gray-300 rounded-lg shadow-lg">
-                    {receivingLanguageCountries.map((lang) => (
-                      <li
-                        key={lang.code}
-                        onClick={() => {
-                          setSelectedCountry(lang);
-                          setIsCountryDropdownOpen(false);
-                        }}
-                        className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      >
-                        <img
-                          src={lang.flag}
-                          alt={lang.label}
-                          className="w-6 h-6 rounded-full"
-                        />
-                        <span>{lang.label}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              <div className="w-full md:w-[315px]">
+                <ReceivingLanguage />
               </div>
             </div>
           </div>
