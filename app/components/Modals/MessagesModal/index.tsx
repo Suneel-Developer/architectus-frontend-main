@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import MessagesList from "./MessagesList";
 import Chat from "./Chat";
 import ReceivingLanguage from "../Dropdwons/ReceivingLanguage";
+import Image from "next/image";
 
 interface MessagesModalProps {
   onClose: () => void;
@@ -95,7 +96,7 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
       if (isMobileView) {
         setActiveMessage(null);
       } else if (messages.length > 0) {
-        setActiveMessage(messages[0].id); 
+        setActiveMessage(messages[0].id);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -108,7 +109,18 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center z-50 p-3 md:p-5 windows-bg">
       <div onClick={onClose} className="absolute inset-0"></div>
 
-      <div className="w-full max-w-[1200px] h-[95vh] p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between">
+      <div className="w-full max-w-[1200px] h-[95vh] p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between relative">
+        {/* Close Window btn */}
+        <Image
+          src="/assets/icon/close-icon.svg"
+          alt="close-icon"
+          width={18}
+          height={18}
+          onClick={onClose}
+          loading="lazy"
+          className="absolute top-6 right-6 cursor-pointer hidden md:block"
+        />
+
         <h3 className="text-xl font-medium text-center">Messages</h3>
 
         <div className="flex justify-between gap-6 my-5">
@@ -164,6 +176,13 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
             </>
           )}
         </div>
+
+        <button
+          onClick={onClose}
+          className="btn-red-gradient mt-4 text-white rounded-[14px] w-full max-w-[126px] min-h-12 text-center mx-auto flex md:hidden items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
+        >
+          Cancel
+        </button>
       </div>
     </div>
   );

@@ -106,6 +106,13 @@ const ReviewsRatingsModal: React.FC<ModalProps> = ({ onClose }) => {
               </div>
             ))}
           </div>
+
+          <button
+            onClick={onClose}
+            className="btn-red-gradient mt-4 text-white rounded-[14px] w-full max-w-[126px] h-12 text-center flex items-center justify-center gap-3 p-2 text-base font-semibold transition-opacity duration-300 hover:opacity-90"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
