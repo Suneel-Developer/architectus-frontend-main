@@ -33,13 +33,7 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
-  const categories = [
-    "Technology",
-    "Health",
-    "Finance",
-    "Education",
-    "Entertainment",
-  ];
+  const categories = ["Sports", "Nutrition", "Store"];
 
   const handleCategorySelect = (category: any) => {
     setSelectedCategory(category);
@@ -67,7 +61,10 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
       <div className="h-full w-full md:w-auto overflow-y-scroll overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center">
         <div className="bg-white rounded-[30px] px-4 md:px-5 py-[30px] w-full m-auto md:min-w-[690px] max-w-[690px] relative">
           {/* Close Window btn */}
-          <button onClick={onClose} className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4">
+          <button
+            onClick={onClose}
+            className="min-w-8 min-h-8 rounded-full flex items-center justify-center text-white bg-gradient absolute right-6 top-4"
+          >
             <IoCloseSharp />
           </button>
 
@@ -89,7 +86,7 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
             </button>
 
             {isOpenDropDown && (
-              <ul className="absolute z-40 mt-[6px] w-full bg-white border h-[170px] overflow-y-scroll tabs-scrollbar border-gray-300 rounded-lg shadow-lg">
+              <ul className="absolute z-40 mt-[6px] w-full bg-white border h-[130px] overflow-y-scroll tabs-scrollbar border-gray-300 rounded-lg shadow-lg">
                 {categories.map((category, index) => (
                   <li
                     key={index}
@@ -190,6 +187,18 @@ const PostModal: React.FC<ModalProps> = ({ onClose }) => {
                         alt="Thumbnail"
                         className="w-full h-full object-cover"
                       />
+                    </div>
+                  )}
+
+                  {index % 2 === 1 && (
+                    <div className="absolute bottom-4 left-0 right-0 mx-auto bg-gradient rounded-xl w-fit flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold">
+                      <Image
+                        src="/assets/icon/money-bill-convert.svg"
+                        alt="money-bill-convert"
+                        width={20}
+                        height={17}
+                      />
+                      Payment Renovate
                     </div>
                   )}
                 </div>
