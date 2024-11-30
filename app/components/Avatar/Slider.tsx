@@ -31,8 +31,8 @@ const Slider = () => {
   };
 
   return (
-    <div className="mx-auto relative z-0 px-5 md:px-0">
-      <div className="max-w-[1200px] w-full mx-auto">
+    <div className="mx-auto relative z-0 px-4">
+      <div className="max-w-[1000px] w-full mx-auto">
         {["/assets/body-banner.jfif"].map((img, index) => (
           <div
             key={index}

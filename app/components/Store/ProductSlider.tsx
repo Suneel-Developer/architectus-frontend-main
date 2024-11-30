@@ -122,7 +122,7 @@ const ProductsSlider: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto relative z-10 px-5 md:px-0">
+    <div className="mx-auto relative z-10 px-4">
       <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
         {nutritionproducts.map((nutrition, index) => (
           <div

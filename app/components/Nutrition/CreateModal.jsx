@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { IoIosArrowDown } from "react-icons/io";
 import { FaPause } from "react-icons/fa6";
+import FoodCategories from "../Modals/Dropdwons/FoodCategories";
 
 
 const CreateModal = ({ onClose, onCreate }) => {
@@ -77,8 +77,17 @@ const CreateModal = ({ onClose, onCreate }) => {
         </h1>
 
         <p className="text-sm text-center mb-5">
-          Please describe in as much detail as possible what you intend to create, update, or modify.</p>
+          Please describe in as much detail as possible what you intend to create, update, or modify.
+        </p>
 
+
+        <div className="w-full">
+          <h3 className="text-base font-semibold text-gradient mb-2">
+            Food Category
+          </h3>
+
+          <FoodCategories />
+        </div>
 
 
         {/* Voice Recorder & convert into text  */}

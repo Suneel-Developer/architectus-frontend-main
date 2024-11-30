@@ -148,8 +148,8 @@ const SportsProducts: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto z-10 px-5 md:px-0">
-      <div className="max-w-[1200px] w-full mx-auto flex flex-col gap-5">
+    <div className="mx-auto z-10 px-4">
+      <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
         {sportsdata.map((sports, index) => (
           <div key={index} className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5">
             {/* header */}
