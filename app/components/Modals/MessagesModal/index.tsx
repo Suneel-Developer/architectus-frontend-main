@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import MessagesList from "./MessagesList";
 import Chat from "./Chat";
-import Image from "next/image";
 import ReceivingLanguage from "../Dropdwons/ReceivingLanguage";
 
 interface MessagesModalProps {
@@ -69,20 +69,40 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
     },
   ];
 
-  const [activeMessage, setActiveMessage] = useState<number | null>(
-    messages[0]?.id || null
-  );
+  const [activeMessage, setActiveMessage] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
+
+  useEffect(() => {
+    if (!isMobile && messages.length > 0) {
+      setActiveMessage(messages[0].id);
+    }
+  }, [isMobile, messages]);
 
   const handleBack = () => setActiveMessage(null);
 
-  const handleSetActiveMessage = (id: string | number) => {
-    if (typeof id === "number") {
-      setActiveMessage(id);
-    }
+  const handleSetActiveMessage = (id: number) => {
+    setActiveMessage(id);
   };
 
   const [isOn, setIsOn] = useState<boolean>(false);
   const toggleSwitch = () => setIsOn(!isOn);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
+
+      if (isMobileView) {
+        setActiveMessage(null);
+      } else if (messages.length > 0) {
+        setActiveMessage(messages[0].id); 
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [messages]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 p-3 md:p-5 windows-bg">
@@ -123,14 +143,26 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-3 messges-chat overflow-hidden">
-          {(!activeMessage || window.innerWidth >= 768) && (
-            <MessagesList
-              messages={messages}
-              activeMessage={activeMessage}
-              setActiveMessage={handleSetActiveMessage}
-            />
+          {isMobile ? (
+            activeMessage ? (
+              <Chat handleBack={handleBack} />
+            ) : (
+              <MessagesList
+                messages={messages}
+                activeMessage={activeMessage}
+                setActiveMessage={handleSetActiveMessage}
+              />
+            )
+          ) : (
+            <>
+              <MessagesList
+                messages={messages}
+                activeMessage={activeMessage}
+                setActiveMessage={handleSetActiveMessage}
+              />
+              {activeMessage && <Chat handleBack={handleBack} />}
+            </>
           )}
-          {activeMessage && <Chat handleBack={handleBack} />}
         </div>
       </div>
     </div>
