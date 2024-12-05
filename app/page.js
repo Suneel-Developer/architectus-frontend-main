@@ -1,7 +1,7 @@
 import Header from "./components/Header.tsx";
-import Hero from "./components/Avatar/Hero.tsx";
 import Footer from "./components/Footer.tsx";
-import Slider from "./components/Avatar/Slider.tsx";
+import FeedProducts from "./components/Feed/FeedProducts.tsx";
+import Hero from "./components/Feed/Hero.tsx";
 
 export default function Home() {
   return (
@@ -9,10 +9,9 @@ export default function Home() {
       <Header />
       <main className="pt-5 md:pt-10 pb-10 md:pb-20">
         <Hero />
-        <Slider />
+        <FeedProducts />
       </main>
       <Footer />
     </>
   );
 }
-

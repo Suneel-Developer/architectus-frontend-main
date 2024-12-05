@@ -1,14 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import ShareModal from "../Modals/ShareModal";
-import ChartModal from "../Nutrition/ChartModal";
-import DownloadModal from "../Modals/DownloadModal";
 import Image from "next/image";
-import ReviewsForm from "../Reviews/ReviewsForm";
-import ReviewsList from "../Reviews/ReviewsList";
-import Link from "next/link";
-import FavoriteModal from "../Modals/FavoritesModal";
-import AddRatingModal from "../Reviews/AddRatingModal";
+import ShareModal from "../components/Modals/ShareModal";
+import ReviewsForm from "../components/Reviews/ReviewsForm";
+import ReviewsList from "../components/Reviews/ReviewsList";
+import FavoriteModal from "../components/Modals/FavoritesModal";
+import AddRatingModal from "../components/Reviews/AddRatingModal";
 
 const nutritionproducts = [
   {
@@ -18,7 +15,6 @@ const nutritionproducts = [
     brand: "4Endurance Pro",
     price: "$29,30",
     discountprice: " $19,43",
-    link: "https://www.trufit.eu/lv/4endurance-pro-loaded#168=422",
   },
   {
     id: 2,
@@ -27,36 +23,13 @@ const nutritionproducts = [
     brand: "Smartys",
     price: "$39,90",
     discountprice: " $19,43",
-    link: "https://www.trufit.eu/lv/4endurance-pro-pro-flex#168=1256",
-  },
-  {
-    id: 3,
-    image: "/assets/product-3.png",
-    name: "L-Carnitine Energy Gel",
-    brand: "Bowflex",
-    price: "$29,30",
-    discountprice: " $19,43",
-    link: "https://www.trufit.eu/lv/4endurance-pro-l-carnitine-energy-gel#168=1288",
-  },
-  {
-    id: 4,
-    image: "/assets/product-4.png",
-    name: "Acetyl-L-Carnitine",
-    brand: "4Endurance Pro",
-    price: "$29,30",
-    discountprice: " $19,43",
-    link: "https://www.trufit.eu/lv/4endurance-pro-acetyl-l-carnitine#168=422",
   },
 ];
 
-const ProductsSlider: React.FC = () => {
+const Products: React.FC = () => {
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
-  const [isOpenChartModalOpen, setIsOpenChartModalOpen] =
-    useState<boolean>(false);
-  const [isOpenDownloadModalOpen, setIsOpenDownloadModalOpen] =
-    useState<boolean>(false);
   const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
     useState<boolean>(false);
   const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
@@ -100,34 +73,13 @@ const ProductsSlider: React.FC = () => {
     setIsShareModalOpen(false);
   };
 
-  //  Open chart Modal
-  const handleChartModal = () => {
-    setIsOpenChartModalOpen(true);
-  };
-
-  //  Close chart Modal
-  const handleCloseChartModal = () => {
-    setIsOpenChartModalOpen(false);
-  };
-
-  //  Open Download Modal
-  const handleDownloadModal = () => {
-    setIsOpenDownloadModalOpen(true);
-    setIsOpenChartModalOpen(false);
-  };
-
-  //  Close Download Modal
-  const handleCloseDownloadModal = () => {
-    setIsOpenDownloadModalOpen(false);
-  };
-
   return (
-    <div className="mx-auto relative z-10 px-4">
-      <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
+    <div className="mx-auto relative z-10 px-4 md:px-[30px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
         {nutritionproducts.map((nutrition, index) => (
           <div
             key={index}
-            className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5"
+            className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5 h-fit"
           >
             {/* Product Image  */}
             <div className="rounded-2xl overflow-hidden h-[320px] md:h-[384px] mb-4 bg-[#0000000F] p-3 relative">
@@ -208,14 +160,6 @@ const ProductsSlider: React.FC = () => {
                   </p>
                 </li>
               </ul>
-
-              <Link
-                href={nutrition.link}
-                target="_blank"
-                className="w-full rounded-[14px] h-14 bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium"
-              >
-                Buy Now
-              </Link>
             </div>
 
             {/* Reviews  */}
@@ -235,19 +179,6 @@ const ProductsSlider: React.FC = () => {
       {/* Share Modal */}
       {isShareModalOpen && <ShareModal onClose={handleCloseShareModal} />}
 
-      {/* Chart Modal */}
-      {isOpenChartModalOpen && (
-        <ChartModal
-          onClose={handleCloseChartModal}
-          onCreate={handleDownloadModal}
-        />
-      )}
-
-      {/* Chart Modal */}
-      {isOpenDownloadModalOpen && (
-        <DownloadModal onClose={handleCloseDownloadModal} />
-      )}
-
       {/* Favorute Window  */}
       {isOpenFavoritesModal && (
         <FavoriteModal onClose={handleCloseFavoritesModal} />
@@ -261,4 +192,4 @@ const ProductsSlider: React.FC = () => {
   );
 };
 
-export default ProductsSlider;
+export default Products;

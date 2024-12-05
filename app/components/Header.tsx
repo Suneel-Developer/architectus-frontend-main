@@ -7,8 +7,10 @@ import LanguageDropdown from "./LanguageDropdown";
 import MenuModal from "./MenuModal";
 
 const navLinks = [
-  { name: "Avatar", path: "/" },
+  { name: "Feed", path: "/" },
+  { name: "Avatar", path: "/avator" },
   { name: "Sports", path: "/sports" },
+  { name: "Playlist", path: "/playlist" },
   { name: "Nutrition", path: "/nutrition" },
   { name: "Therapies", path: "/therapies" },
   { name: "Store", path: "/store" },
@@ -18,7 +20,7 @@ const Header: React.FC = () => {
   const pathname = usePathname();
 
   const getTabClassName = (path: string) => {
-    return `py-[19px] px-1 rounded-[14px] font-medium text-sm xs:text-base ${
+    return `py-[19px] px-5 rounded-[14px] font-medium text-sm xs:text-base min-w-[100px] md:min-w-fit inline-block ${
       pathname === path ? "bg-gradient text-white" : "text-black bg-white"
     }`;
   };
@@ -45,7 +47,7 @@ const Header: React.FC = () => {
 
         <div className="flex items-center gap-4">
           {/* Nav Links  */}
-          <nav className="logomenubg bg-white rounded-[14px] overflow-hidden w-[492px] hidden lg:grid grid-cols-5 text-center h-[60px]">
+          <nav className="logomenubg bg-white rounded-[14px] overflow-hidden hidden xl:grid grid-cols-7 text-center h-[60px]">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -67,8 +69,8 @@ const Header: React.FC = () => {
       </div>
 
       {/* Nav Links For Mobile  */}
-      <div className="px-4 md:px-[30px] flex lg:hidden">
-        <nav className="logomenubg bg-white rounded-[14px] overflow-hidden w-full grid grid-cols-5 text-center h-[60px] mt-5">
+      <div className="px-4 md:px-[30px] flex xl:hidden">
+        <nav className="logomenubg bg-white rounded-[14px] overflow-x-auto flex justify-between w-full text-center mt-5">
           {navLinks.map((link) => (
             <Link
               key={link.path}

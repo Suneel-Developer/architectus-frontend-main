@@ -4,8 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import UserLoginModal from "./UserForm/UserLoginModal";
 import UserRegisterModal from "./UserForm/UserRegisterModal";
 import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
-import SupportModal from "./Modals/SupportModal";
-import FavoriteModal from "./Modals/FavoritesModal";
 import CaptchaModal from "./Modals/CaptchaModal";
 import LanguageDropdown from "./LanguageDropdown";
 import SettingsModal from "./Modals/SettingsModal";
@@ -13,9 +11,13 @@ import CallsModal from "./Modals/CallsModal";
 import ReviewsRatingsModal from "./Modals/ReviewsRatingsModal";
 import PostModal from "./Modals/PostModal";
 import MessagesModal from "./Modals/MessagesModal/index";
+import { useRouter } from "next/navigation";
+import { RiContactsBookFill } from "react-icons/ri";
+import { MdViewAgenda } from "react-icons/md";
 
 const MenuModal = () => {
   const dropdownRef = useRef(null);
+  const router = useRouter();
   const [isOpenMenuModal, setIsOpenMenuModal] = useState<boolean>(false);
   useState<boolean>(false);
   const [isUserLoginModalOpen, setIsUserLoginModalOpen] =
@@ -23,9 +25,6 @@ const MenuModal = () => {
   const [isUserRegisterModalOpen, setIsUserRegisterModalOpen] =
     useState<boolean>(false);
   const [isUserForgotPasswordModalOpen, setIsUserForgotPasswordModalOpen] =
-    useState<boolean>(false);
-  const [isSupportModalOpen, setIsSupportModalOpen] = useState<boolean>(false);
-  const [isFavoritesModalOpen, setIsFavoritesModalOpen] =
     useState<boolean>(false);
   const [isOpenCaptchaModal, setIsOpenCaptchaModal] = useState<boolean>(false);
   const [isOpenSettingsModal, setIsOpenSettingsModal] =
@@ -76,28 +75,6 @@ const MenuModal = () => {
   //  Close ForgotPassword Modal
   const handleCloseUserForgotPasswordModal = () => {
     setIsUserForgotPasswordModalOpen(false);
-  };
-
-  //  Open Support Modal
-  const handleSupportModal = () => {
-    setIsSupportModalOpen(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Support Modal
-  const handleCloseSupportModal = () => {
-    setIsSupportModalOpen(false);
-  };
-
-  //  Open Favorites Modal
-  const handleFavoritesModal = () => {
-    setIsFavoritesModalOpen(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Favorites Modal
-  const handleCloseFavoritesModal = () => {
-    setIsFavoritesModalOpen(false);
   };
 
   //  Open  Captcha Modal
@@ -258,7 +235,7 @@ const MenuModal = () => {
 
               {/* FAVORIES BTN  */}
               <button
-                onClick={handleFavoritesModal}
+                onClick={() => router.push("/favorites")}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
                 <Image
@@ -318,7 +295,7 @@ const MenuModal = () => {
 
               {/* SUPPORT BTN  */}
               <button
-                onClick={handleSupportModal}
+                onClick={() => router.push("/support")}
                 className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
               >
                 <Image
@@ -344,6 +321,24 @@ const MenuModal = () => {
                   loading="lazy"
                 />
                 <span>Register</span>
+              </button>
+
+              {/* Agenda BTN  */}
+              <button
+                onClick={() => router.push("/agenda")}
+                className="py-4 flex items-center gap-2 text-base font-medium"
+              >
+                <MdViewAgenda className="text-[#5C24FC] text-lg" />
+                <span>Agenda</span>
+              </button>
+
+              {/* CONTACT BTN  */}
+              <button
+                onClick={() => router.push("/contactus")}
+                className="py-4 flex items-center gap-2 text-base font-medium"
+              >
+                <RiContactsBookFill className="text-lg text-[#5C24FC]" />
+                <span>Contacts</span>
               </button>
 
               {/* LOGOUT BTN  */}
@@ -383,14 +378,6 @@ const MenuModal = () => {
       {/* User Forgot Password Windos Modal  */}
       {isUserForgotPasswordModalOpen && (
         <UserForgotPasswordModal onClose={handleCloseUserForgotPasswordModal} />
-      )}
-
-      {/* Support Windows Modal  */}
-      {isSupportModalOpen && <SupportModal onClose={handleCloseSupportModal} />}
-
-      {/* Favorutes Windows Modal  */}
-      {isFavoritesModalOpen && (
-        <FavoriteModal onClose={handleCloseFavoritesModal} />
       )}
 
       {/* Captcha Modal  */}
