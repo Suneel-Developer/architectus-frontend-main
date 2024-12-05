@@ -248,6 +248,24 @@ const MenuModal = () => {
                 <span>Favorites</span>
               </button>
 
+              {/* CONTACT BTN  */}
+              <button
+                onClick={() => router.push("/contactus")}
+                className="py-4 flex items-center gap-2 text-base font-medium"
+              >
+                <RiContactsBookFill className="text-lg text-[#5C24FC]" />
+                <span>Contacts</span>
+              </button>
+
+              {/* Agenda BTN  */}
+              <button
+                onClick={() => router.push("/agenda")}
+                className="py-4 flex items-center gap-2 text-base font-medium"
+              >
+                <MdViewAgenda className="text-[#5C24FC] text-lg" />
+                <span>Agenda</span>
+              </button>
+
               {/* CALLS BTN  */}
               <button
                 onClick={handleOpenCallsModal}
@@ -321,24 +339,6 @@ const MenuModal = () => {
                   loading="lazy"
                 />
                 <span>Register</span>
-              </button>
-
-              {/* Agenda BTN  */}
-              <button
-                onClick={() => router.push("/agenda")}
-                className="py-4 flex items-center gap-2 text-base font-medium"
-              >
-                <MdViewAgenda className="text-[#5C24FC] text-lg" />
-                <span>Agenda</span>
-              </button>
-
-              {/* CONTACT BTN  */}
-              <button
-                onClick={() => router.push("/contactus")}
-                className="py-4 flex items-center gap-2 text-base font-medium"
-              >
-                <RiContactsBookFill className="text-lg text-[#5C24FC]" />
-                <span>Contacts</span>
               </button>
 
               {/* LOGOUT BTN  */}
