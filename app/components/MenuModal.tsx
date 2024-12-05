@@ -251,7 +251,7 @@ const MenuModal = () => {
               {/* CONTACT BTN  */}
               <button
                 onClick={() => router.push("/contactus")}
-                className="py-4 flex items-center gap-2 text-base font-medium"
+                className="py-4 flex items-center gap-2 text-base font-medium border-b border-opacity-10"
               >
                 <RiContactsBookFill className="text-lg text-[#5C24FC]" />
                 <span>Contacts</span>
@@ -260,7 +260,7 @@ const MenuModal = () => {
               {/* Agenda BTN  */}
               <button
                 onClick={() => router.push("/agenda")}
-                className="py-4 flex items-center gap-2 text-base font-medium"
+                className="py-4 flex items-center gap-2 text-base font-medium border-b border-opacity-10"
               >
                 <MdViewAgenda className="text-[#5C24FC] text-lg" />
                 <span>Agenda</span>
@@ -329,7 +329,7 @@ const MenuModal = () => {
               {/* REGISTER BTN  */}
               <button
                 onClick={handleUserRegisterModal}
-                className="py-4 flex items-center gap-2 text-base font-medium"
+                className="py-4 flex items-center gap-2 text-base font-medium border-b border-opacity-10"
               >
                 <Image
                   src="/assets/icon/user-plus-bottom.svg"
@@ -339,6 +339,21 @@ const MenuModal = () => {
                   loading="lazy"
                 />
                 <span>Register</span>
+              </button>
+
+              {/* LOGIn BTN  */}
+              <button
+                onClick={handleUserLoginModal}
+                className="py-4 flex items-center gap-2 text-base font-medium"
+              >
+                <Image
+                  src="/assets/icon/user-plus-bottom.svg"
+                  alt="user-plus-bottom"
+                  width={19}
+                  height={20}
+                  loading="lazy"
+                />
+                <span>Login</span>
               </button>
 
               {/* LOGOUT BTN  */}
