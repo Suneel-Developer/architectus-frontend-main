@@ -67,16 +67,16 @@ const Hero: React.FC = () => {
 
           <div className="flex gap-3 w-full sm:w-auto">
             <button
-              onClick={handleOpenVideoModal}
-              className="w-full sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
+              onClick={handleOpenSearchModal}
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium"
             >
               <Image
-                src="/assets/icon/info-circle.svg"
-                alt="info circle icon"
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
                 width={20}
                 height={20}
               />
-              How It Works
+              Create playlist
             </button>
 
             <button
@@ -84,12 +84,12 @@ const Hero: React.FC = () => {
               className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium"
             >
               <Image
-                src="/assets/icon/search-text.svg"
-                alt="search-text icon"
-                width={19}
-                height={19}
+                src="/assets/icon/w-plus-circle.svg"
+                alt="plus circle icon"
+                width={20}
+                height={20}
               />
-              Search
+              Create Music
             </button>
           </div>
         </div>
