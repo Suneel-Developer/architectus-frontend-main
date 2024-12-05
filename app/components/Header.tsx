@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,7 @@ const navLinks = [
   { name: "Feed", path: "/" },
   { name: "Avatar", path: "/avator" },
   { name: "Sports", path: "/sports" },
-  { name: "Playlist", path: "/playlist" },
+  { name: "Playlist", path: "/playlist" }, 
   { name: "Nutrition", path: "/nutrition" },
   { name: "Therapies", path: "/therapies" },
   { name: "Store", path: "/store" },
@@ -18,12 +18,23 @@ const navLinks = [
 
 const Header: React.FC = () => {
   const pathname = usePathname();
+  const tabRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
   const getTabClassName = (path: string) => {
     return `py-[19px] px-5 rounded-[14px] font-medium text-sm xs:text-base min-w-[100px] md:min-w-fit inline-block ${
       pathname === path ? "bg-gradient text-white" : "text-black bg-white"
     }`;
   };
+
+  useEffect(() => {
+    if (pathname && tabRefs.current[pathname]) {
+      tabRefs.current[pathname]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [pathname]);
 
   return (
     <header className="z-0">
@@ -75,6 +86,9 @@ const Header: React.FC = () => {
             <Link
               key={link.path}
               href={link.path}
+              ref={(el) => {
+                tabRefs.current[link.path] = el;
+              }}
               className={`${getTabClassName(link.path)}`}
             >
               {link.name}
