@@ -14,7 +14,7 @@ const categories = [
 const FoodCategories: React.FC = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState<boolean>(false);
   const [selectedFoodCategory, setSelectedFoodCategory] =
-    useState("Select Category");
+    useState("All");
 
   const handleFoodCategorySelect = (category: string) => {
     setSelectedFoodCategory(category);
@@ -27,7 +27,7 @@ const FoodCategories: React.FC = () => {
         onClick={() => setIsOpenDropDown((prev) => !prev)}
         className="w-full max-w-full bg-[#EEE8FD] p-4 text-base rounded-[14px] flex justify-between items-center gap-1 font-medium"
       >
-        {selectedFoodCategory || "Select Category"}
+        {selectedFoodCategory || "All"}
         <IoIosArrowDown
           className={`text-purple-500 text-xl ${
             isOpenDropDown ? "rotate-180" : ""
