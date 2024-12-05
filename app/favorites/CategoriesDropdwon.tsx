@@ -2,27 +2,19 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 const categories = [
-    "Appetizers & Starters",
-    "Soups",
-    "Main course",
-    "Soups",
-    "Juices",
-    "Smoothies",
-    "Salads",
-    "Side Dishes",
-    "Desserts",
-    "Snacks",
-    "Beverages",
-    "Breakfast",
-    "Breads",
-    "Baked Goods",
-    "Finger Foods",
-    "Street Food",
-  ];
+  "All",
+  "Avatar",
+  "Sports",
+  "Nutrition",
+  "Streams",
+  "Therapies ",
+  "Store",
+];
 
 const FoodCategories: React.FC = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState<boolean>(false);
-  const [selectedFoodCategory, setSelectedFoodCategory] = useState("Select Category");
+  const [selectedFoodCategory, setSelectedFoodCategory] =
+    useState("Select Category");
 
   const handleFoodCategorySelect = (category: string) => {
     setSelectedFoodCategory(category);
