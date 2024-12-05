@@ -1,50 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import SearchModal from "../components/Store/SearchModal";
-import AdvertiseModal from "../components/Store/AdvertiseModal";
-import SupplierPlan from "../components/Store/SupplierPlan";
+import { FaMusic } from "react-icons/fa6";
+import { PiPlaylistBold } from "react-icons/pi";
 import VideoModal from "../components/Avatar/VideoModal";
 
 const Hero: React.FC = () => {
-  const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
-  const [isOpenAdvertiseModal, setIsOpenAdvertiseModal] =
-    useState<boolean>(false);
-  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState<boolean>(false);
   const [isOpenVideoModal, setIsOpenVideoModal] = useState<boolean>(false);
-
-  // Open Create modal
-  const handleOpenSearchModal = () => {
-    setIsOpenSearchModal(true);
-  };
-
-  //   Close Create modal
-  const handleCloseSearchModal = () => {
-    setIsOpenSearchModal(false);
-  };
-
-  //   Open Advertise Modal
-  const handleOpenAdvertiseModal = () => {
-    setIsOpenSearchModal(false);
-    setIsOpenAdvertiseModal(true);
-  };
-
-  //  Close Advertise Modal
-  const handleCloseAdvertiseModal = () => {
-    setIsOpenAdvertiseModal(false);
-    setIsOpenSearchModal(false);
-  };
-
-  //   Open Payment Modal
-  const handleOpenPaymentModal = () => {
-    setIsOpenAdvertiseModal(false);
-    setIsOpenPaymentModal(true);
-  };
-
-  //  Close Payment Modal
-  const handleClosePaymentModal = () => {
-    setIsOpenPaymentModal(false);
-  };
 
   //   Open Video Modal
   const handleOpenVideoModal = () => {
@@ -55,7 +17,6 @@ const Hero: React.FC = () => {
   const handleCloseVideoModal = () => {
     setIsOpenVideoModal(false);
   };
-
   return (
     <section>
       <div className="px-4 md:px-[30px] mb-5 md:mb-8">
@@ -65,49 +26,33 @@ const Hero: React.FC = () => {
             staying fit and healthy.
           </p>
 
-          <div className="flex gap-3 w-full sm:w-auto">
+          <div className="flex gap-3 w-full sm:w-auto flex-wrap sm:flex-nowrap">
             <button
-              onClick={handleOpenSearchModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium"
+              onClick={handleOpenVideoModal}
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
             >
               <Image
-                src="/assets/icon/w-plus-circle.svg"
-                alt="plus circle icon"
+                src="/assets/icon/info-circle.svg"
+                alt="info circle icon"
                 width={20}
                 height={20}
               />
+              How It Works
+            </button>
+
+            <button className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] bg-gradient text-white flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium">
+              <PiPlaylistBold className="text-xl" />
               Create playlist
             </button>
 
-            <button
-              onClick={handleOpenSearchModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium"
-            >
-              <Image
-                src="/assets/icon/w-plus-circle.svg"
-                alt="plus circle icon"
-                width={20}
-                height={20}
-              />
+            <button className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium text-sm sm:text-base">
+              <FaMusic />
               Create Music
             </button>
           </div>
         </div>
       </div>
-      {isOpenSearchModal && (
-        <SearchModal
-          onClose={handleCloseSearchModal}
-          openAdertise={handleOpenAdvertiseModal}
-        />
-      )}
-      {isOpenAdvertiseModal && (
-        <AdvertiseModal
-          onClose={handleCloseAdvertiseModal}
-          openPayment={handleOpenPaymentModal}
-        />
-      )}
-      \
-      {isOpenPaymentModal && <SupplierPlan onClose={handleClosePaymentModal} />}
+
       {/* Video Windows  */}
       {isOpenVideoModal && <VideoModal onClose={handleCloseVideoModal} />}
     </section>
