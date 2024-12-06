@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Store/Hero";
 import ProductsSlider from "../components/Store/ProductSlider";
 
-const Store: React.FC = () => {
+export default function Store() {
   return (
     <>
       <Header />
@@ -15,6 +15,4 @@ const Store: React.FC = () => {
       <Footer />
     </>
   );
-};
-
-export default Store;
+}

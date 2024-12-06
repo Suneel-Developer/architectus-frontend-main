@@ -1,20 +1,17 @@
-import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Hero from "../components/Sports/Hero";
-import SportsProducts from "../components/Sports/SportsProducts";
+import Hero from "../components/Watch/Hero";
+import Products from "../components/Watch/Products";
 
-const Sports: React.FC = () => {
+export default function Watch() {
   return (
     <>
       <Header />
       <main className="pt-5 md:pt-10 pb-10 md:pb-20">
         <Hero />
-        <SportsProducts />
+        <Products />
       </main>
       <Footer />
     </>
   );
-};
-
-export default Sports;
+}

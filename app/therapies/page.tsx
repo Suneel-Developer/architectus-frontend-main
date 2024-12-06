@@ -4,7 +4,7 @@ import Hero from "../components/Therapies/Hero";
 import Footer from "../components/Footer";
 import TherapiesSlider from "../components/Therapies/TherapiesSlider";
 
-const Therapies = () => {
+export default function Therapies() {
   return (
     <>
       <Header />
@@ -15,6 +15,4 @@ const Therapies = () => {
       <Footer />
     </>
   );
-};
-
-export default Therapies;
+}

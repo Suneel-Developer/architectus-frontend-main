@@ -95,8 +95,7 @@ const Hero: React.FC = () => {
           <div className="flex gap-3 w-full sm:w-auto flex-wrap sm:flex-nowrap">
             <button
               onClick={handleOpenVideoModal}
-              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
-            >
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium">
               <Image
                 src="/assets/icon/info-circle.svg"
                 alt="info circle icon"
@@ -108,8 +107,7 @@ const Hero: React.FC = () => {
 
             <button
               onClick={handleOpenDownloadModal}
-              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
-            >
+              className="flex-1 sm:flex-auto sm:w-[167px] rounded-[14px] shadow-1 bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium">
               <Image
                 src="/assets/icon/download-alt.svg"
                 alt="download icon"
@@ -121,8 +119,7 @@ const Hero: React.FC = () => {
 
             <button
               onClick={handleOpenCreateModal}
-              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium text-sm sm:text-base"
-            >
+              className="w-full sm:w-[167px] rounded-[14px] bg-gradient flex items-center gap-2 justify-center p-4 text-white font-medium text-sm sm:text-base">
               <Image
                 src="/assets/icon/w-plus-circle.svg"
                 alt="plus circle icon"

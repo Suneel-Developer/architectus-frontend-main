@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Architectus",
-  description: "Architectus",
+  title: "Simon the creator",
+  description: "Simon the creator",
 };
 
 export default function RootLayout({ children }) {

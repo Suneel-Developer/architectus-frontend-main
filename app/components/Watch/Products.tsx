@@ -13,14 +13,14 @@ import FavoriteModal from "../Modals/FavoritesModal";
 import AddRatingModal from "../Reviews/AddRatingModal";
 import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 
-const sportsdata = [
+const watchdata = [
   {
     id: 0,
     name: "John Doe",
     image: "/assets/user-review-img.png",
     specialties: ["Cross Fit", "Boxing"],
-    sportsvideo: "/assets/video-4.mp4",
-    sportsvideothumbnail: "/assets/thumbnail-4.jpg",
+    video: "/assets/video-4.mp4",
+    videothumbnail: "/assets/thumbnail-4.jpg",
     videotitle: "How I Got to 11.6% Body Fat in 60 Days",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
     language: "English",
@@ -31,8 +31,8 @@ const sportsdata = [
     name: "Esthera Jackson",
     image: "/assets/user-review-img.png",
     specialties: ["Circuit", "Cross Fit", "Boxing"],
-    sportsvideo: "/assets/video-5.mp4",
-    sportsvideothumbnail: "/assets/thumbnail-5.jpg",
+    video: "/assets/video-5.mp4",
+    videothumbnail: "/assets/thumbnail-5.jpg",
     videotitle: "Best Kickboxing: Thai or Dutch?",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
     language: "English",
@@ -43,8 +43,8 @@ const sportsdata = [
     name: "Alexa Liras",
     image: "/assets/user-review-img.png",
     specialties: ["Strength", "Boxing"],
-    sportsvideo: "/assets/video-3.mp4",
-    sportsvideothumbnail: "/assets/thumbnail-3.jpg",
+    video: "/assets/video-3.mp4",
+    videothumbnail: "/assets/thumbnail-3.jpg",
     videotitle: "The Best Workout Routine",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
     language: "English",
@@ -55,8 +55,8 @@ const sportsdata = [
     name: "Laurent Michael",
     image: "/assets/user-review-img.png",
     specialties: ["Strength", "Boxing"],
-    sportsvideo: "/assets/video-2.mp4",
-    sportsvideothumbnail: "/assets/thubnail-2.jpg",
+    video: "/assets/video-2.mp4",
+    videothumbnail: "/assets/thubnail-2.jpg",
     videotitle: "Best 7 ABS Exercises For SIX PACK",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
     language: "English",
@@ -64,7 +64,9 @@ const sportsdata = [
   },
 ];
 
-const SportsProducts: React.FC = () => {
+const Products: React.FC = () => {
+
+
   const [isShareModalVisible, setIsShareModalVisible] =
     useState<boolean>(false);
   const [isOpenCreateSendModal, setIsOpenCreateSendModal] =
@@ -150,22 +152,25 @@ const SportsProducts: React.FC = () => {
   return (
     <div className="mx-auto z-10 px-4">
       <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
-        {sportsdata.map((sports, index) => (
-          <div key={index} className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5">
+        {watchdata.map((watch, index) => (
+          <div
+            key={index}
+            className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5"
+          >
             {/* header */}
             <div className="flex items-center w-full justify-between gap-3 mb-5">
               {/* Profile & name  */}
               <div className="flex items-center gap-3">
                 <Image
-                  src={sports.image}
-                  alt={sports.name}
+                  src={watch.image}
+                  alt={watch.name}
                   width={100}
                   height={100}
                   loading="lazy"
                   className="w-10 md:w-14 h-10 md:h-14 rounded-full object-cover"
                 />
                 <h2 className="text-lg md:text-2xl font-semibold">
-                  @{sports.name}
+                  @{watch.name}
                 </h2>
               </div>
 
@@ -209,7 +214,7 @@ const SportsProducts: React.FC = () => {
                       videoRefs.current[index] = el;
                     }
                   }}
-                  src={sports.sportsvideo}
+                  src={watch.video}
                   loop
                   autoPlay
                   muted
@@ -220,7 +225,7 @@ const SportsProducts: React.FC = () => {
               ) : (
                 <div className="relative w-full h-full">
                   <img
-                    src={sports.sportsvideothumbnail}
+                    src={watch.videothumbnail}
                     alt="Thumbnail"
                     className="w-full h-full object-cover"
                   />
@@ -237,10 +242,10 @@ const SportsProducts: React.FC = () => {
             {/* Details section */}
             <div className="flex flex-col mt-5">
               <h2 className="text-base md:text-lg font-medium mb-1">
-                {sports.videotitle}
+                {watch.videotitle}
               </h2>
 
-              <p className="text-xs md:text-sm mb-4">{sports.disc}</p>
+              <p className="text-xs md:text-sm mb-4">{watch.disc}</p>
 
               <LanguagesDropdown />
 
@@ -337,4 +342,4 @@ const SportsProducts: React.FC = () => {
   );
 };
 
-export default SportsProducts;
+export default Products;

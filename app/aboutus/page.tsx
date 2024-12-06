@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 
-const AboutUs: React.FC = () => {
+export default function AboutUs() {
   return (
-    <>
+    <div>
       <Header />
 
       <section className="workoutbg bg-no-repeat bg-center bg-cover relative px-5 py-10 md:py-20">
@@ -28,8 +28,8 @@ const AboutUs: React.FC = () => {
               </h1>
 
               <p className="text-sm md:text-lg text-[#0F0A19] max-w-[530px] w-full md:mb-20">
-                We&apos;re here to help reach out with any questions or feedback and
-                we&apos;ll respond promptly!
+                We&apos;re here to help reach out with any questions or feedback
+                and we&apos;ll respond promptly!
               </p>
             </div>
 
@@ -114,19 +114,17 @@ const AboutUs: React.FC = () => {
             </h1>
 
             <p className="text-sm md:text-lg text-[#0F0A19] max-w-[530px] w-full md:mb-20">
-              We&apos;re here to help reach out with any questions or feedback and
-              we&apos;ll respond promptly!
+              We&apos;re here to help reach out with any questions or feedback
+              and we&apos;ll respond promptly!
             </p>
           </div>
 
           <div className="order-1 md:order-2">
-          <ContactForm />
+            <ContactForm />
           </div>
         </div>
       </section>
       <Footer />
-    </>
+    </div>
   );
-};
-
-export default AboutUs;
+}

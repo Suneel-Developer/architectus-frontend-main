@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
+    "agora-rtc-sdk-ng": "^4.22.2",
     "i18next": "^23.16.5",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.6.2",

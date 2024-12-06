@@ -4,7 +4,7 @@ import Hero from "./Hero";
 import TicketsList from "./TicketsList";
 import Footer from "../components/Footer";
 
-const Support: React.FC = () => {
+export default function Support() {
   return (
     <>
       <Header />
@@ -15,6 +15,4 @@ const Support: React.FC = () => {
       <Footer />
     </>
   );
-};
-
-export default Support;
+}

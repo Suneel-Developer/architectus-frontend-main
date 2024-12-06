@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Nutrition/Hero";
 import NutritionProducts from "../components/Nutrition/NutritionProducts";
 
-const Nutrition: React.FC = () => {
+export default function Nutrition() {
   return (
     <>
       <Header />
@@ -15,6 +15,4 @@ const Nutrition: React.FC = () => {
       <Footer />
     </>
   );
-};
-
-export default Nutrition;
+}

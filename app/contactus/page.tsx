@@ -4,17 +4,15 @@ import Hero from "./Hero";
 import ContactList from "./ContactList";
 import Footer from "../components/Footer";
 
-const ContactUs: React.FC = () => {
+export default function ContactUs() {
   return (
-    <>
+    <div>
       <Header />
       <main className="pt-5 md:pt-10 pb-10 md:pb-20">
         <Hero />
         <ContactList />
       </main>
       <Footer />
-    </>
+    </div>
   );
-};
-
-export default ContactUs;
+}

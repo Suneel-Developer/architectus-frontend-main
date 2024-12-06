@@ -16,8 +16,8 @@ const Footer: React.FC = () => {
         </div>
 
         <h2 className="text-xl md:text-2xl uppercase">
-          <span className="font-bold text-gradient">Workout </span>
-          <span className="text-white font-medium">Creator</span>
+          <span className="font-bold text-gradient">Simon </span>
+          <span className="text-white font-medium">the Creator</span>
         </h2>
       </Link>
 

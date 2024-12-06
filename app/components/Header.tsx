@@ -7,10 +7,10 @@ import LanguageDropdown from "./LanguageDropdown";
 import MenuModal from "./MenuModal";
 
 const navLinks = [
-  { name: "Feed", path: "/" },
+  { name: "Live", path: "/" },
   { name: "Avatar", path: "/avator" },
-  { name: "Sports", path: "/sports" },
-  { name: "Playlist", path: "/playlist" }, 
+  { name: "Watch", path: "/watch" },
+  { name: "Listen", path: "/listen" },
   { name: "Nutrition", path: "/nutrition" },
   { name: "Therapies", path: "/therapies" },
   { name: "Store", path: "/store" },
@@ -51,8 +51,8 @@ const Header: React.FC = () => {
           </div>
 
           <h2 className="text-xl md:text-[32px] uppercase">
-            <span className="font-bold text-gradient">Workout </span>
-            <span className="text-black font-medium">Creator</span>
+            <span className="font-bold text-gradient">Simon </span>
+            <span className="text-black font-medium">the Creator</span>
           </h2>
         </Link>
 
