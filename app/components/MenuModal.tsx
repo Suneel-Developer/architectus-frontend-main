@@ -176,35 +176,7 @@ const MenuModal = () => {
             </div>
 
             <div className="min-w-[200px] w-full mt-3 logomenubg bg-white rounded-[20px] px-5 pb-5 flex flex-col min-h-[200px] h-fit overflow-y-scroll tabs-scrollbar">
-              {/* POST BTN  */}
-              <button
-                onClick={handleOpenPostModal}
-                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
-              >
-                <Image
-                  src="/assets/icon/document.svg"
-                  alt="document"
-                  width={18}
-                  height={18}
-                  loading="lazy"
-                />
-                <span>Post</span>
-              </button>
 
-              {/* REVIEW BTN  */}
-              <button
-                onClick={handleOpenReviewsRatingsModal}
-                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
-              >
-                <Image
-                  src="/assets/icon/star-tag.svg"
-                  alt="star-tag"
-                  width={18}
-                  height={20}
-                  loading="lazy"
-                />
-                <span>Review</span>
-              </button>
 
               {/* FAVORIES BTN  */}
               <button
@@ -221,23 +193,6 @@ const MenuModal = () => {
                 <span>Favorites</span>
               </button>
 
-              {/* CONTACT BTN  */}
-              <button
-                onClick={() => router.push("/contactus")}
-                className="py-4 flex items-center gap-2 text-base font-medium border-b border-opacity-10"
-              >
-                <RiContactsBookFill className="text-lg text-[#5C24FC]" />
-                <span>Contacts</span>
-              </button>
-
-              {/* Agenda BTN  */}
-              <button
-                onClick={() => router.push("/agenda")}
-                className="py-4 flex items-center gap-2 text-base font-medium border-b border-opacity-10"
-              >
-                <MdViewAgenda className="text-[#5C24FC] text-lg" />
-                <span>Agenda</span>
-              </button>
 
               {/* SETTINGS BTN  */}
               <button
