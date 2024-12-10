@@ -193,13 +193,7 @@ const Products: React.FC = () => {
             </div>
 
             {/* Details section */}
-            <div className="w-full md:w-auto overflow-y-scroll h-[500px] overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center relative">
-              <div className="w-full min-w-full lg:min-w-[1000px] mx-auto p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between relative">
-                <div className="flex flex-col md:flex-row gap-3 messges-chat overflow-hidden">
-                  <Chat />
-                </div>
-              </div>
-            </div>
+            <Chat />
           </div>
         ))}
       </div>

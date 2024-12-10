@@ -5,7 +5,7 @@ import ChatInput from "./ChatInput";
 
 const Chat = () => {
   return (
-    <div className="w-full flex-1 rounded-xl bg-[#EEE8FD] flex flex-col relative overflow-y-auto space-y-3 formscrollbar">
+    <div className="w-full flex-1 rounded-xl bg-[#EEE8FD] flex flex-col relative overflow-y-auto space-y-3 formscrollbar h-[500px]">
       <div className="flex-1 md:py-6 px-3 md:px-4">
         <div className="flex items-start gap-2 max-w-[444px] w-full">
           <div className="w-10 h-10 overflow-hidden rounded-full">
