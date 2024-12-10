@@ -78,7 +78,7 @@ const Header: React.FC = () => {
 
         <div className="flex items-center gap-4">
           {/* Nav Links */}
-          {/* <nav className="logomenubg bg-white rounded-[14px] overflow-hidden hidden xl:grid grid-cols-8 text-center h-[60px]">
+          <nav className="logomenubg bg-white rounded-[14px] overflow-hidden hidden xl:grid grid-cols-8 text-center h-[60px]">
             {navLinks.map((link) =>
               link.name === "Sms" || link.name === "Calls" ? (
                 <a
@@ -99,7 +99,7 @@ const Header: React.FC = () => {
                 </Link>
               )
             )}
-          </nav> */}
+          </nav>
 
           <div className="hidden md:flex">
             <LanguageDropdown />
@@ -110,6 +110,34 @@ const Header: React.FC = () => {
         </div>
       </div>
 
+      {/* Nav Links For Mobile */}
+      <div className="px-4 md:px-[30px] flex xl:hidden">
+        <nav className="logomenubg bg-white rounded-[14px] overflow-x-auto flex justify-between w-full text-center mt-5">
+          {navLinks.map((link) =>
+            link.name === "Sms" || link.name === "Calls" ? (
+              <a
+                key={link.name}
+                href="#"
+                onClick={link.name === "Sms" ? openSmsModal : openCallsModal}
+                className={`${getTabClassName(link.path)}`}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.path}
+                href={link.path}
+                ref={(el) => {
+                  tabRefs.current[link.path] = el;
+                }}
+                className={`${getTabClassName(link.path)}`}
+              >
+                {link.name}
+              </Link>
+            )
+          )}
+        </nav>
+      </div>
 
       {isSmsModalOpen && <MessagesModal onClose={closeModals} />}
       {isCallsModalOpen && <CallsModal onClose={closeModals} />}
