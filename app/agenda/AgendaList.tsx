@@ -1,40 +1,48 @@
 "use client";
+import React, { useState } from "react";
 import Image from "next/image";
-import React from "react";
+import EditAgendaModal from "./EditAgendaModal";
+
+// Sample data for agendas. Each agenda includes date, time, subject, notes, and user image.
+const agendaData = [
+  {
+    id: 1,
+    date: "Dec 03, 2024",
+    time: "10:00 PM",
+    subject:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    notes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    userImage: "/assets/user-review-img.png",
+  },
+  {
+    id: 2,
+    date: "Dec 03, 2024",
+    time: "10:00 PM",
+    subject:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    notes:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    userImage: "/assets/user-review-img.png",
+  },
+];
 
 const AgendaList: React.FC = () => {
-  // Sample data for agendas. Each agenda includes date, time, subject, notes, and user image.
-  const agendaData = [
-    {
-      id: 1,
-      date: "Dec 03, 2024",
-      time: "10:00 PM",
-      subject:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-      notes:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-      userImage: "/assets/user-review-img.png",
-    },
-    {
-      id: 2,
-      date: "Dec 03, 2024",
-      time: "10:00 PM",
-      subject:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-      notes:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-      userImage: "/assets/user-review-img.png",
-    },
-  ];
+  const [isEditAgendaModal, setIsEditAgendaModal] = useState<boolean>(false);
+
+  const handleOpenEditModal = () => {
+    setIsEditAgendaModal(true);
+  };
+
+  const handleCloseEditModal = () => {
+    setIsEditAgendaModal(false);
+  };
 
   return (
     <div className="mx-auto relative z-10 px-4 md:px-[30px]">
       <ul className="flex flex-col gap-4">
         {agendaData.map((agenda) => (
-          <li
-            key={agenda.id}
-            className="bg-[#FFFFFF] rounded-2xl p-4"
-          >
+          <li key={agenda.id} className="bg-[#FFFFFF] rounded-2xl p-4">
             {/* Header section: Displays date, time, and action buttons */}
             <div className="flex justify-between gap-5 mb-4">
               <div className="flex-1">
@@ -53,6 +61,7 @@ const AgendaList: React.FC = () => {
               {/* Action buttons: Edit and Delete */}
               <div className="flex gap-2">
                 <button
+                  onClick={handleOpenEditModal}
                   className="bg-[#EEE8FD] w-8 md:w-12 h-8 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center"
                   aria-label="Edit agenda"
                 >
@@ -63,6 +72,7 @@ const AgendaList: React.FC = () => {
                     height={18}
                   />
                 </button>
+
                 <button
                   className="bg-[#EEE8FD] w-8 md:w-12 h-8 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center"
                   aria-label="Delete agenda"
@@ -103,6 +113,8 @@ const AgendaList: React.FC = () => {
           </li>
         ))}
       </ul>
+
+      {isEditAgendaModal && <EditAgendaModal onClose={handleCloseEditModal} />}
     </div>
   );
 };

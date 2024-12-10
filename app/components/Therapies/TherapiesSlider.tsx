@@ -25,6 +25,7 @@ const podcastsdata = [
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
     language: "English",
     countryflag: "/assets/english-language-flag.svg",
+    stamplogo: "/assets/stamp-logo-watch.png",
   },
   {
     id: 1,
@@ -152,7 +153,10 @@ const TherapiesVideos: React.FC = () => {
     <div className="mx-auto z-10 px-4">
       <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
         {podcastsdata.map((podcast, index) => (
-          <div key={index} className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5">
+          <div
+            key={index}
+            className="bg-white logomenubg rounded-2xl md:rounded-[30px] p-5"
+          >
             {/* header */}
             <div className="flex items-center w-full justify-between gap-3 mb-5">
               {/* Profile & name  */}
@@ -237,11 +241,31 @@ const TherapiesVideos: React.FC = () => {
 
             {/* Details section */}
             <div className="flex flex-col mt-5">
-              <h2 className="text-base md:text-lg font-medium mb-1">
-                {podcast.videotitle}
-              </h2>
+              <div
+                className={`flex ${
+                  podcast.stamplogo ? "sm:grid grid-cols-2" : "grid-cols-1"
+                } gap-5 mb-4`}
+              >
+                <div>
+                  <h2 className="text-base md:text-lg font-medium mb-1">
+                    {podcast.videotitle}
+                  </h2>
 
-              <p className="text-xs md:text-sm mb-4">{podcast.disc}</p>
+                  <p className="text-xs md:text-sm mb-4">{podcast.disc}</p>
+                </div>
+
+                {podcast.stamplogo && (
+                  <div className="flex justify-end sm:justify-center order-1 sm:order-2 w-full">
+                    <div className="w-28 sm:w-[150px] h-28 sm:h-[150px] overflow-hidden rounded-lg mb-3">
+                      <img
+                        src={podcast.stamplogo}
+                        alt="stamp"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* languages  */}
               <LanguagesDropdown />

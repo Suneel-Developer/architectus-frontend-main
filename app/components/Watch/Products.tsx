@@ -18,55 +18,42 @@ const watchdata = [
     id: 0,
     name: "John Doe",
     image: "/assets/user-review-img.png",
-    specialties: ["Cross Fit", "Boxing"],
     video: "/assets/video-4.mp4",
     videothumbnail: "/assets/thumbnail-4.jpg",
     videotitle: "How I Got to 11.6% Body Fat in 60 Days",
+    stamplogo: "/assets/stamp-logo-watch.png",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
   {
     id: 1,
     name: "Esthera Jackson",
     image: "/assets/user-review-img.png",
-    specialties: ["Circuit", "Cross Fit", "Boxing"],
     video: "/assets/video-5.mp4",
     videothumbnail: "/assets/thumbnail-5.jpg",
     videotitle: "Best Kickboxing: Thai or Dutch?",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
   {
     id: 2,
     name: "Alexa Liras",
     image: "/assets/user-review-img.png",
-    specialties: ["Strength", "Boxing"],
     video: "/assets/video-3.mp4",
     videothumbnail: "/assets/thumbnail-3.jpg",
     videotitle: "The Best Workout Routine",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
   {
     id: 3,
     name: "Laurent Michael",
     image: "/assets/user-review-img.png",
-    specialties: ["Strength", "Boxing"],
     video: "/assets/video-2.mp4",
     videothumbnail: "/assets/thubnail-2.jpg",
     videotitle: "Best 7 ABS Exercises For SIX PACK",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
 ];
 
 const Products: React.FC = () => {
-
-
   const [isShareModalVisible, setIsShareModalVisible] =
     useState<boolean>(false);
   const [isOpenCreateSendModal, setIsOpenCreateSendModal] =
@@ -241,11 +228,31 @@ const Products: React.FC = () => {
 
             {/* Details section */}
             <div className="flex flex-col mt-5">
-              <h2 className="text-base md:text-lg font-medium mb-1">
-                {watch.videotitle}
-              </h2>
+              <div
+                className={`flex ${
+                  watch.stamplogo ? "sm:grid grid-cols-2" : "grid-cols-1"
+                } gap-5 mb-4`}
+              >
+                <div>
+                  <h2 className="text-base md:text-lg font-medium mb-1">
+                    {watch.videotitle}
+                  </h2>
 
-              <p className="text-xs md:text-sm mb-4">{watch.disc}</p>
+                  <p className="text-xs md:text-sm mb-4">{watch.disc}</p>
+                </div>
+
+                {watch.stamplogo && (
+                  <div className="flex justify-end sm:justify-center order-1 sm:order-2 w-full">
+                    <div className="w-28 sm:w-[150px] h-28 sm:h-[150px] overflow-hidden rounded-lg mb-3">
+                      <img
+                        src={watch.stamplogo}
+                        alt="stamp"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <LanguagesDropdown />
 

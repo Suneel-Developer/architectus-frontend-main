@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 
-const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
+const SearchModal = ({ onClose, onCreate, onUploadVideo }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [text, setText] = useState("");
   const recognitionRef = useRef(null);
@@ -137,4 +137,4 @@ const CreateModal = ({ onClose, onCreate, onUploadVideo }) => {
   );
 };
 
-export default CreateModal;
+export default SearchModal;

@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import ApointmentsDropdwons from "./ApointmentsDropdwons";
 import AgendaList from "./AgendaList";
 import Footer from "../components/Footer";
+import WhatshapIcon from "../components/WhatshapIcon";
 
 export default function Agenda() {
   return (
@@ -13,6 +14,7 @@ export default function Agenda() {
         <Hero />
         <ApointmentsDropdwons />
         <AgendaList />
+        <WhatshapIcon/>
       </main>
       <Footer />
     </div>

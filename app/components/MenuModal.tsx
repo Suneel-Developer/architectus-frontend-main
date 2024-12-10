@@ -7,10 +7,8 @@ import UserForgotPasswordModal from "./UserForm/UserForgotPasswordModal";
 import CaptchaModal from "./Modals/CaptchaModal";
 import LanguageDropdown from "./LanguageDropdown";
 import SettingsModal from "./Modals/SettingsModal";
-import CallsModal from "./Modals/CallsModal";
 import ReviewsRatingsModal from "./Modals/ReviewsRatingsModal";
 import PostModal from "./Modals/PostModal";
-import MessagesModal from "./Modals/MessagesModal/index";
 import { useRouter } from "next/navigation";
 import { RiContactsBookFill } from "react-icons/ri";
 import { MdViewAgenda } from "react-icons/md";
@@ -29,12 +27,9 @@ const MenuModal = () => {
   const [isOpenCaptchaModal, setIsOpenCaptchaModal] = useState<boolean>(false);
   const [isOpenSettingsModal, setIsOpenSettingsModal] =
     useState<boolean>(false);
-  const [isOpenCallsModal, setIsOpenCallsModal] = useState<boolean>(false);
   const [isOpenReviewsRatingsModal, setIsOpenReviewsRatingsModal] =
     useState<boolean>(false);
   const [isOpenPostModal, setIsOpenPostModal] = useState<boolean>(false);
-  const [isOpenMessagesModal, setIsOpenMessagesModal] =
-    useState<boolean>(false);
 
   // Open Menu Modal
   const handleOpenMenuModal = () => {
@@ -101,17 +96,6 @@ const MenuModal = () => {
     setIsOpenSettingsModal(false);
   };
 
-  //  Open Calls Modal
-  const handleOpenCallsModal = () => {
-    setIsOpenCallsModal(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Calls Modal
-  const handleCloseCallsModal = () => {
-    setIsOpenCallsModal(false);
-  };
-
   //  Open ReviewsRatings Modal
   const handleOpenReviewsRatingsModal = () => {
     setIsOpenReviewsRatingsModal(true);
@@ -132,17 +116,6 @@ const MenuModal = () => {
   //  Close Post Modal
   const handleClosePostModal = () => {
     setIsOpenPostModal(false);
-  };
-
-  //  Open Messages Modal
-  const handleOpenMessagesModal = () => {
-    setIsOpenMessagesModal(true);
-    setIsOpenMenuModal(false);
-  };
-
-  //  Close Messages Modal
-  const handleCloseMessagesModal = () => {
-    setIsOpenMessagesModal(false);
   };
 
   useEffect(() => {
@@ -266,36 +239,6 @@ const MenuModal = () => {
                 <span>Agenda</span>
               </button>
 
-              {/* CALLS BTN  */}
-              <button
-                onClick={handleOpenCallsModal}
-                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
-              >
-                <Image
-                  src="/assets/icon/phone-call.svg"
-                  alt="phone-call"
-                  width={18}
-                  height={18}
-                  loading="lazy"
-                />
-                <span>Calls</span>
-              </button>
-
-              {/* MESSAGES BTN  */}
-              <button
-                onClick={handleOpenMessagesModal}
-                className="py-4 border-b border-opacity-10 flex items-center gap-2 text-base font-medium"
-              >
-                <Image
-                  src="/assets/icon/chats-text.svg"
-                  alt="chats-text"
-                  width={18}
-                  height={18}
-                  loading="lazy"
-                />
-                <span>Messages</span>
-              </button>
-
               {/* SETTINGS BTN  */}
               <button
                 onClick={handleOpenSettingsModal}
@@ -403,9 +346,6 @@ const MenuModal = () => {
         <SettingsModal onClose={handleCloseSettingsModal} />
       )}
 
-      {/* Calls Modal  */}
-      {isOpenCallsModal && <CallsModal onClose={handleCloseCallsModal} />}
-
       {/* Reviews & Ratings Modal  */}
       {isOpenReviewsRatingsModal && (
         <ReviewsRatingsModal onClose={handleCloseReviewsRatingsModal} />
@@ -413,11 +353,6 @@ const MenuModal = () => {
 
       {/* Post Modal  */}
       {isOpenPostModal && <PostModal onClose={handleClosePostModal} />}
-
-      {/* Messages Modal  */}
-      {isOpenMessagesModal && (
-        <MessagesModal onClose={handleCloseMessagesModal} />
-      )}
     </div>
   );
 };

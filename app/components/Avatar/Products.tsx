@@ -68,6 +68,14 @@ const Products = () => {
                 />
               </button>
             </div>
+
+            <div className="w-28 md:w-32 h-28 md:h-32 overflow-hidden rounded-full mb-3 mx-auto absolute top-2 left-2 z-40">
+                <img
+                  src="/assets/stamp-logo-avator.png"
+                  alt="stamp"
+                  className="w-full h-full object-cover"
+                />
+              </div>
           </div>
 
           <div className="flex items-center justify-center gap-3 mt-3">

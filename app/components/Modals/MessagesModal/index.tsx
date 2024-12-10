@@ -119,18 +119,28 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ onClose }) => {
             <IoCloseSharp />
           </button>
 
+          <div className="w-24 h-24 overflow-hidden rounded-full absolute top-2 left-2 z-40">
+            <img
+              src="/assets/stamp-logo-sms.png"
+              alt="stamp"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
           <h3 className="text-xl font-medium text-center">Messages</h3>
 
           <div className="flex justify-between gap-6 my-5">
             {/* Receive Calls  */}
-            <div className="flex md:items-center flex-col md:flex-row gap-2 md:gap-5">
+            <div className="flex md:items-center flex-col md:flex-row gap-2 md:gap-5 mt-10 md:mt-0">
               <h3 className="text-base font-medium text-gradient">
-                Receive Calls
+                Receive Sms
               </h3>
 
               <div
                 onClick={toggleSwitch}
-                className={`w-10 h-6 flex items-center rounded-full p-1 cursor-pointer ${isOn ? "bg-gradient" : "bg-gray-300"}`}
+                className={`w-10 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+                  isOn ? "bg-gradient" : "bg-gray-300"
+                }`}
               >
                 <div
                   className={`w-4 h-4 bg-white rounded-full transform transition-transform duration-300 ${

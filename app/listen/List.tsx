@@ -1,46 +1,64 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import OptionMenu from "./OptionMenu";
+
+const playlists = [
+  {
+    id: 1,
+    name: "Playlist Name",
+    icon: "/assets/icon/music.svg",
+    stamplogo: "/assets/stamp-logo-1.png",
+    songs: [
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+    ],
+  },
+  {
+    id: 2,
+    name: "Playlist Name",
+    icon: "/assets/icon/music.svg",
+    songs: [
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+    ],
+  },
+  {
+    id: 3,
+    name: "Playlist Name",
+    icon: "/assets/icon/music.svg",
+    songs: [
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+      "Song Title.mp3",
+    ],
+  },
+];
 
 const List: React.FC = () => {
-  const playlists = [
-    {
-      id: 1,
-      name: "Playlist Name",
-      icon: "/assets/icon/music.svg",
-      songs: [
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-      ],
-    },
-    {
-      id: 2,
-      name: "Playlist Name",
-      icon: "/assets/icon/music.svg",
-      songs: [
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-      ],
-    },
-    {
-      id: 3,
-      name: "Playlist Name",
-      icon: "/assets/icon/music.svg",
-      songs: [
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-        "Song Title.mp3",
-      ],
-    },
-  ];
+  const [activeMenu, setActiveMenu] = useState<number | null>(null);
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest(".menu-container")) {
+      setActiveMenu(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="mx-auto relative z-10 px-4 md:px-[30px]">
@@ -51,14 +69,36 @@ const List: React.FC = () => {
             className="bg-white logomenubg rounded-2xl md:rounded-[30px] py-8 px-5 h-fit flex flex-col justify-center items-center text-center relative"
           >
             {/* Add Button */}
-            <button className="w-10 md:w-14 h-10 md:h-14 bg-[#EEE8FD] rounded-xl flex items-center justify-center absolute top-8 right-5">
-              <Image
-                src="/assets/icon/plus-circle.svg"
-                alt="plus circle icon"
-                width={20}
-                height={20}
-              />
-            </button>
+            <div className="absolute top-8 right-5 menu-container">
+              <button
+                onClick={() =>
+                  setActiveMenu((prev) =>
+                    prev === playlist.id ? null : playlist.id
+                  )
+                }
+                className="w-10 md:w-14 h-10 md:h-14 bg-[#EEE8FD] rounded-xl flex items-center justify-center"
+              >
+                <Image
+                  src="/assets/icon/plus-circle.svg"
+                  alt="plus circle icon"
+                  width={20}
+                  height={20}
+                />
+              </button>
+
+              {/* Option menu */}
+              {activeMenu === playlist.id && <OptionMenu />}
+            </div>
+
+            {playlist.stamplogo && (
+              <div className="w-28 h-28 overflow-hidden rounded-full mb-3 mx-auto absolute top-3 left-2 z-40">
+                <img
+                  src={playlist.stamplogo}
+                  alt="stamp"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
 
             {/* Playlist Icon */}
             <div className="rounded-full h-[110px] w-[110px] mb-[10px] flex items-center justify-center bg-[#9D7AFF26]">

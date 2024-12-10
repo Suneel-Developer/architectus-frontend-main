@@ -1,10 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { LiaCheckDoubleSolid } from "react-icons/lia";
 import ReceivingLanguage from "./Dropdwons/ReceivingLanguage";
 import { IoCloseSharp } from "react-icons/io5";
-import AgoraRTC from "agora-rtc-sdk-ng";
+
+let AgoraRTC: any; // Declare AgoraRTC outside to handle dynamic import
+
+if (typeof window !== "undefined") {
+  // Dynamically import AgoraRTC to prevent server-side access
+  AgoraRTC = require("agora-rtc-sdk-ng");
+}
 
 interface ModalProps {
   onClose: () => void;
@@ -26,9 +32,14 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
     "007eJxTYLg4Ve3p7qvC6+Yknxf1YbPf8/ddfPg2idYbGSYVGh7cJXsUGJIN0yyNzUxNDZONjU1SU5MtUpPNTQ0Nkg1NTBMTLSzTmpmD0hsCGRmynJ+yMDJAIIjPzlCSWlySmZfOwAAAoi4gBA=="; // Agora Token
   const channelName = "testing"; // Channel name
 
-  const client = useRef<any>(
-    AgoraRTC.createClient({ mode: "rtc", codec: "vp8" })
-  );
+  const client = useRef<any>(null);
+
+  useEffect(() => {
+    // Initialize AgoraRTC client only in the browser
+    if (typeof window !== "undefined" && AgoraRTC) {
+      client.current = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+    }
+  }, []);
 
   const toggleSwitch = () => setIsOn(!isOn);
 
@@ -37,31 +48,26 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
   };
 
   const closeVideoCallModal = () => {
-    // If in call, ask the user to end call first or handle it accordingly.
-    // For simplicity, we just close if not in call:
     if (!isInCall) {
       setIsVideoModalOpen(false);
     }
   };
 
   const startVideoCall = async () => {
+    if (!AgoraRTC || !client.current) return;
+
     try {
-      // Create local video track
       const videoTrack = await AgoraRTC.createCameraVideoTrack();
       setLocalVideoTrack(videoTrack);
 
-      // Display local video track
       if (localVideoContainerRef.current) {
         videoTrack.play(localVideoContainerRef.current);
       }
 
-      // Join the channel
       await client.current.join(appId, channelName, token);
 
-      // Publish the local video track
       await client.current.publish([videoTrack]);
 
-      // Handle remote users
       client.current.on("user-published", async (user: any, mediaType: any) => {
         if (mediaType === "video") {
           await client.current.subscribe(user, "video");
@@ -73,7 +79,7 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
         }
       });
 
-      client.current.on("user-unpublished", (user: any) => {
+      client.current.on("user-unpublished", () => {
         if (remoteVideoTrack) {
           remoteVideoTrack.stop();
           setRemoteVideoTrack(null);
@@ -87,34 +93,29 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
   };
 
   const endVideoCall = async () => {
+    if (!client.current) return;
+
     try {
-      // Stop and close local track
       if (localVideoTrack) {
         localVideoTrack.stop();
         localVideoTrack.close();
       }
 
-      // Stop remote track if present
       if (remoteVideoTrack) {
         remoteVideoTrack.stop();
       }
 
-      // Leave the channel
       await client.current.leave();
 
-      // Reset states
       setLocalVideoTrack(null);
       setRemoteVideoTrack(null);
       setIsInCall(false);
-
-      // Close the video modal now that call ended
       setIsVideoModalOpen(false);
     } catch (error) {
       console.error("Error ending video call:", error);
     }
   };
 
-  // Helper function to get call details based on the type
   const getCallDetails = (type: string) => {
     switch (type) {
       case "outgoing":
@@ -144,7 +145,6 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
     }
   };
 
-  // List of calls
   const calls = [
     { type: "closed", name: "Alice Johnson", phone: "+1 456 789 0123" },
     { type: "outgoing", name: "John Doe", phone: "+1 234 567 8910" },
@@ -152,7 +152,6 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
     { type: "closed", name: "Alice Johnson", phone: "+1 456 789 0123" },
     { type: "outgoing", name: "John Doe", phone: "+1 234 567 8910" },
   ];
-
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 p-5 windows-bg">
       <div onClick={onClose} className="absolute inset-0"></div>
@@ -166,6 +165,14 @@ const CallsModal: React.FC<ModalProps> = ({ onClose }) => {
           >
             <IoCloseSharp />
           </button>
+
+          <div className="w-28 h-28 overflow-hidden rounded-full absolute top-0 left-0 z-40">
+            <img
+              src="/assets/stamp-logo-calls.png"
+              alt="stamp"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
           <h1 className="font-semibold text-xl text-center mb-3">Calls</h1>
 

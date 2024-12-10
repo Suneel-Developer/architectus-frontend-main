@@ -30,7 +30,7 @@
     "**/*.tsx",
     "app/components/Avatar/SearchModal.jsx",
     "app/components/Modals/SupportModal.jsx"
-, "app/components/Modals/FavoritesModal.jsx", "app/components/Avatar/CreateSendModal.jsx"  ],
+, "app/components/Modals/FavoritesModal.jsx", "app/components/Avatar/CreateSendModal.jsx", "app/support/CreateNewTicket.jsx"  ],
   "exclude": [
     "node_modules"
   ]

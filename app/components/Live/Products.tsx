@@ -1,16 +1,13 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
+import { FaPlay } from "react-icons/fa";
 import { MdOutlineTextsms } from "react-icons/md";
 
 import ShareModal from "../Modals/ShareModal";
 import CreateSendModal from "../Avatar/CreateSendModal";
 import VerificationLoadingModal from "../Avatar/VerificationLoadingModal";
-import ReviewsForm from "../Reviews/ReviewsForm";
-import ReviewsList from "../Reviews/ReviewsList";
 import FavoriteModal from "../Modals/FavoritesModal";
-import AddRatingModal from "../Reviews/AddRatingModal";
 import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 
 const watchdata = [
@@ -18,49 +15,38 @@ const watchdata = [
     id: 0,
     name: "John Doe",
     image: "/assets/user-review-img.png",
-    specialties: ["Cross Fit", "Boxing"],
     video: "/assets/video-4.mp4",
     videothumbnail: "/assets/thumbnail-4.jpg",
     videotitle: "How I Got to 11.6% Body Fat in 60 Days",
+    stamplogo: "/assets/stamp-logo-watch.png",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
   {
     id: 1,
     name: "Esthera Jackson",
     image: "/assets/user-review-img.png",
-    specialties: ["Circuit", "Cross Fit", "Boxing"],
     video: "/assets/video-5.mp4",
     videothumbnail: "/assets/thumbnail-5.jpg",
     videotitle: "Best Kickboxing: Thai or Dutch?",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
   {
     id: 2,
     name: "Alexa Liras",
     image: "/assets/user-review-img.png",
-    specialties: ["Strength", "Boxing"],
     video: "/assets/video-3.mp4",
     videothumbnail: "/assets/thumbnail-3.jpg",
     videotitle: "The Best Workout Routine",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
   {
     id: 3,
     name: "Laurent Michael",
     image: "/assets/user-review-img.png",
-    specialties: ["Strength", "Boxing"],
     video: "/assets/video-2.mp4",
     videothumbnail: "/assets/thubnail-2.jpg",
     videotitle: "Best 7 ABS Exercises For SIX PACK",
     disc: "Concrete is an artificial composite material, comprising a matrix of cementitious binder (typically Portland cement paste or asphalt) and a dispersed phase or filler of aggregate (typically a rocky material, loose stones, and sand).",
-    language: "English",
-    countryflag: "/assets/english-language-flag.svg",
   },
 ];
 
@@ -74,29 +60,10 @@ const Products: React.FC = () => {
   const [isOpenFavoritesModal, setIsOpenFavoritesModal] =
     useState<Boolean>(false);
   const [playingIndex, setPlayingIndex] = useState(null);
-  const [showReviewsIndex, setShowReviewsIndex] = useState<number | null>(null);
-  const [isOpenAddRatingModal, setIsOpenAddRatingModal] =
-    useState<boolean>(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Handle showing reviews for a specific slide
-  const handleToggleReviews = (index: number) => {
-    if (showReviewsIndex === index) {
-      setShowReviewsIndex(null);
-    } else {
-      setShowReviewsIndex(index);
-    }
-  };
 
-  // Open Add Rating Window
-  const handleOpenAddRatingModal = () => {
-    setIsOpenAddRatingModal(true);
-  };
 
-  // Close Add Rating Window
-  const handleCloseAddRatingModal = () => {
-    setIsOpenAddRatingModal(false);
-  };
 
   const handleOpenShareModal = () => {
     setIsShareModalVisible(true);
@@ -204,7 +171,7 @@ const Products: React.FC = () => {
             </div>
 
             {/* Video  */}
-            <div className="rounded-2xl overflow-hidden h-[180px] md:h-[280px] mb-4">
+            <div className="rounded-2xl overflow-hidden h-[180px] md:h-[280px] mb-4 relative">
               {playingIndex === index ? (
                 <video
                   ref={(el) => {
@@ -235,15 +202,58 @@ const Products: React.FC = () => {
                   </button>
                 </div>
               )}
+
+              {/* Live show  */}
+              <div className="bg-[#FF0000] rounded-xl px-3 py-[2px] flex items-center gap-1 text-white text-lg absolute top-5 left-5">
+                <Image
+                  src="/assets/icon/live-stream.svg"
+                  alt="live stream icon"
+                  width={22}
+                  height={16}
+                />
+                Live
+              </div>
             </div>
 
             {/* Details section */}
             <div className="flex flex-col mt-5">
-              <h2 className="text-base md:text-lg font-medium mb-1">
-                {watch.videotitle}
-              </h2>
+              <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mb-5">
+                <button className="flex items-center justify-between w-full">
+                  <span className="text-xl font-medium">Comments</span>
+                  <Image
+                    src="/assets/icon/angle-down-small.svg"
+                    alt="angle-down-small"
+                    width={14}
+                    height={9}
+                  />
+                </button>
+              </div>
 
-              <p className="text-xs md:text-sm mb-4">{watch.disc}</p>
+              <div
+                className={`flex ${
+                  watch.stamplogo ? "sm:grid grid-cols-2" : "grid-cols-1"
+                } gap-5 mb-4`}
+              >
+                <div>
+                  <h2 className="text-base md:text-lg font-medium mb-1">
+                    {watch.videotitle}
+                  </h2>
+
+                  <p className="text-xs md:text-sm mb-4">{watch.disc}</p>
+                </div>
+
+                {watch.stamplogo && (
+                  <div className="flex justify-end sm:justify-center order-1 sm:order-2 w-full">
+                    <div className="w-28 sm:w-[150px] h-28 sm:h-[150px] overflow-hidden rounded-lg mb-3">
+                      <img
+                        src={watch.stamplogo}
+                        alt="stamp"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <LanguagesDropdown />
 
@@ -285,29 +295,6 @@ const Products: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            <div className="bg-[#CEBAFD52] rounded-[14px] p-3 md:p-5 mt-5">
-              <button
-                onClick={() => handleToggleReviews(index)}
-                className="flex items-center justify-between w-full"
-              >
-                <span className="text-xl font-medium">Reviews (40)</span>
-                <Image
-                  src="/assets/icon/angle-down-small.svg"
-                  alt="angle-down-small"
-                  width={14}
-                  height={9}
-                />
-              </button>
-
-              {/* Reviews  */}
-              {showReviewsIndex === index && (
-                <div>
-                  <ReviewsForm onOpen={handleOpenAddRatingModal} />
-                  <ReviewsList />
-                </div>
-              )}
-            </div>
           </div>
         ))}
       </div>
@@ -330,11 +317,6 @@ const Products: React.FC = () => {
       {/* Favorute Window  */}
       {isOpenFavoritesModal && (
         <FavoriteModal onClose={handleCloseFavoritesModal} />
-      )}
-
-      {/* Add Rating Modal  */}
-      {isOpenAddRatingModal && (
-        <AddRatingModal onClose={handleCloseAddRatingModal} />
       )}
     </div>
   );

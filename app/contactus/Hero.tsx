@@ -1,9 +1,21 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/Modals/SearchBar";
 import Image from "next/image";
+import CreateNewContactModal from "./CreateNewContactModal";
 
 const Hero: React.FC = () => {
+  const [isCreateNewContactModal, setIsCreateNewContactModal] =
+    useState<boolean>(false);
+
+  const handleOpenModal = () => {
+    setIsCreateNewContactModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsCreateNewContactModal(false);
+  };
+
   return (
     <section className="px-4 md:px-[30px] mb-5 md:mb-8">
       <div className="logomenubg bg-white w-full rounded-[30px] px-5 md:px-[30px] py-4">
@@ -15,7 +27,10 @@ const Hero: React.FC = () => {
               <SearchBar />
             </div>
 
-            <button className="w-fit rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium">
+            <button
+              onClick={handleOpenModal}
+              className="w-fit rounded-[14px] bg-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 text-white font-medium"
+            >
               <Image
                 src="/assets/icon/w-plus-circle.svg"
                 alt="plus circle icon"
@@ -31,6 +46,10 @@ const Hero: React.FC = () => {
           <SearchBar />
         </div>
       </div>
+
+      {isCreateNewContactModal && (
+        <CreateNewContactModal onClose={handleCloseModal} />
+      )}
     </section>
   );
 };

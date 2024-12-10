@@ -117,8 +117,16 @@ const NutritionProducts: React.FC = () => {
             <iframe
               id="myIframe"
               src="https://view-one-iota.vercel.app/food"
-              className="w-full h-full object-cover display-flex position-relative"
+              className="w-full h-full object-cover flex relative"
             ></iframe>
+
+            <div className="w-28 md:w-32 h-28 md:h-32 overflow-hidden rounded-full mb-3 mx-auto absolute top-0 left-0 z-40">
+              <img
+                src="/assets/stamp-logo-nutrition.png"
+                alt="stamp"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

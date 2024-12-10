@@ -19,6 +19,7 @@ const nutritionproducts = [
     price: "$29,30",
     discountprice: " $19,43",
     link: "https://www.trufit.eu/lv/4endurance-pro-loaded#168=422",
+    stamplogo: "/assets/stamp-logo-store.png",
   },
   {
     id: 2,
@@ -181,6 +182,16 @@ const ProductsSlider: React.FC = () => {
                   Reviews (40)
                 </button>
               </div>
+              
+              {nutrition.stamplogo && (
+                <div className="w-28 md:w-32 h-28 md:h-32 overflow-hidden rounded-full absolute top-2 right-2 z-40">
+                  <img
+                    src={nutrition.stamplogo}
+                    alt="stamp"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Product Details  */}
