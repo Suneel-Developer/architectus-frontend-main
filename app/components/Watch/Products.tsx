@@ -14,6 +14,8 @@ import AddRatingModal from "../Reviews/AddRatingModal";
 import LanguagesDropdown from "../Therapies/LanguageDropdowns";
 import CreateModal from "./CreateModal";
 import DownloadModal from "../Modals/DownloadModal";
+import MessagesModal from "./MessagesModal";
+import Chat from "./MessagesModal/Chat";
 
 const watchdata = [
   {
@@ -43,7 +45,7 @@ const Products: React.FC = () => {
     useState<boolean>(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [isOpenDownloadModal, setIsOpenDownloadModal] =
-  useState<boolean>(false);
+    useState<boolean>(false);
 
   // Handle showing reviews for a specific slide
   const handleToggleReviews = (index: number) => {
@@ -113,7 +115,6 @@ const Products: React.FC = () => {
     }
   };
 
-  
   //   Open Download Modal
   const handleOpenDownloadModal = () => {
     setIsOpenDownloadModal(true);
@@ -123,7 +124,6 @@ const Products: React.FC = () => {
   const handleCloseDownloadModal = () => {
     setIsOpenDownloadModal(false);
   };
-
 
   return (
     <div className="mx-auto z-10 px-4">
@@ -137,7 +137,7 @@ const Products: React.FC = () => {
               {/* Profile & name  */}
               <button
                 onClick={handleOpenDownloadModal}
-                className="flex-1 max-w-[167px] rounded-[14px] shadow-lg bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
+                className="w-10 md:w-14 h-10 md:h-14 rounded-[14px] shadow-lg bg-white text-gradient flex items-center gap-2 justify-center text-sm sm:text-base px-2 sm:px-4 py-4 font-medium"
               >
                 <Image
                   src="/assets/icon/download-alt.svg"
@@ -145,7 +145,6 @@ const Products: React.FC = () => {
                   width={15}
                   height={18}
                 />
-                Download
               </button>
 
               <div className="flex gap-3">
@@ -179,15 +178,28 @@ const Products: React.FC = () => {
               </div>
             </div>
 
-            <div className="h-[200px] md:h-[400px] w-full overflow-hidden relative flex items-center justify-center">
-              <iframe
-                id="myIframe"
-                src="https://view-one-iota.vercel.app/food"
-                className="w-full h-full object-cover flex relative"
-              ></iframe>
+            <div className="flex flex-col items-center py-12 gap-8">
+              <Image
+                src="/assets/loader.svg"
+                alt="loader"
+                width={54}
+                height={54}
+                loading="lazy"
+                className="animate-spin"
+              />
+              <p className="text-base text-[#0F0A19B2] text-center">
+                AI is analyzing your documentation
+              </p>
             </div>
+
             {/* Details section */}
-            <CreateModal />
+            <div className="w-full md:w-auto overflow-y-scroll h-[500px] overflow-x-hidden formscrollbar rounded-[30px] overflow-hidden flex justify-self-center relative">
+              <div className="w-full min-w-full lg:min-w-[1000px] mx-auto p-3 md:p-5 rounded-[30px] bg-white z-50 flex flex-col justify-between relative">
+                <div className="flex flex-col md:flex-row gap-3 messges-chat overflow-hidden">
+                  <Chat />
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -216,7 +228,7 @@ const Products: React.FC = () => {
       {isOpenAddRatingModal && (
         <AddRatingModal onClose={handleCloseAddRatingModal} />
       )}
-        {isOpenDownloadModal && (
+      {isOpenDownloadModal && (
         <DownloadModal onClose={handleCloseDownloadModal} />
       )}
     </div>
